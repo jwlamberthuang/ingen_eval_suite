@@ -1,0 +1,25 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python and notebook caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Generated build and coverage files
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Operating system metadata
+.DS_Store
+Thumbs.db

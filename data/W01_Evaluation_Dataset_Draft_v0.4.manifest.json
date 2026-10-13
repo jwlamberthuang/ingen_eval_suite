@@ -1,0 +1,93 @@
+{
+  "dataset_name": "Week 1 bilingual dialogue review collection",
+  "dataset_version": "0.4.0",
+  "schema_version": "1.1.0",
+  "created_on": "2026-10-13",
+  "status": "language_revised_draft_pending_full_review",
+  "dataset_file": "W01_Evaluation_Dataset_Draft_v0.4.jsonl",
+  "dataset_sha256": "f057be9aaebff08b5afad0cb01635428535381979e79e908aeb671663ac4503b",
+  "schema_file": "schemas/w01_dialogue_case.schema.json",
+  "schema_sha256": "f1136ae27bab64268ace07d86a005ea052c196bbc668d4d78947b687ee76c523",
+  "construction_script": "scripts/datasets/revise_collection.py",
+  "inputs": [
+    {
+      "dataset_file": "data/W01_Evaluation_Dataset_Draft_v0.3.jsonl",
+      "dataset_sha256": "d2efed97dff13b36e5ab6febdef0fd25a4d44a156aae4491dc8c76684a155f94"
+    },
+    {
+      "revision_file": "data/revisions/W01_Draft_v0.4.review_edits.json",
+      "revision_sha256": "2a8eef3916ef33dfb2b1e4c0251f48580be691d43abd3714cffcb5fbc411f502"
+    }
+  ],
+  "record_count": 32,
+  "base_count": 32,
+  "family_count": 31,
+  "base_domain_counts": {
+    "fari-en": 11,
+    "fari-zh": 7,
+    "senpai-en": 8,
+    "senpai-zh": 6
+  },
+  "base_difficulty_counts": {
+    "easy": 12,
+    "medium": 12,
+    "hard": 8
+  },
+  "base_cell_counts": {
+    "fari-en/easy": 4,
+    "fari-en/medium": 5,
+    "fari-en/hard": 2,
+    "fari-zh/easy": 3,
+    "fari-zh/medium": 2,
+    "fari-zh/hard": 2,
+    "senpai-en/easy": 3,
+    "senpai-en/medium": 3,
+    "senpai-en/hard": 2,
+    "senpai-zh/easy": 2,
+    "senpai-zh/medium": 2,
+    "senpai-zh/hard": 2
+  },
+  "base_edge_tag_counts": {
+    "partial_context": 11,
+    "no_relevant_context": 2,
+    "culturally_specific_zh": 2,
+    "mixed_language": 2,
+    "adversarial": 3,
+    "conflicting_context": 1
+  },
+  "subset_counts": {
+    "calibration": 12,
+    "unassigned": 20
+  },
+  "approved_record_count": 0,
+  "pending_native_zh_count": 13,
+  "notes": [
+    "All records are review drafts, not a frozen release. New families remain unassigned until review and split planning.",
+    "Original fictional scenarios and attributed public paraphrases only; local internship references are excluded.",
+    "No model responses, metric scores, or human annotation approvals are claimed.",
+    "Human Word wording edits are preserved verbatim. Supporting annotations are aligned separately; full-case approval remains pending.",
+    "English cases use concise spoken dialogue and child-appropriate explanations. Mixed queries use English content words within Chinese sentences.",
+    "Equivalent spoken and numeric times or quantities express the same required facts. Audio quality and audio latency are outside this text collection.",
+    "Case IDs, families, difficulty tiers, and draft subset assignments are preserved."
+  ],
+  "revision_file": "data/revisions/W01_Draft_v0.4.review_edits.json",
+  "revision_sha256": "2a8eef3916ef33dfb2b1e4c0251f48580be691d43abd3714cffcb5fbc411f502",
+  "dialogue_target": {
+    "input_format": "text",
+    "output_format": "text",
+    "intended_delivery": "spoken_dialogue",
+    "selected_mixed_query_pattern": "Chinese sentence structure with English content words",
+    "audio_evaluation_included": false
+  },
+  "human_word_review_case_ids": [
+    "w01-fari-zh-0021-base",
+    "w01-fari-zh-0022-base",
+    "w01-fari-zh-0023-base",
+    "w01-fari-zh-0024-base",
+    "w01-senpai-zh-0030-base",
+    "w01-senpai-zh-0031-base",
+    "w01-senpai-zh-0032-base"
+  ],
+  "human_word_field_edit_count": 13,
+  "english_style_case_count": 19
+}

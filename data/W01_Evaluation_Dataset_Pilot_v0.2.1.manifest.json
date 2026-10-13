@@ -1,0 +1,53 @@
+{
+  "dataset_name": "Week 1 bilingual dialogue pilot",
+  "dataset_version": "0.2.1",
+  "schema_version": "1.1.0",
+  "status": "query_revised_draft_pending_full_review",
+  "created_on": "2026-10-12",
+  "dataset_file": "W01_Evaluation_Dataset_Pilot_v0.2.1.jsonl",
+  "dataset_sha256": "8ae403c72163ac41731ea43850a9df3b2d63e1653def182acc9583a83ced4aff",
+  "schema_file": "schemas/w01_dialogue_case.schema.json",
+  "schema_sha256": "f1136ae27bab64268ace07d86a005ea052c196bbc668d4d78947b687ee76c523",
+  "construction_script": "scripts/datasets/revise_pilot.py",
+  "record_count": 12,
+  "base_domain_counts": {
+    "fari-en": 3,
+    "fari-zh": 3,
+    "senpai-en": 3,
+    "senpai-zh": 3
+  },
+  "base_difficulty_counts": {
+    "easy": 4,
+    "medium": 4,
+    "hard": 4
+  },
+  "family_count": 11,
+  "subset": "calibration",
+  "approved_record_count": 0,
+  "native_zh_author": null,
+  "native_zh_review_status": "pending",
+  "public_content_policy": "Original fictional scenarios and one attributed public cultural paraphrase; no internal internship documents or Radnova examples are included.",
+  "notes": [
+    "Five Chinese query edits by Jingwei Huang were adopted verbatim; six English queries were adapted to a conversational style. The sixth Chinese query is unchanged.",
+    "Queries and review notes changed; contexts, reference facts, ideal responses, difficulty tiers, case IDs, families, and calibration membership are preserved.",
+    "The reading-club behavior criteria additionally require a calm evidence-based response to pressure.",
+    "Query editing does not imply complete native authorship or approval of the scenario, ideal response, or annotations. All twelve cases remain drafts.",
+    "This pilot is not the final 100-case dataset. No model responses or metric scores have been produced."
+  ],
+  "base_dataset_file": "W01_Evaluation_Dataset_Pilot_v0.1.1.jsonl",
+  "base_dataset_sha256": "191cc7714dc7a8bcdc8bc709e437bf15116f8ea2938c4d758ba69e1475ff7bf4",
+  "revision_file": "data/revisions/W01_Pilot_v0.2.1.query_edits.json",
+  "revision_sha256": "d25573a354941aa7a17867e77602517d684a8bc1ee5624b9574e9a0ee6be897b",
+  "query_revision_counts": {
+    "human_chinese": 5,
+    "english": 6
+  },
+  "human_query_editor": "Jingwei Huang",
+  "human_query_review_case_ids": [
+    "w01-fari-zh-0004-base",
+    "w01-fari-zh-0005-base",
+    "w01-fari-zh-0006-base",
+    "w01-senpai-zh-0010-base",
+    "w01-senpai-zh-0012-base"
+  ]
+}
