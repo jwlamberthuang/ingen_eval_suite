@@ -1,0 +1,181 @@
+{
+  "dataset_name": "Week 1 bilingual dialogue evaluation",
+  "dataset_version": "1.0.0",
+  "schema_version": "1.1.0",
+  "dataset_file": "W01_Evaluation_Dataset_v1.jsonl",
+  "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+  "schema_file": "schemas/w01_dialogue_case.schema.json",
+  "schema_sha256": "f1136ae27bab64268ace07d86a005ea052c196bbc668d4d78947b687ee76c523",
+  "status": "release",
+  "profile": "release",
+  "record_count": 100,
+  "base_count": 100,
+  "variant_count": 0,
+  "family_count": 99,
+  "base_domain_counts": {
+    "fari-en": 40,
+    "fari-zh": 20,
+    "senpai-en": 25,
+    "senpai-zh": 15
+  },
+  "base_difficulty_counts": {
+    "easy": 40,
+    "medium": 40,
+    "hard": 20
+  },
+  "base_cell_counts": {
+    "fari-en/easy": 16,
+    "fari-en/medium": 16,
+    "fari-en/hard": 8,
+    "fari-zh/easy": 8,
+    "fari-zh/medium": 8,
+    "fari-zh/hard": 4,
+    "senpai-en/easy": 10,
+    "senpai-en/medium": 10,
+    "senpai-en/hard": 5,
+    "senpai-zh/easy": 6,
+    "senpai-zh/medium": 6,
+    "senpai-zh/hard": 3
+  },
+  "base_edge_tag_counts": {
+    "partial_context": 28,
+    "no_relevant_context": 3,
+    "culturally_specific_zh": 4,
+    "mixed_language": 5,
+    "adversarial": 6,
+    "conflicting_context": 3,
+    "out_of_domain": 2
+  },
+  "base_tagged_case_count": 48,
+  "unapproved_count": 0,
+  "pending_native_zh_count": 0,
+  "unconfirmed_native_zh_authorship_count": 0,
+  "source_dataset_file": "W01_Evaluation_Dataset_v1.jsonl",
+  "source_dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+  "language_review": {
+    "reviewer": "Jingwei Huang",
+    "reviewed_on": "2026-10-13",
+    "scope": "All 100 base cases in English and Chinese",
+    "status": "completed",
+    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "edited_case_count": 10,
+    "field_edit_count": 11,
+    "annotation_and_release_approval": "release_preparation_completed",
+    "native_original_authorship_attestation": "confirmed_by_Jingwei_Huang_2026-10-13",
+    "applies_to_current_source": true
+  },
+  "release_review": {
+    "status": "approved",
+    "reviewed_on": "2026-10-13",
+    "reviewer_ids": [
+      "Jingwei Huang"
+    ],
+    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "native_zh_author_id": "Jingwei Huang",
+    "native_zh_case_count": 35,
+    "native_authorship_basis": "Explicit confirmation by Jingwei Huang on 2026-10-13",
+    "annotation_checks": [
+      "factual support",
+      "quantities and deductions",
+      "evidence links",
+      "tier consistency",
+      "expected behavior",
+      "family assignment",
+      "public source eligibility"
+    ],
+    "limitations": [
+      "One human reviewer; independent human annotation agreement has not been measured.",
+      "No model outputs or metric scores have been produced."
+    ],
+    "applies_to_current_source": true
+  },
+  "split_policy": {
+    "version": "1.0.0",
+    "seed": "w01-split-v1-2026-10-13",
+    "algorithm": "Lock pilot families in calibration; order other families by SHA-256(seed + '|' + family_id), breaking hash ties by family_id; greedily include a whole family only if every calibration cell quota remains feasible.",
+    "calibration_cell_targets": {
+      "fari-en/easy": 3,
+      "fari-en/medium": 3,
+      "fari-en/hard": 2,
+      "fari-zh/easy": 1,
+      "fari-zh/medium": 2,
+      "fari-zh/hard": 1,
+      "senpai-en/easy": 2,
+      "senpai-en/medium": 2,
+      "senpai-en/hard": 1,
+      "senpai-zh/easy": 1,
+      "senpai-zh/medium": 1,
+      "senpai-zh/hard": 1
+    },
+    "calibration_case_ids": [
+      "w01-fari-en-0001-base",
+      "w01-fari-en-0002-base",
+      "w01-fari-en-0003-base",
+      "w01-fari-zh-0004-base",
+      "w01-fari-zh-0005-base",
+      "w01-fari-zh-0006-base",
+      "w01-senpai-en-0007-base",
+      "w01-senpai-en-0008-base",
+      "w01-senpai-en-0009-base",
+      "w01-senpai-zh-0010-base",
+      "w01-senpai-zh-0011-base",
+      "w01-senpai-zh-0012-base",
+      "w01-fari-en-0019-base",
+      "w01-fari-en-0039-base",
+      "w01-fari-en-0042-base",
+      "w01-fari-en-0049-base",
+      "w01-fari-en-0056-base",
+      "w01-fari-zh-0071-base",
+      "w01-senpai-en-0075-base",
+      "w01-senpai-en-0083-base"
+    ],
+    "base_subset_counts": {
+      "calibration": 20,
+      "held_out": 80
+    },
+    "family_subset_counts": {
+      "calibration": 19,
+      "held_out": 80
+    },
+    "development_reuse": "All cases received authoring and annotation review. No model response scoring, scorer tuning, or model selection has used the held-out subset."
+  },
+  "base_subset_counts": {
+    "calibration": 20,
+    "held_out": 80,
+    "unassigned": 0
+  },
+  "dialogue_target": {
+    "input_format": "text",
+    "output_format": "text",
+    "intended_delivery": "spoken_dialogue",
+    "selected_mixed_query_pattern": "Chinese sentence structure with English content words",
+    "audio_evaluation_included": false
+  },
+  "construction_inputs": [
+    {
+      "file": "dataset_config.json",
+      "sha256": "763050c6842ac3663b3470b782c01432a600843b0ef245b04da4f2684522fc74"
+    },
+    {
+      "file": "scripts/datasets/build_dataset.py",
+      "sha256": "6e0e90d8a9099f21d86f408da279d300adfaff4a56b76f14d8179fbc01feefb5"
+    },
+    {
+      "file": "scripts/datasets/dataset_io.py",
+      "sha256": "5b1dae509caa9e9b0fe35cd620db29e2295c5981450bbe66ceea44b0b521e0bb"
+    },
+    {
+      "file": "scripts/datasets/update_dataset.py",
+      "sha256": "ad724ffe22cfbd5c9a60d2e96571c19043ca3292039640050fda4f86d94f7411"
+    },
+    {
+      "file": "scripts/datasets/validate_dataset.py",
+      "sha256": "10e8f9cc6ffb5d0d53ef2dbbc3ff8d7d42feceeb1bbe820c7254822df5f4bba1"
+    }
+  ],
+  "notes": [
+    "The collection JSONL is the authoritative editable source; the pilot is derived from the configured case IDs.",
+    "Authorship confirmation, language review, and release annotation checks are recorded separately; no independent human agreement study is claimed.",
+    "No model generations, metric scores, or audio evaluations are included."
+  ]
+}

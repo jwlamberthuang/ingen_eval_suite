@@ -1,4 +1,4 @@
-# Local environment and credentials
+# Environments and credentials
 .env
 .env.*
 !.env.example
@@ -20,7 +20,7 @@ dist/
 .coverage
 htmlcov/
 
-# Local archives, build previews, reports, review payloads, and scratch work
+# Build previews, reports, review payloads, and scratch work
 .local/
 data/validation/
 data/batches/

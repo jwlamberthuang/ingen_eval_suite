@@ -1,0 +1,639 @@
+{
+  "title": "InGen Dialogue Evaluation Dataset Specification",
+  "subject": "Public bilingual dialogue dataset specification and release acceptance rules",
+  "author": "",
+  "version": "1.0.0",
+  "formatting": {
+    "font": "Times New Roman",
+    "body_size_points": 12
+  },
+  "blocks": [
+    {
+      "type": "title",
+      "text": "InGen Dialogue Evaluation Dataset Specification"
+    },
+    {
+      "type": "subtitle",
+      "text": "Week 1 dataset contract"
+    },
+    {
+      "type": "paragraph",
+      "text": "ingen_eval_suite | Dataset version 1.0.0 | Schema version 1.1.0 | October 13 2026"
+    },
+    {
+      "type": "paragraph",
+      "text": "This specification defines how contributors author and annotate grounded dialogue cases for Fari eldercare and Senpai education. The released collection contains 100 base cases, 65 English and 35 Chinese, in 99 scenario families. Queries, evidence, and ideal answers preserve the reviewed conversational wording. The twelve-case pilot is a derived calibration view, not twelve additional independent cases."
+    },
+    {
+      "type": "paragraph",
+      "text": "The dataset supplies fixed context for the assigned GRPO dialogue tasks. Context recall measures evidence sufficiency; faithfulness measures support for generated claims; semantic relevance measures query-response embedding alignment; supplementary answer coverage measures required facts conveyed correctly. Domain rubrics assess interaction and teaching behavior. This specification defines reference annotations, not measured model outputs or scores. [D1]"
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "1 Scope and construction targets"
+    },
+    {
+      "type": "paragraph",
+      "text": "The four domain labels combine platform and primary query language. Fari cases test coherent, respectful companion dialogue using stated preferences, routines, and conversation history. Senpai cases test correct explanations at a stated learner level and against a stated learning objective. All people, schedules, and learner profiles in original scenarios are fictional. Product capability claims require a public source; a constructed scene does not establish actual robot behavior."
+    },
+    {
+      "type": "table",
+      "caption": "Table 1 Released base case allocation",
+      "headers": [
+        "Domain",
+        "Easy",
+        "Medium",
+        "Hard",
+        "Total"
+      ],
+      "widths": [
+        2.1,
+        1.2,
+        1.2,
+        1.2,
+        1.2
+      ],
+      "center_columns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "rows": [
+        [
+          "fari-en",
+          "16",
+          "16",
+          "8",
+          "40"
+        ],
+        [
+          "fari-zh",
+          "8",
+          "8",
+          "4",
+          "20"
+        ],
+        [
+          "senpai-en",
+          "10",
+          "10",
+          "5",
+          "25"
+        ],
+        [
+          "senpai-zh",
+          "6",
+          "6",
+          "3",
+          "15"
+        ],
+        [
+          "Total",
+          "40",
+          "40",
+          "20",
+          "100"
+        ]
+      ],
+      "keep_together": true
+    },
+    {
+      "type": "paragraph",
+      "text": "The base allocation is 40 Fari English, 20 Fari Chinese, 25 Senpai English, and 15 Senpai Chinese. The selected difficulty mix is 40 Easy, 40 Medium, and 20 Hard. At least ten distinct cases must carry edge tags and all five required categories must occur. Dataset v1 has 48 tagged cases. Cultural and mixed-language probes reflect the relevant audience; tags can overlap and do not sum to a count of independent cases."
+    },
+    {
+      "type": "paragraph",
+      "text": "STUM, SEOM, and HTD-IRL extensions will use separate task contracts when their interfaces and labels are specified. AMDC and CRL-MRS remain future work. This initial schema must not imply that a dialogue case validates perception, motor control, or fleet coordination."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "2 Operational difficulty rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "Assign difficulty from the task and evidence before inspecting a model response. Apply Hard rules first, then Medium, then Easy. Passage length, Chinese language, unfamiliar names, and a model's observed failure do not alone determine difficulty. Store one primary rule code in review.difficulty_rule and explain the assignment in construction_notes."
+    },
+    {
+      "type": "table",
+      "caption": "Table 2 Tier assignment rules",
+      "headers": [
+        "Tier and code",
+        "Operational criterion"
+      ],
+      "widths": [
+        1.45,
+        5.45
+      ],
+      "rows": [
+        [
+          "Easy E1",
+          "One clear passage supplies a direct answer or a single paraphrase. No unresolved ambiguity, scope challenge, adversarial instruction, or necessary multi-step deduction."
+        ],
+        [
+          "Medium M1",
+          "The answer requires at least two explicit reasoning operations within supplied evidence, such as ordering events and then selecting a time."
+        ],
+        [
+          "Medium M2",
+          "The answer requires combining evidence from two or more passages; no single passage supplies every required fact."
+        ],
+        [
+          "Hard H1",
+          "A missing or ambiguous referent, conflicting evidence, or missing requested evidence requires clarification, qualified partial answering, or abstention."
+        ],
+        [
+          "Hard H2",
+          "An out-of-domain request challenges the stated platform/task boundary. The correct behavior follows the case's explicit scope and behavior criteria."
+        ],
+        [
+          "Hard H3",
+          "A deliberate distractor, embedded instruction, false premise, or other adversarial challenge is designed to elicit an unsupported or incorrect response."
+        ]
+      ],
+      "keep_together": true
+    },
+    {
+      "type": "paragraph",
+      "text": "For M1, list the reasoning operations. For M2, identify the passages that must be combined. Merely adding an irrelevant second passage does not create Medium difficulty. H1 includes no-relevant-context cases because they test evidence-dependent behavior rather than direct factual answering. Cultural references and code-switching can appear at any tier; use Hard only when they introduce an H rule."
+    },
+    {
+      "type": "paragraph",
+      "text": "A reviewer independently applies the hierarchy and checks the rationale. Resolve disagreements by clarifying the query, context, or rule; do not average tier labels. A later model result may motivate revising an unclear case, but it must not silently relabel a frozen release."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "3 Edge cases and expected behavior"
+    },
+    {
+      "type": "table",
+      "caption": "Table 3 Required edge case taxonomy",
+      "headers": [
+        "Tag",
+        "Authoring condition",
+        "Expected behavior"
+      ],
+      "widths": [
+        1.6,
+        2.65,
+        2.65
+      ],
+      "rows": [
+        [
+          "mixed_language",
+          "English and Chinese both contribute meaning in the query or supplied dialogue.",
+          "Interpret both parts; answer in the declared response language without dropping instructions or entities."
+        ],
+        [
+          "culturally_specific_zh",
+          "Understanding requires a specific Chinese cultural reference, convention, or register.",
+          "Use the intended interpretation; avoid stereotypes and unstated cultural assumptions."
+        ],
+        [
+          "no_relevant_context",
+          "No supplied passage supports any requested reference fact. The context may be empty or irrelevant.",
+          "Acknowledge missing evidence and clarify or abstain as specified; do not invent the requested fact."
+        ],
+        [
+          "partial_context",
+          "Several passages are partially relevant or supplied evidence omits some information needed for a complete answer.",
+          "Combine supported evidence; if facts remain unavailable, provide a qualified partial answer or seek clarification."
+        ],
+        [
+          "adversarial",
+          "A false premise, misleading passage, or embedded instruction probes a defined failure mode.",
+          "Follow the task and evidence rules; reject the false premise or ignore injected instructions as specified."
+        ]
+      ],
+      "keep_together": true
+    },
+    {
+      "type": "paragraph",
+      "text": "Two optional tags refine analysis: conflicting_context marks incompatible evidence; out_of_domain marks a scope challenge. Tags describe the authored probe, not a failure already observed in a model. partial_context can apply when individually partial passages collectively supply all facts; answerability then remains full. Tag no_relevant_context only when none of the requested facts is supported, not whenever context recall is below one."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every case declares one primary expected_behavior: answer, partial_answer_with_uncertainty, clarify, or abstain. accepted_behaviors includes the primary value and any reviewed alternatives. behavior_criteria states observable requirements, such as answering both requested items or explicitly acknowledging an unavailable time. forbidden_claims lists targeted unsupported assertions or false premises to avoid. The ideal_response demonstrates an acceptable response; scoring must allow correct paraphrases rather than require exact wording."
+    },
+    {
+      "type": "paragraph",
+      "text": "Answerability is full when all requested information is supported and the query has a clear interpretation; partial when a supported portion exists but information is missing; none when no requested information is supported; ambiguous when a referent or unresolved conflict prevents a unique valid interpretation. The author distinguishes an unknown factual answer from a genuine clarification-only task with no factual target."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "4 Record contract and model input boundary"
+    },
+    {
+      "type": "paragraph",
+      "text": "Store one UTF-8 JSON object per nonempty JSONL line, with the nine required fields below. Reject duplicate keys, comments, trailing commas, and non-finite numbers. Represent empty context as [], not null or fabricated evidence. Normalize strings to Unicode NFC while preserving meaningful punctuation, script, and spacing. The matching contract is [machine schema](../schemas/w01_dialogue_case.schema.json), version 1.1.0."
+    },
+    {
+      "type": "table",
+      "caption": "Table 4 Required top level fields",
+      "headers": [
+        "Field",
+        "Type and allowed values",
+        "Purpose"
+      ],
+      "widths": [
+        1.6,
+        2.6,
+        2.7
+      ],
+      "rows": [
+        [
+          "id",
+          "Nonempty string; w01-platform-language-NNNN-base or -vNN",
+          "Stable case identifier. Number NNNN is allocated once and never reused."
+        ],
+        [
+          "domain",
+          "fari-en, fari-zh, senpai-en, senpai-zh",
+          "Platform and primary query language."
+        ],
+        [
+          "language",
+          "en or zh",
+          "Primary query language; must agree with domain."
+        ],
+        [
+          "difficulty",
+          "easy, medium, hard",
+          "Task tier assigned using Section 2."
+        ],
+        [
+          "query",
+          "Nonempty string",
+          "Current user request supplied to the model."
+        ],
+        [
+          "context",
+          "Ordered array of nonempty strings; may be []",
+          "Exact full evidence passages supplied in fixed-context mode."
+        ],
+        [
+          "ideal_response",
+          "Nonempty string",
+          "Reviewed correct behavior, including clarification or abstention where appropriate."
+        ],
+        [
+          "evaluation_labels",
+          "Object with the fields in Section 5",
+          "Hidden reference facts, evidence links, labels, and review metadata."
+        ],
+        [
+          "construction_notes",
+          "Nonempty string",
+          "Rationale, reasoning steps, intended challenge, and annotation decisions."
+        ]
+      ],
+      "keep_together": false
+    },
+    {
+      "type": "paragraph",
+      "text": "One optional top-level object, input_metadata, holds dialogue_history and learner_profile. dialogue_history is an ordered array of {role, content} objects; roles are user or assistant and content is nonempty. It excludes the current query, which is supplied last. learner_profile contains nonempty level and learning_objective strings. Omit inapplicable metadata; use fictional profiles. Senpai cases require this learner profile so teaching rubrics have an explicit target."
+    },
+    {
+      "type": "paragraph",
+      "text": "The generation adapter uses an explicit allowlist: query, ordered context, and applicable input_metadata only. The shared run prompt supplies the declared platform task and language policy without hidden case labels. Never serialize the whole record into the model prompt. ideal_response, evaluation_labels, construction_notes, IDs, family labels, subset membership, and source/review metadata remain outside model input. Generated responses, claims, scores, attempts, and operational measurements are separate run artifacts joined by case ID. [D1]"
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "5 Annotation objects and allowed values"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every field in the next table is required inside evaluation_labels under schema version 1.1.0. Empty arrays are allowed only when the case genuinely has no facts, tags, passages, forbidden claims, or applicable rubrics. Drafts may have unassigned subsets and pending review; a release may not. Dataset v1 has approved records with all subset assignments completed."
+    },
+    {
+      "type": "table",
+      "caption": "Table 5 Evaluation label fields",
+      "headers": [
+        "Field",
+        "Type and values"
+      ],
+      "widths": [
+        2.05,
+        4.85
+      ],
+      "rows": [
+        [
+          "schema_version",
+          "String fixed to 1.1.0."
+        ],
+        [
+          "family_id",
+          "String fam-NNNN identifying a shared underlying scenario."
+        ],
+        [
+          "record_kind",
+          "base or context_variant."
+        ],
+        [
+          "base_case_id",
+          "null for a base case; exact parent base case ID for a variant."
+        ],
+        [
+          "subset",
+          "unassigned, calibration, or held_out."
+        ],
+        [
+          "context_condition",
+          "full, partial, none, distractor, or conflicting; describes evidence, not record kind."
+        ],
+        [
+          "query_language",
+          "en, zh, or mixed; complements the primary language field."
+        ],
+        [
+          "response_language",
+          "en or zh; the expected predominant response language."
+        ],
+        [
+          "answerability",
+          "full, partial, none, or ambiguous."
+        ],
+        [
+          "expected_behavior",
+          "answer, partial_answer_with_uncertainty, clarify, or abstain."
+        ],
+        [
+          "accepted_behaviors",
+          "Nonempty unique array using the same four behavior values."
+        ],
+        [
+          "edge_case_tags",
+          "Unique array using the five required and two optional tags in Section 3."
+        ],
+        [
+          "required_facts",
+          "Array of atomic fact objects defined below."
+        ],
+        [
+          "passages",
+          "Array of passage metadata objects; exactly one per context string."
+        ],
+        [
+          "sources",
+          "Nonempty array of public_web or original_scenario provenance objects."
+        ],
+        [
+          "rubric_criteria",
+          "Unique array of applicable domain criterion IDs."
+        ],
+        [
+          "behavior_criteria",
+          "Nonempty array of observable success requirements."
+        ],
+        [
+          "forbidden_claims",
+          "Array of targeted unsupported assertions or false premises."
+        ],
+        [
+          "conflict_resolution",
+          "Nonempty string specifying an authority/uncertainty rule, or null when no conflict exists."
+        ],
+        [
+          "review",
+          "Author, tier rule, review status, reviewers, and native Chinese review object."
+        ]
+      ],
+      "keep_together": false
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Required facts and evidence support"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each fact object contains fact_id (fNNN), text, equivalence_notes, context_support, evidence_passage_ids, source_ids, and verification_notes. text is a single independently checkable reference proposition; equivalence_notes records accepted paraphrases or deductions without weakening entities, quantities, or negation. source_ids links to canonical truth provenance, which can remain hidden when evidence is withheld. verification_notes explains how that truth was established."
+    },
+    {
+      "type": "paragraph",
+      "text": "context_support is supported, unsupported, contradicted, or conflicting. For supported facts, cite all passages needed for direct evidence or joint deduction. For contradicted or conflicting facts, cite the conflicting passages and explain the discrepancy. For unsupported facts, evidence_passage_ids is empty and verification_notes explains the missing evidence. Under the framework, only supported contributes 1 to context recall; the other three contribute 0. A conflict resolved by an explicit authority rule can be supported with the resolution documented."
+    },
+    {
+      "type": "paragraph",
+      "text": "Required facts are written before output inspection and remain stable across context variants. Do not add an abstention sentence as a factual reference merely because evidence was removed. For a true clarification-only task with no factual target, required_facts is []; context recall and answer coverage are then not applicable. For a known factual target withheld from context, retain that target: recall is zero when unsupported, while appropriate abstention is judged through behavior criteria."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Passages and provenance"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each passage metadata object contains passage_id (pNNN), context_index (zero-based), language (en, zh, mixed), and nonempty source_ids. The index must identify its exact context string; indices cover 0 through len(context)-1 once each, and passage IDs are unique within the record. Persist full passages, their order, and stable source identifiers. IDs are opaque labels and must not encode relevance, correctness, or difficulty."
+    },
+    {
+      "type": "paragraph",
+      "text": "Each source contains source_id, kind, title, url, accessed_on, locator, and author_id. public_web requires an HTTPS URL, access date, and section locator. original_scenario has null URL/access date and a title describing its fictional canonical facts. Author identity may be null when not established; never invent attribution. Chinese native authorship is recorded separately in review. A shared source ID must have identical provenance metadata across records. Source eligibility and factual interpretation require review beyond structural validation."
+    },
+    {
+      "type": "paragraph",
+      "text": "Original people, family schedules, class rules, and learner profiles are fictional and self-contained. Cultural or product facts require attributed public sources even when their surrounding scenario is original. Use no proprietary data or credentials. Future retrieval experiments require corpus versioning and corpus-wide passage relevance labels; fixed-context passage annotations are not complete retrieval ground truth."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rubrics and review status"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fari criterion IDs are fari_coherence and fari_emotional_register. Coherence requires supplied history with at least one prior user and assistant turn; emotional register requires an observable situation in the query or history. Senpai IDs are senpai_correctness, senpai_learner_suitability, and senpai_curriculum_alignment, all used with the declared learner profile. The dataset lists applicable criteria without preassigning scores to a future response; the framework's 0/1/2 anchors govern later review. [D1]"
+    },
+    {
+      "type": "paragraph",
+      "text": "review includes status (draft, needs_revision, approved), author_id, reviewer_ids, difficulty_rule, native_zh_author_id, native_zh_review_status, and notes. Contributor IDs describe confirmed activity and may remain null where identity is not established. All 35 Chinese records identify Jingwei Huang as the confirmed native author and have approved native language review. English records use null for native_zh_author_id and not_applicable for native_zh_review_status. A substantive Chinese passage in an English-primary case requires recorded Chinese language review too."
+    },
+    {
+      "type": "paragraph",
+      "text": "Approval needs an actual reviewer, documented support/behavior checks, and assigned family-safe subsets. Record whether human review was self-review or independent. Dataset v1 records one human reviewer; it does not claim measured inter-rater agreement. Confirmation of authorship and language review are separate from technical annotation checks. Content edits invalidate approval and require renewed review before a revised release."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "6 Language and domain assignment"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use the language of the query's main request to set language and the domain suffix. English syntax with a Chinese name or isolated term remains en; Chinese syntax with a product name or isolated English term remains zh. Set query_language to mixed only when both languages contribute substantive meaning. If two clauses are equally central, use the language of the final explicit request; if still unclear, rewrite the query before approval rather than infer a hidden preference."
+    },
+    {
+      "type": "paragraph",
+      "text": "response_language defaults to language. A user's explicit request for a different answer language can override it and is visible in the query or history. Preserve proper names and necessary quoted terms while using the declared predominant response language. Passage languages are annotated independently. Chinese authors choose appropriate wording and script for the scenario; they must not silently normalize traditional characters into simplified characters or translate culturally specific references just to increase lexical overlap."
+    },
+    {
+      "type": "paragraph",
+      "text": "Language is not a difficulty proxy. Native English and Chinese cases need comparable task demands within each platform and tier, but need not be literal translations. Related language variants share a family ID so they cannot leak across subsets. Report actual language, tier, and family counts; a score gap between different scenarios does not by itself establish a causal language effect."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "7 Scenario families and controlled variants"
+    },
+    {
+      "type": "paragraph",
+      "text": "A family groups cases derived from the same underlying scenario, including close paraphrases, related language versions, and controlled context variants. Distinct IDs do not make related records independent. Allocate one family ID before authoring variants and assign the entire family to one subset. Base cases may already have full, partial, none, distractor, or conflicting evidence; record_kind distinguishes the initial quota from experimental additions."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a context_variant, keep the parent query, permitted metadata, platform/language, canonical required facts, and source truth unchanged. Alter context to remove required evidence, remove all relevant evidence, add distractors, or introduce conflicting passages. Update passage links, support labels, answerability, behavior, ideal_response, tier, and edge tags as needed. Document the intervention. Variant IDs use the parent's numeric identifier with v01, v02, and so on; base_case_id names that exact base case."
+    },
+    {
+      "type": "paragraph",
+      "text": "context_condition means: full contains sufficient uncontested evidence; partial supplies only some required facts; none supplies no requested factual evidence; distractor adds irrelevant or misleading material to an otherwise declared evidence set; conflicting contains incompatible evidence. For distractor and conflicting conditions, answerability and fact support specify the actual sufficiency. A fact-free clarification task can use none without creating a recall denominator."
+    },
+    {
+      "type": "paragraph",
+      "text": "The twelve pilot base cases cover all domain/tier cells and stay in calibration. Dataset v1 has 20 calibration cases and 80 held-out cases. Calibration domain counts are 8 fari-en, 4 fari-zh, 5 senpai-en, and 3 senpai-zh; each has every tier. Lock pilot families first, then order remaining families by SHA-256(seed + '|' + family_id) with seed w01-split-v1-2026-10-13 and family_id as a tie-breaker. Include a whole family only when every calibration cell remains within its quota. Exact cell quotas and resulting IDs are recorded in [dataset configuration](../dataset_config.json). The two reminder language cases share a calibration family."
+    },
+    {
+      "type": "paragraph",
+      "text": "Variants inherit the parent subset and do not count toward the 100-base-case quota or the 20/80 split. Calibration contains 19 families and held-out contains 80. No model response scoring, scorer tuning, or model selection has used the held-out subset. Authoring and annotation review are permitted. If a held-out family later influences scorer tuning, move the whole family to calibration and disclose the resulting release change."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "8 Authoring and review workflow"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Select a platform/language/tier slot and an observable evaluation objective. Allocate stable case and family IDs, identify public or original provenance, and decide whether history or a learner profile is necessary.",
+        "Write the canonical facts, query, and full evidence before constructing missing-evidence or adversarial conditions. Decide what the model can observe and what remains a hidden reference.",
+        "Author native language text and the ideal response. Record support links, expected and accepted behaviors, rubric applicability, edge tags, and a construction rationale including the intended weak-model failure.",
+        "Independently rederive the answer from the permitted input. Check quantities, negation, deductions, provenance, tier, and behavior. For missing evidence, confirm that the ideal response does not invent information.",
+        "Review Chinese wording and cultural assumptions through Jingwei's native authorship/review. Record actual contributors and assistance. Resolve disagreements and mark approved only after the checks pass.",
+        "Validate the pilot against the machine schema and cross-record rules. Revise the specification if needed, then scale to the base counts. Construct optional variants after their parent facts and behavior rules are stable.",
+        "Freeze the approved release and its manifest before reported evaluation. Keep generated responses and scoring artifacts separate; preserve hashes and annotation revision history for replay."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Construction notes explain the evaluation objective, supporting evidence or calculations, tier rule, edge tags, and intended weak-model failure. Hard and edge cases identify the specific missing evidence, ambiguity, scope boundary, conflict, or attack and the appropriate response. Keep methodological rationale current when wording or labels change; review metadata records actual review state."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "9 Validation and release acceptance"
+    },
+    {
+      "type": "paragraph",
+      "text": "Validation has three layers. JSON Schema checks individual record structure and controlled values. Semantic and collection checks verify relationships within and across records. Human review establishes correct truth, natural language, appropriate behavior, and source eligibility. A structural pass does not establish methodological quality; validation errors quarantine records instead of assigning a score of zero."
+    },
+    {
+      "type": "table",
+      "caption": "Table 6 Checks required before release",
+      "headers": [
+        "Layer",
+        "Required checks"
+      ],
+      "widths": [
+        1.35,
+        5.55
+      ],
+      "rows": [
+        [
+          "Schema",
+          "Nine required fields; allowed optional metadata; types; nonempty strings; enums; ID shape; domain/language agreement; valid review fields and provenance objects."
+        ],
+        [
+          "Within record",
+          "Primary behavior included in accepted behaviors; tier rule agrees with difficulty; fact/passage/source IDs unique; all references resolve; passage indices match context; support and conflict rules consistent."
+        ],
+        [
+          "Across records",
+          "Unique case IDs; variants reference existing base cases; parent invariants preserved; identical source IDs have identical provenance; entire family in one subset; close duplicates reviewed."
+        ],
+        [
+          "Base coverage",
+          "Required platform/language counts; all tiers in each domain; proposed difficulty allocation; at least ten tagged base cases; all five required edge types covered."
+        ],
+        [
+          "Release review",
+          "All records approved; subsets assigned; Chinese native authorship and review complete; correct grounding and behavior; learner/history dependencies met; public/original source eligibility verified."
+        ],
+        [
+          "Freeze",
+          "UTF-8 JSONL and schema version; dataset version and file hash; counts by kind/domain/tier/subset/tag/family; manifest and review limitations saved."
+        ]
+      ],
+      "keep_together": true
+    },
+    {
+      "type": "paragraph",
+      "text": "Human semantic checks additionally require full cases to support every required fact; partial cases to support a nonempty proper subset; and none cases with factual targets to support none. Unsupported facts have no evidence links; supported, contradicted, and conflicting facts cite relevant passages. A missing or conflicting fact needs an explanatory note, not an invented positive support label. Check that rubric prerequisites and the visible response-language request agree with annotations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Dataset tests exercise known acceptance and rejection cases for wrong domain/language, absent evidence/source references, duplicate IDs, family leakage, missing native authorship, unapproved release records, stale hashes, and invalid variants. Workflow tests protect reviewed wording, direct pilot edits, derived synchronization, and reproducible builds. These are dataset/tooling checks. Future metric implementations separately need manually verified examples for omission, contradiction, paraphrase, and empty-input behavior before use."
+    },
+    {
+      "type": "paragraph",
+      "text": "The authoritative release is [100-case dataset](../data/W01_Evaluation_Dataset_v1.jsonl), with a companion manifest recording version, dataset/schema hashes, counts, review basis, source collection identity, and split policy. The [pilot](../data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl) is derived from configured IDs. Corrections create a new dataset version and hash; schema shape or semantics changes version the schema too. Stable cases retain their IDs; substantively new scenarios receive new IDs."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "10 Release decisions and next implementation stage"
+    },
+    {
+      "type": "paragraph",
+      "text": "The current release preserves all reviewed query, context, ideal-response, and permitted-input fields. It removes stale pending-review language from rationale notes, makes the notebook-cost behavior criterion consistent with the approved spoken sample answer, and corrects a path-closure rationale. The final family split and native Chinese author confirmation are recorded. The next stage implements the core metrics and validates their proxies on calibration cases before any held-out model evaluation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chinese spoken dialogue examples"
+    },
+    {
+      "type": "paragraph",
+      "text": "Case w01-fari-zh-0006-base"
+    },
+    {
+      "type": "paragraph",
+      "text": "Query: 今天的读书会是几点，在哪个房间？不要弄错了。"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ideal response: 读书会在下午三点开始。提供的信息里没有房间号，我还不能确定地点，请问您有写着地点的通知吗？"
+    },
+    {
+      "type": "paragraph",
+      "text": "Case w01-senpai-zh-0093-base"
+    },
+    {
+      "type": "paragraph",
+      "text": "Query: 这张worksheet上，我把名字写哪儿呀？"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ideal response: 名字写在左上角的姓名栏就好，右上角是写日期的。"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Fari example supplies the start time but omits the room, so the expected behavior is a supported partial answer with uncertainty. The Senpai example retrieves an explicit location and uses an English content word inside a Chinese sentence. Correct spoken paraphrases are accepted; no exact-string or audio-quality requirement is imposed."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "References"
+    },
+    {
+      "type": "paragraph",
+      "text": "**D1** [Evaluation framework](evaluation_framework.md). Metric semantics, domain rubrics, baseline configuration, replay rules, family experiments, and reporting procedure. The corresponding Word deliverable is W01_InGen_AI_Evaluation_Framework.docx."
+    },
+    {
+      "type": "paragraph",
+      "text": "**D2** [Dataset documentation](../data/dataset_documentation.md), [machine schema](../schemas/w01_dialogue_case.schema.json), and [public source register](public_sources.md). These specify the released counts, annotation contract, validation procedure, and cultural source eligibility."
+    }
+  ]
+}

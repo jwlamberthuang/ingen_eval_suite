@@ -1,7 +1,6 @@
-"""Build an editable methodology document from a local JSON document source.
+"""Build an editable Word deliverable from a repository JSON document source.
 
-Run with the bundled document runtime. Source writeups and output documents
-can live outside the software checkout; only authoring code lives here.
+Install requirements-documents.txt and run from the repository root.
 """
 
 import argparse
@@ -48,8 +47,8 @@ def set_font(style, size, bold=False):
 
 
 def inline(paragraph, text):
-    """Support bold text, inline code, and external Markdown links."""
-    pattern = r"(\*\*.*?\*\*|`[^`]+`|\[[^\]]+\]\(https?://[^)]+\))"
+    """Support bold text, inline code, and public or repository Markdown links."""
+    pattern = r"(\*\*.*?\*\*|`[^`]+`|\[[^\]]+\]\([^\s)]+\))"
     for token in re.split(pattern, text):
         if not token:
             continue
@@ -60,7 +59,7 @@ def inline(paragraph, text):
             run = paragraph.add_run(token[1:-1])
             run.italic = True
         elif token.startswith("["):
-            match = re.fullmatch(r"\[([^\]]+)\]\((https?://[^)]+)\)", token)
+            match = re.fullmatch(r"\[([^\]]+)\]\(([^\s)]+)\)", token)
             if not match:
                 paragraph.add_run(token)
                 continue
@@ -94,6 +93,9 @@ def math_node(value):
     """Construct simple native Word mathematics without rasterizing it."""
     if isinstance(value, str):
         run = OxmlElement("m:r")
+        props = OxmlElement("w:rPr")
+        explicit_font(props)
+        run.append(props)
         text = OxmlElement("m:t")
         text.text = value
         run.append(text)
@@ -314,6 +316,7 @@ def build(source, output):
     doc.core_properties.title = data["title"]
     doc.core_properties.subject = data.get("subject", "Evaluation methodology")
     doc.core_properties.author = data.get("author", "")
+    doc.core_properties.last_modified_by = ""
     doc.core_properties.version = data.get("version", "0.1")
     for block in data["blocks"]:
         kind = block["type"]

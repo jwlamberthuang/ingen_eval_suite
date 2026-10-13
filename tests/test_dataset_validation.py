@@ -33,7 +33,7 @@ def codes(records, profile="draft"):
     return {error["code"] for error in validator.validate_records(records, profile)["errors"]}
 
 
-def test_pilot_is_structurally_valid_but_not_approved(records):
+def test_pilot_is_reviewed_and_structurally_valid(records):
     report = validator.validate_records(records, "pilot")
     assert report["errors"] == []
     assert report["record_count"] == 12
@@ -41,9 +41,9 @@ def test_pilot_is_structurally_valid_but_not_approved(records):
     assert report["base_domain_counts"] == {"fari-en": 3, "fari-zh": 3, "senpai-en": 3, "senpai-zh": 3}
     assert report["base_difficulty_counts"] == {"easy": 4, "medium": 4, "hard": 4}
     assert report["base_tagged_case_count"] == 8
-    assert report["unapproved_count"] == 12
+    assert report["unapproved_count"] == 0
     assert report["pending_native_zh_count"] == 0
-    assert report["unconfirmed_native_zh_authorship_count"] == 6
+    assert report["unconfirmed_native_zh_authorship_count"] == 0
 
 
 @pytest.mark.parametrize("mutation,expected", [
@@ -71,13 +71,13 @@ def test_duplicate_case_ids_are_rejected(records):
 
 def test_unreviewed_chinese_cannot_be_approved(records):
     review = records[3]["evaluation_labels"]["review"]
-    review.update(status="approved", reviewer_ids=["human-reviewer"], notes="Reviewed English labels only.")
+    review.update(status="approved", reviewer_ids=["human-reviewer"], notes="Reviewed English labels only.", native_zh_author_id=None, native_zh_review_status="pending")
     assert "schema" in codes(records)
 
 
 def test_pilot_cannot_pass_as_release(records):
     problems = codes(records, "release")
-    assert {"release_review", "release_count", "release_edges"} <= problems
+    assert {"release_count", "release_edges"} <= problems
 
 
 def test_missing_edge_type_is_detected(records):

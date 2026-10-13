@@ -38,9 +38,9 @@ def test_complete_collection_and_shared_pilot_are_consistent(collection, config)
     report = validate_records(collection, "collection")
     assert report["valid"] and report["base_cell_counts"] == COLLECTION_CELLS
     assert report["record_count"] == 100 and report["family_count"] == 99
-    assert report["unapproved_count"] == 100
+    assert report["unapproved_count"] == 0
     assert report["pending_native_zh_count"] == 0
-    assert report["unconfirmed_native_zh_authorship_count"] == 35
+    assert report["unconfirmed_native_zh_authorship_count"] == 0
     lookup = {r["id"]: r for r in collection}
     pilot = load_jsonl(ROOT / "data" / config["pilot"]["file"])
     assert pilot == [lookup[i] for i in config["pilot_case_ids"]]
@@ -56,6 +56,7 @@ def test_language_review_does_not_establish_native_authorship(collection):
     chinese = next(r for r in collection if r["language"] == "zh")
     assert chinese["evaluation_labels"]["review"]["native_zh_review_status"] == "approved"
     chinese["evaluation_labels"]["review"]["status"] = "approved"
+    chinese["evaluation_labels"]["review"]["native_zh_author_id"] = None
     assert "schema" in {e["code"] for e in validate_records(collection)["errors"]}
 
 
@@ -165,3 +166,31 @@ def test_partial_and_conflicting_targets_keep_their_behavior(collection):
     for number in (60, 89):
         assert [f["context_support"] for f in lookup[number]["required_facts"]] == ["supported", "unsupported"]
         assert lookup[number]["expected_behavior"] == "partial_answer_with_uncertainty"
+
+
+def test_release_split_and_authorship_are_recorded(collection, config):
+    report = validate_records(collection, "release")
+    assert report["valid"] and report["warnings"] == []
+    calibration = [r for r in collection if r["evaluation_labels"]["subset"] == "calibration"]
+    held_out = [r for r in collection if r["evaluation_labels"]["subset"] == "held_out"]
+    assert len(calibration) == 20 and len(held_out) == 80
+    assert {r["evaluation_labels"]["family_id"] for r in calibration}.isdisjoint(
+        r["evaluation_labels"]["family_id"] for r in held_out
+    )
+    assert [r["id"] for r in calibration] == config["split_policy"]["calibration_case_ids"]
+    assert set(config["pilot_case_ids"]) <= {r["id"] for r in calibration}
+    assert all(r["evaluation_labels"]["review"]["native_zh_author_id"] == "Jingwei Huang"
+               for r in collection if r["language"] == "zh")
+
+
+def test_release_is_invalidated_by_unapproved_case(collection):
+    collection[0]["evaluation_labels"]["review"]["status"] = "needs_revision"
+    assert "release_review" in {e["code"] for e in validate_records(collection, "release")["errors"]}
+
+
+def test_reviewed_wording_and_revised_behavior_remain_consistent(collection):
+    lookup = {r["id"]: r for r in collection}
+    case = lookup["w01-senpai-en-0008-base"]
+    assert case["ideal_response"] == "Let's work it out. Four red notebooks cost eight credits, and three blue ones cost nine credits. Eight plus nine makes seventeen credits altogether."
+    assert "explicit multiplication notation is optional" in case["evaluation_labels"]["behavior_criteria"][1]
+    assert lookup["w01-fari-zh-0070-base"]["query"] == "今天book club聊哪本书，在哪儿meeting？"

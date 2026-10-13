@@ -1,6 +1,6 @@
 """Set Chinese Word text to Songti SC while preserving content and other formatting.
 
-Use the bundled document runtime. This patches OOXML rather than rebuilding the
+Install the document dependencies before use. This patches OOXML rather than rebuilding the
 document, so existing annotations, hyperlinks, and document structure survive.
 """
 

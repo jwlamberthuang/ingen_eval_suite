@@ -1,11 +1,11 @@
 {
   "collection": {
-    "file": "W01_Evaluation_Dataset_Draft_v0.6.jsonl",
-    "version": "0.6.0"
+    "file": "W01_Evaluation_Dataset_v1.jsonl",
+    "version": "1.0.0"
   },
   "pilot": {
-    "file": "W01_Evaluation_Dataset_Pilot_v0.3.jsonl",
-    "version": "0.3.0"
+    "file": "W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
+    "version": "0.4.0"
   },
   "pilot_case_ids": [
     "w01-fari-en-0001-base",
@@ -26,11 +26,11 @@
     "reviewed_on": "2026-10-13",
     "scope": "All 100 base cases in English and Chinese",
     "status": "completed",
-    "dataset_sha256": "c5b2ba6bf7b8929c4f478e8ad1f4602f49610d186d8f8bb7393fcf7059af11e1",
+    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
     "edited_case_count": 10,
     "field_edit_count": 11,
-    "annotation_and_release_approval": "not_recorded",
-    "native_original_authorship_attestation": "not_recorded"
+    "annotation_and_release_approval": "release_preparation_completed",
+    "native_original_authorship_attestation": "confirmed_by_Jingwei_Huang_2026-10-13"
   },
   "dialogue_target": {
     "input_format": "text",
@@ -38,5 +38,79 @@
     "intended_delivery": "spoken_dialogue",
     "selected_mixed_query_pattern": "Chinese sentence structure with English content words",
     "audio_evaluation_included": false
+  },
+  "release_review": {
+    "status": "approved",
+    "reviewed_on": "2026-10-13",
+    "reviewer_ids": [
+      "Jingwei Huang"
+    ],
+    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "native_zh_author_id": "Jingwei Huang",
+    "native_zh_case_count": 35,
+    "native_authorship_basis": "Explicit confirmation by Jingwei Huang on 2026-10-13",
+    "annotation_checks": [
+      "factual support",
+      "quantities and deductions",
+      "evidence links",
+      "tier consistency",
+      "expected behavior",
+      "family assignment",
+      "public source eligibility"
+    ],
+    "limitations": [
+      "One human reviewer; independent human annotation agreement has not been measured.",
+      "No model outputs or metric scores have been produced."
+    ]
+  },
+  "split_policy": {
+    "version": "1.0.0",
+    "seed": "w01-split-v1-2026-10-13",
+    "algorithm": "Lock pilot families in calibration; order other families by SHA-256(seed + '|' + family_id), breaking hash ties by family_id; greedily include a whole family only if every calibration cell quota remains feasible.",
+    "calibration_cell_targets": {
+      "fari-en/easy": 3,
+      "fari-en/medium": 3,
+      "fari-en/hard": 2,
+      "fari-zh/easy": 1,
+      "fari-zh/medium": 2,
+      "fari-zh/hard": 1,
+      "senpai-en/easy": 2,
+      "senpai-en/medium": 2,
+      "senpai-en/hard": 1,
+      "senpai-zh/easy": 1,
+      "senpai-zh/medium": 1,
+      "senpai-zh/hard": 1
+    },
+    "calibration_case_ids": [
+      "w01-fari-en-0001-base",
+      "w01-fari-en-0002-base",
+      "w01-fari-en-0003-base",
+      "w01-fari-zh-0004-base",
+      "w01-fari-zh-0005-base",
+      "w01-fari-zh-0006-base",
+      "w01-senpai-en-0007-base",
+      "w01-senpai-en-0008-base",
+      "w01-senpai-en-0009-base",
+      "w01-senpai-zh-0010-base",
+      "w01-senpai-zh-0011-base",
+      "w01-senpai-zh-0012-base",
+      "w01-fari-en-0019-base",
+      "w01-fari-en-0039-base",
+      "w01-fari-en-0042-base",
+      "w01-fari-en-0049-base",
+      "w01-fari-en-0056-base",
+      "w01-fari-zh-0071-base",
+      "w01-senpai-en-0075-base",
+      "w01-senpai-en-0083-base"
+    ],
+    "base_subset_counts": {
+      "calibration": 20,
+      "held_out": 80
+    },
+    "family_subset_counts": {
+      "calibration": 19,
+      "held_out": 80
+    },
+    "development_reuse": "All cases received authoring and annotation review. No model response scoring, scorer tuning, or model selection has used the held-out subset."
   }
 }

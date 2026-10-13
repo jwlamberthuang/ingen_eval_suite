@@ -44,9 +44,18 @@ def require_valid(records, profile):
 
 def make_manifest(records, dataset_path, dataset_hash, config, role, source_hash):
     profile = "collection" if role == "collection" else "pilot"
-    report = require_valid(records, profile)
     review = config["language_review"].copy()
     review["applies_to_current_source"] = review["dataset_sha256"] == source_hash
+    release = config.get("release_review", {}).copy()
+    release["applies_to_current_source"] = release.get("dataset_sha256") == source_hash
+    if role == "collection" and release["applies_to_current_source"]:
+        profile = "release"
+    report = require_valid(records, profile)
+    status = "changed_since_language_review"
+    if review["applies_to_current_source"]:
+        status = "language_reviewed_draft"
+    if release["applies_to_current_source"]:
+        status = "release" if role == "collection" else "reviewed_pilot"
     return {
         "dataset_name": "Week 1 bilingual dialogue evaluation",
         "dataset_version": config[role]["version"],
@@ -55,17 +64,24 @@ def make_manifest(records, dataset_path, dataset_hash, config, role, source_hash
         "dataset_sha256": dataset_hash,
         "schema_file": "schemas/w01_dialogue_case.schema.json",
         "schema_sha256": digest(SCHEMA),
-        "status": "language_reviewed_draft" if review["applies_to_current_source"] else "changed_since_language_review",
+        "status": status,
         "profile": profile,
         **{key: report[key] for key in (
             "record_count", "base_count", "variant_count", "family_count",
             "base_domain_counts", "base_difficulty_counts", "base_cell_counts",
-            "base_edge_tag_counts", "unapproved_count", "pending_native_zh_count",
+            "base_edge_tag_counts", "base_tagged_case_count", "unapproved_count", "pending_native_zh_count",
             "unconfirmed_native_zh_authorship_count",
         )},
         "source_dataset_file": config["collection"]["file"],
         "source_dataset_sha256": source_hash,
         "language_review": review,
+        "release_review": release,
+        "split_policy": config.get("split_policy"),
+        "base_subset_counts": {
+            subset: sum(r["evaluation_labels"]["subset"] == subset for r in records
+                        if r["evaluation_labels"]["record_kind"] == "base")
+            for subset in ("calibration", "held_out", "unassigned")
+        },
         "dialogue_target": config["dialogue_target"],
         "construction_inputs": [
             {"file": str(path.relative_to(ROOT)), "sha256": digest(path)}
@@ -73,7 +89,7 @@ def make_manifest(records, dataset_path, dataset_hash, config, role, source_hash
         ],
         "notes": [
             "The collection JSONL is the authoritative editable source; the pilot is derived from the configured case IDs.",
-            "Language review does not establish complete original authorship, annotation approval, or release acceptance.",
+            "Authorship confirmation, language review, and release annotation checks are recorded separately; no independent human agreement study is claimed.",
             "No model generations, metric scores, or audio evaluations are included.",
         ],
     }

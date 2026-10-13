@@ -56,6 +56,7 @@ def apply_review(records, revision):
         review.update(status="needs_revision", reviewer_ids=[], notes="Content changed since recorded language review. Review the updated wording and annotations before approval.")
         if record["language"] == "zh":
             review["native_zh_review_status"] = "pending"
+            review["native_zh_author_id"] = None
     require_valid(revised, "collection")
     return revised
 
