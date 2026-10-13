@@ -19,6 +19,12 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = ROOT / "schemas/w01_dialogue_case.schema.json"
 DOMAINS = {"fari-en": 40, "fari-zh": 20, "senpai-en": 25, "senpai-zh": 15}
 TIERS = ("easy", "medium", "hard")
+COLLECTION_CELLS = {
+    "fari-en/easy": 16, "fari-en/medium": 16, "fari-en/hard": 8,
+    "fari-zh/easy": 8, "fari-zh/medium": 8, "fari-zh/hard": 4,
+    "senpai-en/easy": 10, "senpai-en/medium": 10, "senpai-en/hard": 5,
+    "senpai-zh/easy": 6, "senpai-zh/medium": 6, "senpai-zh/hard": 3,
+}
 EDGE_TYPES = {"mixed_language", "culturally_specific_zh", "no_relevant_context", "partial_context", "adversarial"}
 RULES = {"easy": {"E1"}, "medium": {"M1", "M2"}, "hard": {"H1", "H2", "H3"}}
 FARI_RUBRICS = {"fari_coherence", "fari_emotional_register"}
@@ -189,10 +195,13 @@ def validate_records(records, profile="draft", schema=None):
     edge_records = sum(bool(r["evaluation_labels"]["edge_case_tags"]) for r in bases)
     pending = sum(r["evaluation_labels"]["review"]["status"] != "approved" for r in valid)
     pending_zh = sum(r["language"] == "zh" and r["evaluation_labels"]["review"]["native_zh_review_status"] != "approved" for r in valid)
+    unconfirmed_zh_authorship = sum(r["language"] == "zh" and not r["evaluation_labels"]["review"]["native_zh_author_id"] for r in valid)
     if pending:
         warnings.append(f"{pending} records remain unapproved; structural validity is not release acceptance.")
     if pending_zh:
-        warnings.append(f"{pending_zh} Chinese records still require native authorship and review.")
+        warnings.append(f"{pending_zh} Chinese records still require native language review.")
+    if unconfirmed_zh_authorship:
+        warnings.append(f"{unconfirmed_zh_authorship} Chinese records have no native author attestation; language review alone does not establish authorship.")
     if profile == "pilot":
         if len(valid) != 12 or len(bases) != 12:
             fail("pilot_size", None, "Pilot requires exactly twelve base records")
@@ -202,10 +211,16 @@ def validate_records(records, profile="draft", schema=None):
                     fail("pilot_cell", None, f"Need one {domain}/{tier} pilot case")
         if any(r["evaluation_labels"]["subset"] != "calibration" for r in valid):
             fail("pilot_subset", None, "Pilot families belong to calibration")
-    if profile in {"pilot", "release"}:
+    if profile in {"pilot", "collection", "release"}:
         for tag in sorted(EDGE_TYPES):
             if not edges[tag]:
                 fail("edge_coverage", None, f"Required edge type absent: {tag}")
+    if profile == "collection":
+        if len(bases) != 100:
+            fail("collection_size", None, "The working collection requires exactly 100 base cases")
+        for cell, target in COLLECTION_CELLS.items():
+            if cells[cell] != target:
+                fail("collection_cell", None, f"Need {target} base cases in {cell}")
     if profile == "release":
         for domain, target in DOMAINS.items():
             if domains[domain] < target:
@@ -225,6 +240,7 @@ def validate_records(records, profile="draft", schema=None):
         "base_difficulty_counts": dict(tiers), "base_cell_counts": dict(cells),
         "base_edge_tag_counts": dict(edges), "base_tagged_case_count": edge_records,
         "unapproved_count": pending, "pending_native_zh_count": pending_zh,
+        "unconfirmed_native_zh_authorship_count": unconfirmed_zh_authorship,
         "limitations": ["No automatic verification of factual truth or Chinese authorship.",
                         "No model generation, metrics, or production adapter boundary tests are run."],
     }
@@ -238,7 +254,7 @@ def check_manifest(dataset_path, manifest):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("dataset", type=Path)
-    parser.add_argument("--profile", choices=["draft", "pilot", "release"], default="draft")
+    parser.add_argument("--profile", choices=["draft", "pilot", "collection", "release"], default="draft")
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()

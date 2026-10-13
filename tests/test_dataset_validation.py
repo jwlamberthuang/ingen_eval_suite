@@ -4,11 +4,13 @@ import copy
 import hashlib
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts/datasets"))
 
 
 def module(name, relative):
@@ -19,12 +21,12 @@ def module(name, relative):
 
 
 validator = module("validate_dataset", "scripts/datasets/validate_dataset.py")
-builder = module("build_pilot", "scripts/datasets/build_pilot.py")
+from dataset_io import digest, load_config, make_manifest
 
 
 @pytest.fixture
 def records():
-    return builder.pilot_cases()
+    return validator.load_jsonl(ROOT / "data" / load_config()["pilot"]["file"])
 
 
 def codes(records, profile="draft"):
@@ -40,7 +42,8 @@ def test_pilot_is_structurally_valid_but_not_approved(records):
     assert report["base_difficulty_counts"] == {"easy": 4, "medium": 4, "hard": 4}
     assert report["base_tagged_case_count"] == 8
     assert report["unapproved_count"] == 12
-    assert report["pending_native_zh_count"] == 6
+    assert report["pending_native_zh_count"] == 0
+    assert report["unconfirmed_native_zh_authorship_count"] == 6
 
 
 @pytest.mark.parametrize("mutation,expected", [
@@ -74,7 +77,7 @@ def test_unreviewed_chinese_cannot_be_approved(records):
 
 def test_pilot_cannot_pass_as_release(records):
     problems = codes(records, "release")
-    assert {"release_review", "human_review", "release_count", "release_edges"} <= problems
+    assert {"release_review", "release_count", "release_edges"} <= problems
 
 
 def test_missing_edge_type_is_detected(records):
@@ -107,7 +110,9 @@ def test_changed_context_is_detected_by_manifest(tmp_path, records):
 def test_cli_rejects_changed_manifest_hash(tmp_path, records, monkeypatch, field, expected):
     path = tmp_path / "pilot.jsonl"
     path.write_text("\n".join(json.dumps(r) for r in records) + "\n")
-    manifest = builder.pilot_manifest(records, path)
+    config = load_config()
+    source = ROOT / "data" / config["collection"]["file"]
+    manifest = make_manifest(records, path, digest(path), config, "pilot", digest(source))
     manifest[field] = "0" * 64
     manifest_path = tmp_path / "manifest.json"
     manifest_path.write_text(json.dumps(manifest))

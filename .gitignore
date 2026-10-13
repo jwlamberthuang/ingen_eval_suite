@@ -20,6 +20,17 @@ dist/
 .coverage
 htmlcov/
 
+# Local archives, build previews, reports, review payloads, and scratch work
+.local/
+data/validation/
+data/batches/
+data/revisions/
+reports/
+tmp/
+temp/
+*.tmp
+~$*.docx
+
 # Operating system metadata
 .DS_Store
 Thumbs.db

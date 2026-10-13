@@ -1,0 +1,42 @@
+{
+  "collection": {
+    "file": "W01_Evaluation_Dataset_Draft_v0.6.jsonl",
+    "version": "0.6.0"
+  },
+  "pilot": {
+    "file": "W01_Evaluation_Dataset_Pilot_v0.3.jsonl",
+    "version": "0.3.0"
+  },
+  "pilot_case_ids": [
+    "w01-fari-en-0001-base",
+    "w01-fari-en-0002-base",
+    "w01-fari-en-0003-base",
+    "w01-fari-zh-0004-base",
+    "w01-fari-zh-0005-base",
+    "w01-fari-zh-0006-base",
+    "w01-senpai-en-0007-base",
+    "w01-senpai-en-0008-base",
+    "w01-senpai-en-0009-base",
+    "w01-senpai-zh-0010-base",
+    "w01-senpai-zh-0011-base",
+    "w01-senpai-zh-0012-base"
+  ],
+  "language_review": {
+    "reviewer": "Jingwei Huang",
+    "reviewed_on": "2026-10-13",
+    "scope": "All 100 base cases in English and Chinese",
+    "status": "completed",
+    "dataset_sha256": "c5b2ba6bf7b8929c4f478e8ad1f4602f49610d186d8f8bb7393fcf7059af11e1",
+    "edited_case_count": 10,
+    "field_edit_count": 11,
+    "annotation_and_release_approval": "not_recorded",
+    "native_original_authorship_attestation": "not_recorded"
+  },
+  "dialogue_target": {
+    "input_format": "text",
+    "output_format": "text",
+    "intended_delivery": "spoken_dialogue",
+    "selected_mixed_query_pattern": "Chinese sentence structure with English content words",
+    "audio_evaluation_included": false
+  }
+}
