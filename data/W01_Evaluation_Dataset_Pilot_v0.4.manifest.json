@@ -52,7 +52,7 @@
   "source_dataset_file": "W01_Evaluation_Dataset_v1.jsonl",
   "source_dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
   "language_review": {
-    "reviewer": "Jingwei Huang",
+    "reviewer": "Huang",
     "reviewed_on": "2026-10-13",
     "scope": "All 100 base cases in English and Chinese",
     "status": "completed",
@@ -60,19 +60,19 @@
     "edited_case_count": 10,
     "field_edit_count": 11,
     "annotation_and_release_approval": "release_preparation_completed",
-    "native_original_authorship_attestation": "confirmed_by_Jingwei_Huang_2026-10-13",
+    "native_original_authorship_attestation": "confirmed_by_Huang_2026-10-13",
     "applies_to_current_source": true
   },
   "release_review": {
     "status": "approved",
     "reviewed_on": "2026-10-13",
     "reviewer_ids": [
-      "Jingwei Huang"
+      "Huang"
     ],
     "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
-    "native_zh_author_id": "Jingwei Huang",
+    "native_zh_author_id": "Huang",
     "native_zh_case_count": 35,
-    "native_authorship_basis": "Explicit confirmation by Jingwei Huang on 2026-10-13",
+    "native_authorship_basis": "Explicit confirmation by Huang on 2026-10-13",
     "annotation_checks": [
       "factual support",
       "quantities and deductions",

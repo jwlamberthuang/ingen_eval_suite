@@ -44,7 +44,7 @@ def test_complete_collection_and_shared_pilot_are_consistent(collection, config)
     lookup = {r["id"]: r for r in collection}
     pilot = load_jsonl(ROOT / "data" / config["pilot"]["file"])
     assert pilot == [lookup[i] for i in config["pilot_case_ids"]]
-    assert all(r["evaluation_labels"]["review"]["reviewer_ids"] == ["Jingwei Huang"] for r in collection)
+    assert all(r["evaluation_labels"]["review"]["reviewer_ids"] == ["Huang"] for r in collection)
 
 
 def test_collection_profile_rejects_a_missing_case(collection):
@@ -179,7 +179,7 @@ def test_release_split_and_authorship_are_recorded(collection, config):
     )
     assert [r["id"] for r in calibration] == config["split_policy"]["calibration_case_ids"]
     assert set(config["pilot_case_ids"]) <= {r["id"] for r in calibration}
-    assert all(r["evaluation_labels"]["review"]["native_zh_author_id"] == "Jingwei Huang"
+    assert all(r["evaluation_labels"]["review"]["native_zh_author_id"] == "Huang"
                for r in collection if r["language"] == "zh")
 
 

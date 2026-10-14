@@ -38,7 +38,7 @@ is derived from the collection and remains in calibration. Its
 [manifest](data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json) identifies the
 source collection hash. Related examples stay in the same subset.
 
-Jingwei Huang reviewed every English and Chinese case and confirmed native
+I reviewed every English and Chinese case and confirmed native
 authorship of all 35 Chinese cases. The reviewed dialogue is preserved verbatim;
 annotation checks and review limitations are documented in
 [dataset documentation](data/dataset_documentation.md).

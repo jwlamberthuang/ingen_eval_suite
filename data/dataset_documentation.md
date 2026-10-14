@@ -53,7 +53,7 @@ explanations. Mixed-language queries blend English content words into Chinese
 syntax. The dataset measures no audio quality, pronunciation, prosody,
 transcription, or audio latency.
 
-Jingwei Huang reviewed all English and Chinese queries and sample answers and
+I reviewed all English and Chinese queries and sample answers and
 confirmed native authorship of all 35 Chinese cases on 2026-10-13. Release
 preparation checked support links, quantities, deductions, tier rules, behavior,
 family grouping, and public source eligibility. One human reviewer is recorded;

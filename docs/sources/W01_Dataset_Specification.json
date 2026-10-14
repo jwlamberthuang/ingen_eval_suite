@@ -450,7 +450,7 @@
     },
     {
       "type": "paragraph",
-      "text": "review includes status (draft, needs_revision, approved), author_id, reviewer_ids, difficulty_rule, native_zh_author_id, native_zh_review_status, and notes. Contributor IDs describe confirmed activity and may remain null where identity is not established. All 35 Chinese records identify Jingwei Huang as the confirmed native author and have approved native language review. English records use null for native_zh_author_id and not_applicable for native_zh_review_status. A substantive Chinese passage in an English-primary case requires recorded Chinese language review too."
+      "text": "review includes status (draft, needs_revision, approved), author_id, reviewer_ids, difficulty_rule, native_zh_author_id, native_zh_review_status, and notes. Contributor IDs describe confirmed activity and may remain null where identity is not established. All 35 Chinese records identify me as the confirmed native author and have approved native language review. English records use null for native_zh_author_id and not_applicable for native_zh_review_status. A substantive Chinese passage in an English-primary case requires recorded Chinese language review too."
     },
     {
       "type": "paragraph",
@@ -511,7 +511,7 @@
         "Write the canonical facts, query, and full evidence before constructing missing-evidence or adversarial conditions. Decide what the model can observe and what remains a hidden reference.",
         "Author native language text and the ideal response. Record support links, expected and accepted behaviors, rubric applicability, edge tags, and a construction rationale including the intended weak-model failure.",
         "Independently rederive the answer from the permitted input. Check quantities, negation, deductions, provenance, tier, and behavior. For missing evidence, confirm that the ideal response does not invent information.",
-        "Review Chinese wording and cultural assumptions through Jingwei's native authorship/review. Record actual contributors and assistance. Resolve disagreements and mark approved only after the checks pass.",
+        "Review Chinese wording and cultural assumptions through my native authorship/review. Record actual contributors and assistance. Resolve disagreements and mark approved only after the checks pass.",
         "Validate the pilot against the machine schema and cross-record rules. Revise the specification if needed, then scale to the base counts. Construct optional variants after their parent facts and behavior rules are stable.",
         "Freeze the approved release and its manifest before reported evaluation. Keep generated responses and scoring artifacts separate; preserve hashes and annotation revision history for replay."
       ]
