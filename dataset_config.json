@@ -26,7 +26,7 @@
     "reviewed_on": "2026-10-13",
     "scope": "All 100 base cases in English and Chinese",
     "status": "completed",
-    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
     "edited_case_count": 10,
     "field_edit_count": 11,
     "annotation_and_release_approval": "release_preparation_completed",
@@ -45,7 +45,7 @@
     "reviewer_ids": [
       "Huang"
     ],
-    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
     "native_zh_author_id": "Huang",
     "native_zh_case_count": 35,
     "native_authorship_basis": "Explicit confirmation by Huang on 2026-10-13",
@@ -60,7 +60,7 @@
     ],
     "limitations": [
       "One human reviewer; independent human annotation agreement has not been measured.",
-      "No model outputs or metric scores have been produced."
+      "At the Week 1 dataset approval, no model outputs or metric scores had been produced."
     ]
   },
   "split_policy": {
@@ -111,6 +111,6 @@
       "calibration": 19,
       "held_out": 80
     },
-    "development_reuse": "All cases received authoring and annotation review. No model response scoring, scorer tuning, or model selection has used the held-out subset."
+    "development_reuse": "All cases received authoring and annotation review. Week 2 scores the held-out subset with a frozen scorer; no held-out case has been used for scorer tuning or model selection."
   }
 }

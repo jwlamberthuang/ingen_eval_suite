@@ -1,0 +1,99 @@
+{
+  "threshold": 0.8,
+  "balanced_accuracy": 0.6666666666666666,
+  "tp": 27,
+  "tn": 1,
+  "fp": 2,
+  "fn": 0,
+  "positive_count": 27,
+  "negative_count": 3,
+  "candidates": [
+    {
+      "threshold": 0.5,
+      "balanced_accuracy": 0.6666666666666666,
+      "tp": 27,
+      "tn": 1,
+      "fp": 2,
+      "fn": 0
+    },
+    {
+      "threshold": 0.6,
+      "balanced_accuracy": 0.6666666666666666,
+      "tp": 27,
+      "tn": 1,
+      "fp": 2,
+      "fn": 0
+    },
+    {
+      "threshold": 0.7,
+      "balanced_accuracy": 0.6666666666666666,
+      "tp": 27,
+      "tn": 1,
+      "fp": 2,
+      "fn": 0
+    },
+    {
+      "threshold": 0.8,
+      "balanced_accuracy": 0.6666666666666666,
+      "tp": 27,
+      "tn": 1,
+      "fp": 2,
+      "fn": 0
+    },
+    {
+      "threshold": 0.9,
+      "balanced_accuracy": 0.4074074074074074,
+      "tp": 4,
+      "tn": 2,
+      "fp": 1,
+      "fn": 23
+    }
+  ],
+  "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
+  "embedding": {
+    "model_id": "intfloat/multilingual-e5-base",
+    "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "device": "cpu",
+    "max_tokens": 512,
+    "batch_size": 16
+  },
+  "support_settings": {
+    "threshold_grid": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "tie_break": "larger_threshold",
+    "segmenter": "punctuation_sentences_v1",
+    "claim_extractor": "qwen-json-atomic-v1"
+  },
+  "calibration_case_ids": [
+    "w01-fari-en-0001-base",
+    "w01-fari-en-0002-base",
+    "w01-fari-en-0003-base",
+    "w01-fari-zh-0004-base",
+    "w01-fari-zh-0005-base",
+    "w01-fari-zh-0006-base",
+    "w01-senpai-en-0007-base",
+    "w01-senpai-en-0008-base",
+    "w01-senpai-en-0009-base",
+    "w01-senpai-zh-0010-base",
+    "w01-senpai-zh-0011-base",
+    "w01-senpai-zh-0012-base",
+    "w01-fari-en-0019-base",
+    "w01-fari-en-0039-base",
+    "w01-fari-en-0042-base",
+    "w01-fari-en-0049-base",
+    "w01-fari-en-0056-base",
+    "w01-fari-zh-0071-base",
+    "w01-senpai-en-0075-base",
+    "w01-senpai-en-0083-base"
+  ],
+  "calibration_scope": "Reference-fact support only; no held-out data or generated responses used.",
+  "limitations": [
+    "Calibration reference statements may differ from model-generated claims.",
+    "Existing single-reviewer support annotations are reused; no new independent human agreement study."
+  ]
+}

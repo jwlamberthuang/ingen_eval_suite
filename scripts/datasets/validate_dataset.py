@@ -251,6 +251,35 @@ def check_manifest(dataset_path, manifest):
     return actual == manifest.get("dataset_sha256")
 
 
+def manifest_errors(dataset_path, manifest, root=ROOT, schema_path=SCHEMA):
+    """Verify data, schema, source, review snapshots, and construction inputs."""
+    errors = []
+    def fail(code, message):
+        errors.append({"code": code, "case_id": None, "message": message})
+    if not check_manifest(dataset_path, manifest):
+        fail("manifest_hash", "Dataset differs from the manifest hash.")
+    if manifest.get("schema_sha256") != hashlib.sha256(schema_path.read_bytes()).hexdigest():
+        fail("manifest_schema_hash", "Schema differs from the manifest hash.")
+    source = root / "data" / manifest.get("source_dataset_file", "")
+    if not source.is_file():
+        fail("manifest_source", "Source collection is absent.")
+    else:
+        source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+        if manifest.get("source_dataset_sha256") != source_hash:
+            fail("manifest_source_hash", "Source collection differs from its recorded hash.")
+        for key in ("language_review", "release_review"):
+            review = manifest.get(key, {})
+            if review.get("applies_to_current_source") and review.get("dataset_sha256") != source_hash:
+                fail("manifest_review_hash", f"{key} incorrectly claims to apply to the source.")
+    for item in manifest.get("construction_inputs", []):
+        path = (root / item["file"]).resolve()
+        if not path.is_relative_to(root.resolve()) or not path.is_file():
+            fail("manifest_input", "A construction input is missing or outside the suite.")
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+            fail("manifest_input_hash", f"Construction input changed: {item['file']}")
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("dataset", type=Path)
@@ -265,12 +294,8 @@ def main():
         report["schema_sha256"] = hashlib.sha256(SCHEMA.read_bytes()).hexdigest()
         if args.manifest:
             manifest = json.loads(args.manifest.read_text())
-            if not check_manifest(args.dataset, manifest):
-                report["valid"] = False
-                report["errors"].append({"code": "manifest_hash", "case_id": None, "message": "Dataset differs from the manifest hash; review changes and version the manifest."})
-            if manifest.get("schema_sha256") != report["schema_sha256"]:
-                report["valid"] = False
-                report["errors"].append({"code": "manifest_schema_hash", "case_id": None, "message": "Schema differs from the manifest hash; review the contract and version the manifest."})
+            report["errors"].extend(manifest_errors(args.dataset, manifest))
+            report["valid"] = not report["errors"]
     except (ValueError, OSError) as exc:
         report = {"valid": False, "errors": [{"code": "input", "message": str(exc)}]}
     if args.report:

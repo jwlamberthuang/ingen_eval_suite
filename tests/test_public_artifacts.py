@@ -12,7 +12,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 M = "{http://schemas.openxmlformats.org/officeDocument/2006/math}"
-PRIVATE_PATH = re.compile(r"file://(?=[A-Za-z/])|/(?:Users|home|private|tmp)/|[A-Za-z]:\\", re.I)
+PRIVATE_PATH = re.compile(r"file://(?=[A-Za-z/])|/(?:Users|home|private|tmp)/|(?<![A-Za-z0-9_])[A-Za-z]:\\", re.I)
 DOCUMENTS = ("W01_InGen_AI_Evaluation_Framework", "W01_Dataset_Specification")
 
 
@@ -27,16 +27,48 @@ def check_reference(path, target):
 
 
 def published_text_files():
-    roots = [ROOT / name for name in ("data", "docs", "schemas", "scripts", "tests", "weekly")]
+    roots = [ROOT / name for name in ("data", "docs", "schemas", "scripts", "tests", "weekly",
+                                     "src", "configs", "deliverables", "notebooks", "results")]
     paths = [p for p in ROOT.iterdir() if p.is_file()]
     paths += [p for directory in roots for p in directory.rglob("*") if p.is_file()]
-    return [p for p in paths if p.suffix in {".md", ".json", ".jsonl", ".py", ".txt"}
+    return [p for p in paths if p.suffix in {".md", ".json", ".jsonl", ".py", ".txt", ".ipynb"}
             and "__pycache__" not in p.parts]
 
 
 def test_public_text_has_no_workstation_file_references():
     for path in published_text_files():
-        assert not PRIVATE_PATH.search(path.read_text(encoding="utf-8")), path
+        assert not any(PRIVATE_PATH.search(value) for value in published_strings(path)), path
+
+
+def published_strings(path):
+    """Inspect decoded structured text, so escaped line breaks are not drive paths."""
+    text = path.read_text(encoding="utf-8")
+    if path.suffix not in {".json", ".jsonl", ".ipynb"}:
+        return [text]
+    objects = [json.loads(line) for line in text.splitlines() if line.strip()] if path.suffix == ".jsonl" else [json.loads(text)]
+    def strings(value):
+        if isinstance(value, str):
+            yield value
+        elif isinstance(value, list):
+            for item in value:
+                yield from strings(item)
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                yield key
+                yield from strings(item)
+    return [s for value in objects for s in strings(value)]
+
+
+def test_structured_privacy_scan_handles_escaped_line_breaks_and_real_paths(tmp_path):
+    path = tmp_path / "example.ipynb"
+    path.write_text(json.dumps({"source": ["Results:\nNext line"]}))
+    assert not any(PRIVATE_PATH.search(value) for value in published_strings(path))
+    absolute = "/" + "Users" + "/" + "example"
+    path.write_text(json.dumps({"source": [absolute]}))
+    assert any(PRIVATE_PATH.search(value) for value in published_strings(path))
+    drive = "C" + ":" + chr(92) + "example"
+    path.write_text(json.dumps({"source": [drive]}))
+    assert any(PRIVATE_PATH.search(value) for value in published_strings(path))
 
 
 def test_markdown_links_resolve_within_suite_or_to_public_https():

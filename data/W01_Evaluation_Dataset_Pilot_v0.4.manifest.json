@@ -3,9 +3,9 @@
   "dataset_version": "0.4.0",
   "schema_version": "1.1.0",
   "dataset_file": "W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
-  "dataset_sha256": "6d7d3795809301a8d7bdea9052fdbaafddce096adecbcb541d45f9be2b95763d",
+  "dataset_sha256": "4bd7236d724283aea2ab3b7f5aaf9a4e9bcbf05d7fe28818964f42969b1226b1",
   "schema_file": "schemas/w01_dialogue_case.schema.json",
-  "schema_sha256": "f1136ae27bab64268ace07d86a005ea052c196bbc668d4d78947b687ee76c523",
+  "schema_sha256": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9",
   "status": "reviewed_pilot",
   "profile": "pilot",
   "record_count": 12,
@@ -50,13 +50,13 @@
   "pending_native_zh_count": 0,
   "unconfirmed_native_zh_authorship_count": 0,
   "source_dataset_file": "W01_Evaluation_Dataset_v1.jsonl",
-  "source_dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+  "source_dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
   "language_review": {
     "reviewer": "Huang",
     "reviewed_on": "2026-10-13",
     "scope": "All 100 base cases in English and Chinese",
     "status": "completed",
-    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
     "edited_case_count": 10,
     "field_edit_count": 11,
     "annotation_and_release_approval": "release_preparation_completed",
@@ -69,7 +69,7 @@
     "reviewer_ids": [
       "Huang"
     ],
-    "dataset_sha256": "345ad046de2424ce8f5294d078050aa51e3959f80965a6c58cadf6cd8fe3993b",
+    "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
     "native_zh_author_id": "Huang",
     "native_zh_case_count": 35,
     "native_authorship_basis": "Explicit confirmation by Huang on 2026-10-13",
@@ -84,7 +84,7 @@
     ],
     "limitations": [
       "One human reviewer; independent human annotation agreement has not been measured.",
-      "No model outputs or metric scores have been produced."
+      "At the Week 1 dataset approval, no model outputs or metric scores had been produced."
     ],
     "applies_to_current_source": true
   },
@@ -136,7 +136,7 @@
       "calibration": 19,
       "held_out": 80
     },
-    "development_reuse": "All cases received authoring and annotation review. No model response scoring, scorer tuning, or model selection has used the held-out subset."
+    "development_reuse": "All cases received authoring and annotation review. Week 2 scores the held-out subset with a frozen scorer; no held-out case has been used for scorer tuning or model selection."
   },
   "base_subset_counts": {
     "calibration": 12,
@@ -153,7 +153,7 @@
   "construction_inputs": [
     {
       "file": "dataset_config.json",
-      "sha256": "763050c6842ac3663b3470b782c01432a600843b0ef245b04da4f2684522fc74"
+      "sha256": "81b65f96fcebd6c2d3070720d942b47a7f8dcdbc57466bf8eb6d7c6bd32b2a35"
     },
     {
       "file": "scripts/datasets/build_dataset.py",
@@ -169,7 +169,7 @@
     },
     {
       "file": "scripts/datasets/validate_dataset.py",
-      "sha256": "10e8f9cc6ffb5d0d53ef2dbbc3ff8d7d42feceeb1bbe820c7254822df5f4bba1"
+      "sha256": "f6fa79cb6953963bdcaa687e43fc641ef7b43e09cbe5c6280a14a20f7f822623"
     }
   ],
   "notes": [

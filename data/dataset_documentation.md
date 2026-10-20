@@ -18,7 +18,8 @@ tiers in both subsets. Exact cell quotas, seed, family-ranking method, and selec
 IDs are in [dataset_config.json](../dataset_config.json).
 
 All cases received authoring and annotation review. No held-out case has been
-used for model selection, scorer tuning, or model-response scoring. This is a
+used for model selection or scorer tuning. Week 2 scores the held-out cases with
+the frozen scorer and records those results in its weekly review package. This is a
 partition within a public evaluation dataset; it does not establish that the
 examples are absent from every model's training data.
 

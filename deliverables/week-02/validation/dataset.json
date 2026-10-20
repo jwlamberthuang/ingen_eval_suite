@@ -1,0 +1,55 @@
+{
+  "profile": "release",
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "record_count": 100,
+  "schema_valid_count": 100,
+  "base_count": 100,
+  "variant_count": 0,
+  "family_count": 99,
+  "base_domain_counts": {
+    "fari-en": 40,
+    "fari-zh": 20,
+    "senpai-en": 25,
+    "senpai-zh": 15
+  },
+  "base_difficulty_counts": {
+    "easy": 40,
+    "medium": 40,
+    "hard": 20
+  },
+  "base_cell_counts": {
+    "fari-en/easy": 16,
+    "fari-en/medium": 16,
+    "fari-en/hard": 8,
+    "fari-zh/easy": 8,
+    "fari-zh/medium": 8,
+    "fari-zh/hard": 4,
+    "senpai-en/easy": 10,
+    "senpai-en/medium": 10,
+    "senpai-en/hard": 5,
+    "senpai-zh/easy": 6,
+    "senpai-zh/medium": 6,
+    "senpai-zh/hard": 3
+  },
+  "base_edge_tag_counts": {
+    "partial_context": 28,
+    "no_relevant_context": 3,
+    "culturally_specific_zh": 4,
+    "mixed_language": 5,
+    "adversarial": 6,
+    "conflicting_context": 3,
+    "out_of_domain": 2
+  },
+  "base_tagged_case_count": 48,
+  "unapproved_count": 0,
+  "pending_native_zh_count": 0,
+  "unconfirmed_native_zh_authorship_count": 0,
+  "limitations": [
+    "No automatic verification of factual truth or Chinese authorship.",
+    "No model generation, metrics, or production adapter boundary tests are run."
+  ],
+  "dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
+  "schema_sha256": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9"
+}

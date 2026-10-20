@@ -2,8 +2,23 @@
 
 A bilingual evaluation suite for grounded Fari companion dialogue and Senpai
 educational dialogue. Week 1 provides a reproducible evaluation design, a
-versioned annotation contract, and 100 reviewed English/Chinese cases. Model
-execution and measured RAG scores are the next implementation stage.
+versioned annotation contract, and 100 reviewed English/Chinese cases. Week 2
+adds implemented metrics, an executed notebook, a measured local baseline, and
+failure analysis with replayable artifacts.
+
+## Review by week
+
+| Week | Review package |
+| --- | --- |
+| 1 | [Framework, specification, dataset, pilot, and reflection](deliverables/week-01/README.md) |
+| 2 | [Metrics, executed notebook, results report, validation, and failure analysis](deliverables/week-02/README.md) |
+
+Each weekly entry page links the canonical artifacts for review. Shared software,
+datasets, and schemas remain in their documented project locations.
+
+All 102 checks pass. The [verification summary](deliverables/week-02/validation/tests.json)
+records dataset validation, metric tests, exact score replay, notebook execution,
+and the Word document review.
 
 ## Week 1 deliverables
 
@@ -48,29 +63,31 @@ annotation checks and review limitations are documented in
 | Release schema, counts, and annotation relationships | Valid |
 | Native Chinese authorship and language review | Recorded for all 35 Chinese cases |
 | Pilot synchronization and exact dataset rebuild | Verified |
-| Model generations and metric scores | Not yet produced |
+| Model generations and metric scores | 100 recorded responses; frozen scores and inspected failures in Week 2 |
 | Audio evaluation | Outside the current text experiment |
 
-The selected generation baseline is Qwen2.5-7B-Instruct, with multilingual-e5-base
-for the planned embedding metrics. These are public task proxies. No result in
+The recorded local generation baseline is the four-bit MLX conversion of
+Qwen2.5-7B-Instruct, with multilingual-e5-base for embedding metrics. These are
+public task proxies. No result in
 this repository establishes performance of an unavailable InGen model or a
 physical robot.
 
 ## Setup and reproduce dataset checks
 
-Run from the repository root:
+Use Python 3.12 and run from the repository root:
 
 ```sh
-python3 -m venv .venv
+python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python scripts/datasets/validate_dataset.py data/W01_Evaluation_Dataset_v1.jsonl --profile release --manifest data/W01_Evaluation_Dataset_v1.manifest.json
 .venv/bin/python scripts/datasets/validate_dataset.py data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl --profile pilot --manifest data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json
 .venv/bin/python -m pytest -q
 ```
 
-These tests validate data and maintenance tooling. They are distinct from the
-planned metric tests, which must use manually verified expected outcomes before
-model scores are reported. The `release` profile requires approved annotations,
+The suite tests data, maintenance tooling, core metric computations, input
+boundaries, experiment hashes, the executed notebook, and exact score replay.
+The metric/input module contains 41 tests, including at least three hand-computed
+examples per core metric. The `release` profile requires approved annotations,
 assigned subsets, and native Chinese author/review records. Validation cannot
 establish truth or actual authorship by itself.
 
@@ -109,7 +126,7 @@ revised content is accepted.
 | [Publication tests](tests/test_public_artifacts.py) | Public document links and publication boundary |
 | [build_docx.py](scripts/documents/build_docx.py) | Word deliverables from tracked document sources |
 | [set_bilingual_fonts.py](scripts/documents/set_bilingual_fonts.py) | Times New Roman for English; Songti SC for Chinese |
-| [requirements.txt](requirements.txt) | Complete Week 1 setup |
+| [requirements.txt](requirements.txt) | Complete Week 1 and Week 2 setup |
 | [requirements-validation.txt](requirements-validation.txt) | Pinned validation/test packages |
 | [requirements-documents.txt](requirements-documents.txt) | Pinned Word tooling packages |
 | [.gitignore](.gitignore) | Environments, caches, reports, and scratch outputs |
@@ -133,11 +150,70 @@ To regenerate the Word deliverables:
 .venv/bin/python scripts/documents/build_docx.py docs/sources/W01_Dataset_Specification.json docs/W01_Dataset_Specification.docx
 ```
 
-## Next implementation stage
+## Week 2 results and reproduce scores
 
-Implement the three core RAG metrics, validate their English/Chinese paths with
-at least 20 manually verified metric tests, and add the reusable evaluator and
-demonstration notebook. Calibrate support proxies on the designated subset,
-freeze model/scorer configuration, then evaluate the held-out cases and report
-subgroup scores, errors, applicability, and failure examples. Optional retrieval
-experiments need a frozen public corpus and relevance labels.
+The complete fixed-context run produced 100 responses without generation errors.
+Primary evaluation uses eighty held-out cases, after freezing support calibration
+on the designated twenty cases.
+
+| Core measurement | Held out mean | Population SD | Defined cases |
+| --- | ---: | ---: | ---: |
+| Context recall | 0.9286 | 0.2379 | 77 |
+| Faithfulness proxy | 0.9602 | 0.1224 | 80 |
+| Semantic relevance | 0.8852 | 0.0380 | 80 |
+
+The support proxy has only 66.7 percent balanced calibration accuracy and gives
+perfect scores to several incorrect responses. Raw claim extraction required
+99 inspected corrections, recorded separately from unmodified model responses.
+Read the [results report](docs/week-02/W02_RAG_Evaluation_Results.md) and
+[methodology](docs/week-02/metric_methodology.md) before interpreting the means.
+Technical inspection flags nine failures and one dataset-identity review across
+all 100 cases; this is not an independent human accuracy estimate.
+
+Recompute every saved score and aggregate without downloading models:
+
+```sh
+.venv/bin/python scripts/evaluation/score_week2.py replay
+.venv/bin/python scripts/evaluation/execute_week2_notebook.py
+```
+
+The notebook reads full recorded responses, inspected claims, calibration,
+embedding vectors, and scores under [the run manifest](results/week-02/baseline/run_manifest.json).
+It checks exact reproduction and shows distributions, language/tier tables,
+lexical recall, calibration errors, and classified response failures.
+
+## Fresh model execution
+
+The recorded generation runtime requires Apple Silicon and MLX LM. Scoring,
+tests, and saved-vector replay are independent of Apple GPU inference. Pinned
+generation packages use platform markers in requirements-generation.txt.
+
+```sh
+.venv/bin/python scripts/evaluation/prepare_models.py
+.venv/bin/python scripts/evaluation/generate_week2.py
+.venv/bin/python scripts/evaluation/score_week2.py calibrate
+```
+
+Existing generation artifacts are protected by input fingerprints. To create a
+fresh experiment, copy the tracked configuration to a new config with a distinct
+run_name and output directory, then pass --config to the generation and scoring
+commands. Freeze calibration before inspecting held-out outputs. Inspect every
+response/claim correspondence and record matching input hashes before scoring:
+
+```sh
+.venv/bin/python scripts/evaluation/score_week2.py score
+```
+
+Claim-review and correction formats are exemplified in the recorded run folder.
+Substantive wrong answers are never retried to improve scores. Fresh inference
+records its own runtime, model revision, prompts, and attempts; exact generation
+equality across different hardware is not assumed.
+
+## Next review
+
+The technical Week 2 package is assembled; the
+[midpoint sheet](docs/week-02/midpoint_review.md) awaits mentor scoring, sign-off,
+and confirmation of later scope. Next refinements are extraction reliability,
+negative calibration contrasts, source authority, and explicit resident identity.
+Later extensions cover STUM, SEOM, and HTD-IRL. Any scorer revision is a separately
+recorded experiment and must preserve the held-out boundary.
