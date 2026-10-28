@@ -1,0 +1,953 @@
+{
+  "annotation_version": "2.0.1",
+  "review_status": "approved",
+  "review_role": "technical-inspection",
+  "independent_human_assessment": false,
+  "scope": "Audit all 55 new RAG inventories. Amend only requested-answer coverage, missingness, equal-authority conflicts, and an unresolved referent. Unknown answer slots have canonical_value=null. Preserve the 200-case release, queries, evidence, sample answers, input plan, original approvals, raw model artifacts, all other metrics, and threshold. Original dialogue and authorship approvals remain source-specific; annotation approval is recorded separately.",
+  "base_hashes": {
+    "configs/week-03.json": "316819dee81fa28bdf190adeada051e02ad8f8d98388a21f84a987e363e95cb1",
+    "data/W01_Evaluation_Dataset_v2.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "data/W01_Evaluation_Dataset_v2.manifest.json": "20492441d37912efe3c0289fbfc60b4e3a1271bca0daee14b24a05a7099a8800",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/run_manifest.json": "490e04abc4c3a508f7f09753b016038935b0d701552b40a87eddbbdb24ab8bc2",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/dataset.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/inputs.jsonl": "f98d34ed28914f8ceb64bf65bd7a1ea89e71d3f30b587dd4d01ed56fac4fc58e",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/responses.jsonl": "1838fa37b6e880723c5c8f73021dd0befecd26964c19f89e1240ed54c804914c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claims.jsonl": "abd0b29fd02a984b06af347fdcd60790f956395f413c94238b56635277ca1160",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claim_review.json": "3f97fdd768034800299f6807af0621de35c97de7c4f429d38d62d84271e53b8c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/calibration.json": "97dd16da7cbebb386dc87c84d3068fcf4cbf70a535095e7e0cdee362d26a9cad",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/scores.json": "032127033d1b1d570931af7add18132cf09e38119586d37c6c825ff55f7af51c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.json": "1d59e1224da232c56ab979bbef361bad173db9d3cea3936c58963e4020e6f3a2",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.npz": "5900042c9812369a4b5645f70f700650ee1413de10617bfae4d30c303ba98fee"
+  },
+  "audited_case_ids": [
+    "w03-rag-fari-en-0101-base",
+    "w03-rag-fari-zh-0102-base",
+    "w03-rag-senpai-en-0103-base",
+    "w03-rag-senpai-en-0109-base",
+    "w03-rag-fari-en-0113-base",
+    "w03-rag-fari-en-0114-base",
+    "w03-rag-fari-en-0115-base",
+    "w03-rag-fari-en-0116-base",
+    "w03-rag-fari-en-0117-base",
+    "w03-rag-fari-en-0118-base",
+    "w03-rag-fari-en-0119-base",
+    "w03-rag-fari-en-0120-base",
+    "w03-rag-fari-zh-0121-base",
+    "w03-rag-fari-zh-0122-base",
+    "w03-rag-fari-zh-0123-base",
+    "w03-rag-fari-zh-0124-base",
+    "w03-rag-senpai-en-0125-base",
+    "w03-rag-senpai-en-0126-base",
+    "w03-rag-senpai-en-0127-base",
+    "w03-rag-senpai-en-0128-base",
+    "w03-rag-senpai-zh-0129-base",
+    "w03-rag-senpai-zh-0130-base",
+    "w03-rag-fari-en-0168-base",
+    "w03-rag-fari-en-0169-base",
+    "w03-rag-fari-en-0170-base",
+    "w03-rag-fari-zh-0171-base",
+    "w03-rag-fari-zh-0172-base",
+    "w03-rag-senpai-en-0173-base",
+    "w03-rag-senpai-en-0174-base",
+    "w03-rag-senpai-zh-0175-base",
+    "w03-rag-senpai-zh-0176-base",
+    "w03-rag-fari-en-0177-base",
+    "w03-rag-fari-en-0178-base",
+    "w03-rag-fari-en-0179-base",
+    "w03-rag-fari-en-0180-base",
+    "w03-rag-fari-en-0181-base",
+    "w03-rag-fari-en-0182-base",
+    "w03-rag-fari-en-0183-base",
+    "w03-rag-fari-en-0184-base",
+    "w03-rag-fari-en-0185-base",
+    "w03-rag-fari-en-0186-base",
+    "w03-rag-fari-zh-0187-base",
+    "w03-rag-fari-zh-0188-base",
+    "w03-rag-fari-zh-0189-base",
+    "w03-rag-fari-zh-0190-base",
+    "w03-rag-fari-zh-0191-base",
+    "w03-rag-senpai-en-0192-base",
+    "w03-rag-senpai-en-0193-base",
+    "w03-rag-senpai-en-0194-base",
+    "w03-rag-senpai-en-0195-base",
+    "w03-rag-senpai-en-0196-base",
+    "w03-rag-senpai-zh-0197-base",
+    "w03-rag-senpai-zh-0198-base",
+    "w03-rag-senpai-zh-0199-base",
+    "w03-rag-senpai-zh-0200-base"
+  ],
+  "edits": [
+    {
+      "id": "w03-rag-fari-en-0101-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "Nora's pottery group starts at 2:30 p.m. today.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0101"
+          ],
+          "verification_notes": "Directly stated in the linked passage."
+        },
+        {
+          "fact_id": "f002",
+          "text": "The supplied notice does not name a room.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0101"
+          ],
+          "verification_notes": "Directly stated in the linked passage."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Nora's pottery group starts at 2:30 p.m. today.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0101"
+          ],
+          "verification_notes": "Directly stated in the linked passage."
+        },
+        {
+          "fact_id": "f002",
+          "text": "Room assigned to Nora's pottery group today.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0101"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f002",
+          "requested_information": "Room assigned to Nora's pottery group today.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "Nora's pottery group starts at 2:30 p.m. today.",
+        "The supplied notice does not name a room."
+      ],
+      "rationale": "Keep the established first answer component; count the requested second component as unavailable instead of crediting a supported statement about its absence."
+    },
+    {
+      "id": "w03-rag-fari-en-0113-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "Nora's parcel arrived at reception at 10:15 a.m.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0113"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "The log does not identify the signer.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0113"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Nora's parcel arrived at reception at 10:15 a.m.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0113"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "Identity of the person who signed for Nora's parcel.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0113"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f002",
+          "requested_information": "Identity of the person who signed for Nora's parcel.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "Nora's parcel arrived at reception at 10:15 a.m.",
+        "The log does not identify the signer."
+      ],
+      "rationale": "Keep the established first answer component; count the requested second component as unavailable instead of crediting a supported statement about its absence."
+    },
+    {
+      "id": "w03-rag-fari-en-0114-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "No final chair choice is recorded.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0114"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Chair Nora chose for the new sitting room.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0114"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Chair Nora chose for the new sitting room.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "No final chair choice is recorded."
+      ],
+      "rationale": "The requested final selection is unavailable. Considering two chairs does not establish either choice."
+    },
+    {
+      "id": "w03-rag-fari-en-0115-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The printed notice says Tuesday.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0115"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "The digital notice says Wednesday and neither notice has priority.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0115"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Effective day of Nora's visitors' lunch.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "conflicting",
+          "evidence_passage_ids": [
+            "p001",
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0115"
+          ],
+          "verification_notes": "Equally current evidence conflicts; neither value is selected."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Effective day of Nora's visitors' lunch.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The printed notice says Tuesday.",
+        "The digital notice says Wednesday and neither notice has priority."
+      ],
+      "rationale": "One requested event day has two conflicting equal-authority values. Attributed notice statements justify reporting the conflict but do not resolve the answer target."
+    },
+    {
+      "id": "w03-rag-fari-en-0116-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "A ride was requested but no booking confirmation is supplied.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0116"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Booking status of Nora's ride home arranged by Nora's sister.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0116"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Booking status of Nora's ride home arranged by Nora's sister.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "A ride was requested but no booking confirmation is supplied."
+      ],
+      "rationale": "A request is not a booking confirmation. Unknown booking status must not be converted into a claim that no booking exists."
+    },
+    {
+      "id": "w03-rag-fari-en-0119-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "No observation establishes the balcony lock state.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0119"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Lock state of the user's balcony door.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0119"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Lock state of the user's balcony door.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "No observation establishes the balcony lock state."
+      ],
+      "rationale": "The requested physical state is unavailable in the text evidence; an observation-limit statement belongs to behavior guidance."
+    },
+    {
+      "id": "w03-rag-fari-en-0120-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The promised item is absent from the saved note.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0120"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Item Nora promised to bring to the gathering tomorrow.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0120"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Item Nora promised to bring to the gathering tomorrow.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The promised item is absent from the saved note."
+      ],
+      "rationale": "The item itself is requested; a statement that the item was omitted cannot satisfy that answer slot."
+    },
+    {
+      "id": "w03-rag-fari-en-0168-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The replacement visit date is Thursday.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0168"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "The current notice supplies no start time.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0168"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "The replacement visit date is Thursday.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0168"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "Start time of the replacement Thursday visit.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0168"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f002",
+          "requested_information": "Start time of the replacement Thursday visit.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The replacement visit date is Thursday.",
+        "The current notice supplies no start time."
+      ],
+      "rationale": "Keep the established first answer component; count the requested second component as unavailable instead of crediting a supported statement about its absence."
+    },
+    {
+      "id": "w03-rag-fari-en-0186-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "Mai requested 4 p.m.; June requested 5 p.m.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0186"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [],
+      "unresolved_answer_slots": [],
+      "behavior_observations": [
+        "Mai requested 4 p.m.; June requested 5 p.m."
+      ],
+      "rationale": "The person denoted by she is unidentified, so no unique requested call-time target can be specified. Follow the existing clarification-required empty-inventory convention: recall is not applicable, never zero or one. Candidate times remain behavior observations."
+    },
+    {
+      "id": "w03-rag-fari-zh-0121-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "林阿姨的围巾已经找到，但没有记录存放位置。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0121"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "林阿姨的围巾已经找到。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0121"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "林阿姨围巾目前的存放位置。",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0121"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f002",
+          "requested_information": "林阿姨围巾目前的存放位置。",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "林阿姨的围巾已经找到，但没有记录存放位置。"
+      ],
+      "rationale": "Split recovery status from the requested location. Recovery is established; storage location remains unresolved."
+    },
+    {
+      "id": "w03-rag-fari-zh-0122-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "收到的花没有署名，也没有送花人记录。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0122"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "今天送到的那束花的送花人身份。",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0122"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "今天送到的那束花的送花人身份。",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "收到的花没有署名，也没有送花人记录。"
+      ],
+      "rationale": "The sender is requested, while an unsigned card only establishes that identification is unavailable."
+    },
+    {
+      "id": "w03-rag-fari-zh-0172-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "标签要求手洗，不可机洗。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0172"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "标签没有提供水温。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0172"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "标签要求手洗，不可机洗。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0172"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "unresolved_answer_slots": [],
+      "behavior_observations": [
+        "标签要求手洗，不可机洗。",
+        "标签没有提供水温。"
+      ],
+      "rationale": "The machine-washing policy fully answers the query. Missing water temperature is not a requested answer component and belongs only to guidance against inventing details."
+    },
+    {
+      "id": "w03-rag-fari-zh-0191-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "小票仅提供包装费，没有两件礼物的价格。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0191"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "这两件礼物本身的合计价格。",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0191"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "这两件礼物本身的合计价格。",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "小票仅提供包装费，没有两件礼物的价格。"
+      ],
+      "rationale": "The receipt gives packaging cost only. Packaging cost is neither either gift price nor the requested gift total; no unobserved prices are fabricated."
+    },
+    {
+      "id": "w03-rag-senpai-en-0125-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The map page number is not supplied.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0125"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Page containing the treasure map in the book.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0125"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Page containing the treasure map in the book.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The map page number is not supplied."
+      ],
+      "rationale": "The requested page is unavailable. No page number is invented or inferred from the absence statement."
+    },
+    {
+      "id": "w03-rag-senpai-en-0126-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The child's plant is 12 centimeters tall today.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0126"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "Mia's growth measurements are missing.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0126"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Whether the user's bean plant grew more than Mia's over the comparison period.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0126"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Whether the user's bean plant grew more than Mia's over the comparison period.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The child's plant is 12 centimeters tall today.",
+        "Mia's growth measurements are missing."
+      ],
+      "rationale": "A single current height does not establish growth. Neither a common comparison interval nor the measurements needed for both growth amounts are available. Treat the requested comparison as one unresolved target."
+    },
+    {
+      "id": "w03-rag-senpai-en-0128-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "The crayon color is not observable from this text session.",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0128"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "Color of the crayon the user is holding.",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "unsupported",
+          "evidence_passage_ids": [],
+          "source_ids": [
+            "scenario-w03-0128"
+          ],
+          "verification_notes": "No authoritative supplied evidence establishes the requested value. Missingness is recorded separately as a behavior observation."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "Color of the crayon the user is holding.",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "The crayon color is not observable from this text session."
+      ],
+      "rationale": "The requested color is unavailable; a camera limitation is behavior guidance rather than a color answer."
+    },
+    {
+      "id": "w03-rag-senpai-zh-0129-base",
+      "before": [
+        {
+          "fact_id": "f001",
+          "text": "黑板要求画圆。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p001"
+          ],
+          "source_ids": [
+            "scenario-w03-0129"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        },
+        {
+          "fact_id": "f002",
+          "text": "任务纸要求画三角形，没有说明哪份优先。",
+          "equivalence_notes": "Equivalent natural spoken wording is accepted.",
+          "context_support": "supported",
+          "evidence_passage_ids": [
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0129"
+          ],
+          "verification_notes": "Explicitly established by the linked evidence."
+        }
+      ],
+      "after": [
+        {
+          "fact_id": "f001",
+          "text": "这道题实际要求画的形状。",
+          "equivalence_notes": "Requested answer slot only; no canonical value is established or invented. This is not an assertion of a hidden value.",
+          "context_support": "conflicting",
+          "evidence_passage_ids": [
+            "p001",
+            "p002"
+          ],
+          "source_ids": [
+            "scenario-w03-0129"
+          ],
+          "verification_notes": "Equally current evidence conflicts; neither value is selected."
+        }
+      ],
+      "unresolved_answer_slots": [
+        {
+          "fact_id": "f001",
+          "requested_information": "这道题实际要求画的形状。",
+          "canonical_value": null
+        }
+      ],
+      "behavior_observations": [
+        "黑板要求画圆。",
+        "任务纸要求画三角形，没有说明哪份优先。"
+      ],
+      "rationale": "The board and task sheet give incompatible shape requirements with no priority. Count the unresolved requirement once; preserve both attributed instructions as observations."
+    }
+  ],
+  "approval": {
+    "reviewer_role": "intern_annotation_review",
+    "reviewed_on": "2026-10-27",
+    "reviewed_case_ids": [
+      "w03-rag-fari-en-0101-base",
+      "w03-rag-fari-en-0113-base",
+      "w03-rag-fari-en-0114-base",
+      "w03-rag-fari-en-0115-base",
+      "w03-rag-fari-en-0116-base",
+      "w03-rag-fari-en-0119-base",
+      "w03-rag-fari-en-0120-base",
+      "w03-rag-fari-en-0168-base",
+      "w03-rag-fari-en-0186-base",
+      "w03-rag-fari-zh-0121-base",
+      "w03-rag-fari-zh-0122-base",
+      "w03-rag-fari-zh-0172-base",
+      "w03-rag-fari-zh-0191-base",
+      "w03-rag-senpai-en-0125-base",
+      "w03-rag-senpai-en-0126-base",
+      "w03-rag-senpai-en-0128-base",
+      "w03-rag-senpai-zh-0129-base"
+    ],
+    "annotation_content_sha256": "f65b9330b2ebca5a29898193bda3dbade9a54bce72cb8e4aea98fe4389a976dd"
+  }
+}

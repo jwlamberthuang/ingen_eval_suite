@@ -1,0 +1,38 @@
+{
+  "pipeline_version": "week3-pipeline-v1",
+  "run_name": "w03-qwen25-7b-mlx4bit-text-v1",
+  "dataset": "data/W01_Evaluation_Dataset_v2.jsonl",
+  "dataset_manifest": "data/W01_Evaluation_Dataset_v2.manifest.json",
+  "output": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1",
+  "generation": {
+    "model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+    "revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+    "runtime": "mlx-lm",
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "seed": 17,
+    "input_limit_tokens": 4096,
+    "case_timeout_seconds": 60
+  },
+  "embedding": {
+    "model_id": "intfloat/multilingual-e5-base",
+    "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+    "device": "cpu",
+    "max_tokens": 512,
+    "batch_size": 16
+  },
+  "support": {
+    "mode": "transfer_week2",
+    "calibration_artifact": "results/week-02/baseline/calibration.json",
+    "threshold_grid": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "tie_break": "larger_threshold",
+    "segmenter": "punctuation_sentences_v1",
+    "claim_extractor": "w03-qwen-json-atomic-v1"
+  }
+}

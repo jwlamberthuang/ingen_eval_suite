@@ -1,0 +1,616 @@
+{
+  "tables": {
+    "rag": [
+      {
+        "cohort": "legacy_calibration",
+        "metric": "context_recall",
+        "n_total": 20,
+        "n_scored": 19,
+        "n_not_applicable": 1,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.868421052631579,
+        "std_population": 0.31797489404196244
+      },
+      {
+        "cohort": "legacy_calibration",
+        "metric": "faithfulness_proxy",
+        "n_total": 20,
+        "n_scored": 19,
+        "n_not_applicable": 1,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.9223057644110275,
+        "std_population": 0.23133796008449778
+      },
+      {
+        "cohort": "legacy_calibration",
+        "metric": "lexical_reference_recall",
+        "n_total": 20,
+        "n_scored": 20,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.5000551170965257,
+        "std_population": 0.25519791501511085
+      },
+      {
+        "cohort": "legacy_calibration",
+        "metric": "semantic_relevance",
+        "n_total": 20,
+        "n_scored": 20,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.8864180174865364,
+        "std_population": 0.044974882220702575
+      },
+      {
+        "cohort": "legacy_previously_evaluated",
+        "metric": "context_recall",
+        "n_total": 80,
+        "n_scored": 77,
+        "n_not_applicable": 3,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.9285714285714286,
+        "std_population": 0.23787868940278184
+      },
+      {
+        "cohort": "legacy_previously_evaluated",
+        "metric": "faithfulness_proxy",
+        "n_total": 80,
+        "n_scored": 80,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.9402678571428571,
+        "std_population": 0.13792435740625986
+      },
+      {
+        "cohort": "legacy_previously_evaluated",
+        "metric": "lexical_reference_recall",
+        "n_total": 80,
+        "n_scored": 80,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.5206785754495954,
+        "std_population": 0.22041597308758262
+      },
+      {
+        "cohort": "legacy_previously_evaluated",
+        "metric": "semantic_relevance",
+        "n_total": 80,
+        "n_scored": 80,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.8907305175177351,
+        "std_population": 0.03563447232310158
+      },
+      {
+        "cohort": "new_calibration",
+        "metric": "context_recall",
+        "n_total": 11,
+        "n_scored": 11,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 1.0,
+        "std_population": 0.0
+      },
+      {
+        "cohort": "new_calibration",
+        "metric": "faithfulness_proxy",
+        "n_total": 11,
+        "n_scored": 11,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.9696969696969697,
+        "std_population": 0.09582659576267817
+      },
+      {
+        "cohort": "new_calibration",
+        "metric": "lexical_reference_recall",
+        "n_total": 11,
+        "n_scored": 11,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.5119594210503301,
+        "std_population": 0.2314078189370476
+      },
+      {
+        "cohort": "new_calibration",
+        "metric": "semantic_relevance",
+        "n_total": 11,
+        "n_scored": 11,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.8939937622568277,
+        "std_population": 0.03733785505422284
+      },
+      {
+        "cohort": "new_held_out",
+        "metric": "context_recall",
+        "n_total": 44,
+        "n_scored": 44,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 1.0,
+        "std_population": 0.0
+      },
+      {
+        "cohort": "new_held_out",
+        "metric": "faithfulness_proxy",
+        "n_total": 44,
+        "n_scored": 43,
+        "n_not_applicable": 1,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.9050387596899224,
+        "std_population": 0.2084932683376873
+      },
+      {
+        "cohort": "new_held_out",
+        "metric": "lexical_reference_recall",
+        "n_total": 44,
+        "n_scored": 44,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.43856744257091024,
+        "std_population": 0.21370290272544928
+      },
+      {
+        "cohort": "new_held_out",
+        "metric": "semantic_relevance",
+        "n_total": 44,
+        "n_scored": 44,
+        "n_not_applicable": 0,
+        "n_errors": 0,
+        "n_empty_response": 0,
+        "mean": 0.8921819231937409,
+        "std_population": 0.036901226898732785
+      }
+    ],
+    "structured": [
+      {
+        "cohort": "new_calibration",
+        "type": "htd_task_alignment",
+        "n_total": 3,
+        "n_eligible": 3,
+        "n_parsed": 2,
+        "parse_coverage": 0.6666666666666666,
+        "task_success": {
+          "n_total": 3,
+          "n_scored": 3,
+          "status_counts": {
+            "format_error": 1,
+            "ok": 2
+          },
+          "mean": 0.3333333333333333,
+          "std_population": 0.4714045207910317
+        },
+        "metrics": {
+          "goal_coverage": {
+            "n_total": 3,
+            "n_scored": 2,
+            "status_counts": {
+              "format_error": 1,
+              "ok": 2
+            },
+            "mean": 0.75,
+            "std_population": 0.25
+          },
+          "goal_precision": {
+            "n_total": 3,
+            "n_scored": 2,
+            "status_counts": {
+              "format_error": 1,
+              "ok": 2
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          }
+        },
+        "status_counts": {
+          "format_error": 1,
+          "ok": 2
+        }
+      },
+      {
+        "cohort": "new_calibration",
+        "type": "seom_entities",
+        "n_total": 3,
+        "n_eligible": 3,
+        "n_parsed": 3,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 3,
+          "n_scored": 3,
+          "status_counts": {
+            "ok": 3
+          },
+          "mean": 0.0,
+          "std_population": 0.0
+        },
+        "metrics": {
+          "classification_accuracy": {
+            "n_total": 3,
+            "n_scored": 2,
+            "status_counts": {
+              "not_applicable": 1,
+              "ok": 2
+            },
+            "mean": 0.7083333333333333,
+            "std_population": 0.041666666666666685
+          },
+          "entity_precision": {
+            "n_total": 3,
+            "n_scored": 3,
+            "status_counts": {
+              "ok": 3
+            },
+            "mean": 0.6666666666666666,
+            "std_population": 0.4714045207910317
+          },
+          "entity_recall": {
+            "n_total": 3,
+            "n_scored": 2,
+            "status_counts": {
+              "not_applicable": 1,
+              "ok": 2
+            },
+            "mean": 0.7083333333333333,
+            "std_population": 0.041666666666666685
+          }
+        },
+        "status_counts": {
+          "ok": 3
+        }
+      },
+      {
+        "cohort": "new_calibration",
+        "type": "stum_spatial",
+        "n_total": 2,
+        "n_eligible": 2,
+        "n_parsed": 2,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 2,
+          "n_scored": 2,
+          "status_counts": {
+            "ok": 2
+          },
+          "mean": 1.0,
+          "std_population": 0.0
+        },
+        "metrics": {
+          "spatial_accuracy": {
+            "n_total": 2,
+            "n_scored": 2,
+            "status_counts": {
+              "ok": 2
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          }
+        },
+        "status_counts": {
+          "ok": 2
+        }
+      },
+      {
+        "cohort": "new_calibration",
+        "type": "stum_temporal",
+        "n_total": 1,
+        "n_eligible": 1,
+        "n_parsed": 1,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 1,
+          "n_scored": 1,
+          "status_counts": {
+            "ok": 1
+          },
+          "mean": 0.0,
+          "std_population": 0.0
+        },
+        "metrics": {
+          "temporal_coherence": {
+            "n_total": 1,
+            "n_scored": 1,
+            "status_counts": {
+              "ok": 1
+            },
+            "mean": 0.3333333333333333,
+            "std_population": 0.0
+          },
+          "temporal_consistency": {
+            "n_total": 1,
+            "n_scored": 1,
+            "status_counts": {
+              "ok": 1
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          },
+          "temporal_pair_accuracy": {
+            "n_total": 1,
+            "n_scored": 1,
+            "status_counts": {
+              "ok": 1
+            },
+            "mean": 0.3333333333333333,
+            "std_population": 0.0
+          }
+        },
+        "status_counts": {
+          "ok": 1
+        }
+      },
+      {
+        "cohort": "new_held_out",
+        "type": "htd_task_alignment",
+        "n_total": 12,
+        "n_eligible": 12,
+        "n_parsed": 7,
+        "parse_coverage": 0.5833333333333334,
+        "task_success": {
+          "n_total": 12,
+          "n_scored": 12,
+          "status_counts": {
+            "format_error": 5,
+            "ok": 7
+          },
+          "mean": 0.25,
+          "std_population": 0.4330127018922193
+        },
+        "metrics": {
+          "goal_coverage": {
+            "n_total": 12,
+            "n_scored": 6,
+            "status_counts": {
+              "format_error": 5,
+              "not_applicable": 1,
+              "ok": 6
+            },
+            "mean": 0.8611111111111112,
+            "std_population": 0.2022252747022366
+          },
+          "goal_precision": {
+            "n_total": 12,
+            "n_scored": 7,
+            "status_counts": {
+              "format_error": 5,
+              "ok": 7
+            },
+            "mean": 0.6904761904761905,
+            "std_population": 0.33839691437028324
+          }
+        },
+        "status_counts": {
+          "format_error": 5,
+          "ok": 7
+        }
+      },
+      {
+        "cohort": "new_held_out",
+        "type": "seom_entities",
+        "n_total": 12,
+        "n_eligible": 12,
+        "n_parsed": 12,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 12,
+          "n_scored": 12,
+          "status_counts": {
+            "ok": 12
+          },
+          "mean": 0.5833333333333334,
+          "std_population": 0.4930066485916347
+        },
+        "metrics": {
+          "classification_accuracy": {
+            "n_total": 12,
+            "n_scored": 12,
+            "status_counts": {
+              "ok": 12
+            },
+            "mean": 0.7708333333333334,
+            "std_population": 0.27873100333874273
+          },
+          "entity_precision": {
+            "n_total": 12,
+            "n_scored": 12,
+            "status_counts": {
+              "ok": 12
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          },
+          "entity_recall": {
+            "n_total": 12,
+            "n_scored": 12,
+            "status_counts": {
+              "ok": 12
+            },
+            "mean": 0.8125,
+            "std_population": 0.2724311839712921
+          }
+        },
+        "status_counts": {
+          "ok": 12
+        }
+      },
+      {
+        "cohort": "new_held_out",
+        "type": "stum_spatial",
+        "n_total": 8,
+        "n_eligible": 8,
+        "n_parsed": 8,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 8,
+          "n_scored": 8,
+          "status_counts": {
+            "ok": 8
+          },
+          "mean": 0.875,
+          "std_population": 0.33071891388307384
+        },
+        "metrics": {
+          "spatial_accuracy": {
+            "n_total": 8,
+            "n_scored": 8,
+            "status_counts": {
+              "ok": 8
+            },
+            "mean": 0.875,
+            "std_population": 0.33071891388307384
+          }
+        },
+        "status_counts": {
+          "ok": 8
+        }
+      },
+      {
+        "cohort": "new_held_out",
+        "type": "stum_temporal",
+        "n_total": 4,
+        "n_eligible": 4,
+        "n_parsed": 4,
+        "parse_coverage": 1.0,
+        "task_success": {
+          "n_total": 4,
+          "n_scored": 4,
+          "status_counts": {
+            "ok": 4
+          },
+          "mean": 1.0,
+          "std_population": 0.0
+        },
+        "metrics": {
+          "temporal_coherence": {
+            "n_total": 4,
+            "n_scored": 4,
+            "status_counts": {
+              "ok": 4
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          },
+          "temporal_consistency": {
+            "n_total": 4,
+            "n_scored": 4,
+            "status_counts": {
+              "ok": 4
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          },
+          "temporal_pair_accuracy": {
+            "n_total": 4,
+            "n_scored": 4,
+            "status_counts": {
+              "ok": 4
+            },
+            "mean": 1.0,
+            "std_population": 0.0
+          }
+        },
+        "status_counts": {
+          "ok": 4
+        }
+      }
+    ]
+  },
+  "timing": {
+    "responses": {
+      "n_attempts": 200,
+      "status_counts": {
+        "ok": 200
+      },
+      "finish_reasons": {
+        "stop": 200
+      },
+      "n_timed": 200,
+      "mean_seconds": 8.169225837695995,
+      "median_seconds": 7.038945916981902,
+      "p95_nearest_rank_seconds": 19.895622833049856,
+      "max_seconds": 41.18201358302031,
+      "total_generation_tokens": 8761
+    },
+    "claim_extraction": {
+      "n_attempts": 155,
+      "status_counts": {
+        "scorer_error": 155
+      },
+      "finish_reasons": {
+        "stop": 155
+      },
+      "n_timed": 155,
+      "mean_seconds": 2.5765800750055803,
+      "median_seconds": 2.3494967500446364,
+      "p95_nearest_rank_seconds": 4.930129582993686,
+      "max_seconds": 6.6514910840196535,
+      "total_generation_tokens": 4901
+    }
+  },
+  "demonstration_ids": {
+    "STUM": [
+      "w03-stum-spatial-fari-en-0105-base",
+      "w03-stum-spatial-fari-en-0131-base",
+      "w03-stum-spatial-fari-en-0132-base",
+      "w03-stum-spatial-fari-zh-0138-base",
+      "w03-stum-spatial-senpai-zh-0137-base",
+      "w03-stum-temporal-senpai-en-0139-base",
+      "w03-stum-temporal-senpai-en-0141-base",
+      "w03-stum-temporal-senpai-zh-0106-base",
+      "w03-stum-temporal-senpai-zh-0140-base",
+      "w03-stum-temporal-senpai-zh-0142-base"
+    ],
+    "SEOM": [
+      "w03-seom-entities-fari-en-0107-base",
+      "w03-seom-entities-fari-en-0143-base",
+      "w03-seom-entities-fari-en-0144-base",
+      "w03-seom-entities-fari-zh-0108-base",
+      "w03-seom-entities-fari-zh-0148-base",
+      "w03-seom-entities-fari-zh-0149-base"
+    ],
+    "HTD-IRL": [
+      "w03-htd-task-alignment-fari-en-0110-base",
+      "w03-htd-task-alignment-fari-en-0111-base",
+      "w03-htd-task-alignment-fari-en-0156-base",
+      "w03-htd-task-alignment-fari-zh-0161-base",
+      "w03-htd-task-alignment-fari-zh-0162-base",
+      "w03-htd-task-alignment-fari-zh-0163-base"
+    ]
+  },
+  "technical_inspection": {
+    "n_rag": 155,
+    "verdict_counts": {
+      "meets_reference": 99,
+      "partial": 41,
+      "fails_reference": 13,
+      "reference_ambiguity": 2
+    },
+    "structured_failure_categories": {
+      "relation_reasoning": 1,
+      "missing_entity": 6,
+      "output_format": 6,
+      "missing_goal": 1,
+      "conflict_resolution": 1,
+      "extra_entity": 1,
+      "class_error": 1,
+      "frozen_alias_limitation": 2,
+      "extra_goal": 2
+    },
+    "independent_human_assessment": false
+  }
+}

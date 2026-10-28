@@ -1,0 +1,238 @@
+{
+  "schema_version": "2.0.0",
+  "legacy_dataset": "data/W01_Evaluation_Dataset_v1.jsonl",
+  "legacy_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
+  "legacy_schema": "schemas/w01_dialogue_case.schema.json",
+  "schema": "schemas/w03_evaluation_case.schema.json",
+  "pilot": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+  "pilot_count": 12,
+  "pilot_subset": "calibration",
+  "new_targets": {
+    "count": 100,
+    "languages": {
+      "en": 65,
+      "zh": 35
+    },
+    "domains": {
+      "fari-en": 40,
+      "fari-zh": 20,
+      "senpai-en": 25,
+      "senpai-zh": 15
+    },
+    "difficulty": {
+      "easy": 20,
+      "medium": 40,
+      "hard": 40
+    },
+    "types": {
+      "rag": 55,
+      "stum_spatial": 10,
+      "stum_temporal": 5,
+      "seom_entities": 15,
+      "htd_task_alignment": 15
+    },
+    "groups": {
+      "hard_rag": {
+        "count": 20,
+        "en": 13,
+        "zh": 7,
+        "calibration": 4,
+        "held_out": 16
+      },
+      "stum": {
+        "count": 15,
+        "en": 10,
+        "zh": 5,
+        "calibration": 3,
+        "held_out": 12
+      },
+      "seom": {
+        "count": 15,
+        "en": 10,
+        "zh": 5,
+        "calibration": 3,
+        "held_out": 12
+      },
+      "htd": {
+        "count": 15,
+        "en": 10,
+        "zh": 5,
+        "calibration": 3,
+        "held_out": 12
+      },
+      "adversarial_rag": {
+        "count": 10,
+        "en": 6,
+        "zh": 4,
+        "calibration": 2,
+        "held_out": 8
+      },
+      "targeted_rag": {
+        "count": 25,
+        "en": 16,
+        "zh": 9,
+        "calibration": 5,
+        "held_out": 20
+      }
+    }
+  },
+  "split_policy": {
+    "method": "Pilot families fixed to calibration; eight additional families selected for capability coverage before generation; all other new families held out.",
+    "seed": null,
+    "selection_status": "All 100 new families assigned before model generation; content review pending.",
+    "legacy_policy": "preserve original source bytes and historical splits; legacy held-out is previously evaluated",
+    "new_calibration_case_ids": [
+      "w03-rag-fari-en-0101-base",
+      "w03-rag-fari-zh-0102-base",
+      "w03-rag-senpai-en-0103-base",
+      "w03-stum-spatial-senpai-en-0104-base",
+      "w03-stum-spatial-fari-en-0105-base",
+      "w03-stum-temporal-senpai-zh-0106-base",
+      "w03-seom-entities-fari-en-0107-base",
+      "w03-seom-entities-fari-zh-0108-base",
+      "w03-rag-senpai-en-0109-base",
+      "w03-htd-task-alignment-fari-en-0110-base",
+      "w03-htd-task-alignment-fari-en-0111-base",
+      "w03-htd-task-alignment-senpai-zh-0112-base",
+      "w03-rag-fari-en-0113-base",
+      "w03-rag-fari-zh-0121-base",
+      "w03-seom-entities-fari-en-0143-base",
+      "w03-rag-fari-en-0168-base",
+      "w03-rag-fari-en-0177-base",
+      "w03-rag-fari-zh-0187-base",
+      "w03-rag-senpai-en-0192-base",
+      "w03-rag-senpai-zh-0197-base"
+    ],
+    "new_held_out_case_ids": [
+      "w03-rag-fari-en-0114-base",
+      "w03-rag-fari-en-0115-base",
+      "w03-rag-fari-en-0116-base",
+      "w03-rag-fari-en-0117-base",
+      "w03-rag-fari-en-0118-base",
+      "w03-rag-fari-en-0119-base",
+      "w03-rag-fari-en-0120-base",
+      "w03-rag-fari-zh-0122-base",
+      "w03-rag-fari-zh-0123-base",
+      "w03-rag-fari-zh-0124-base",
+      "w03-rag-senpai-en-0125-base",
+      "w03-rag-senpai-en-0126-base",
+      "w03-rag-senpai-en-0127-base",
+      "w03-rag-senpai-en-0128-base",
+      "w03-rag-senpai-zh-0129-base",
+      "w03-rag-senpai-zh-0130-base",
+      "w03-stum-spatial-fari-en-0131-base",
+      "w03-stum-spatial-fari-en-0132-base",
+      "w03-stum-spatial-fari-en-0133-base",
+      "w03-stum-spatial-fari-en-0134-base",
+      "w03-stum-spatial-senpai-en-0135-base",
+      "w03-stum-spatial-senpai-en-0136-base",
+      "w03-stum-spatial-senpai-zh-0137-base",
+      "w03-stum-spatial-fari-zh-0138-base",
+      "w03-stum-temporal-senpai-en-0139-base",
+      "w03-stum-temporal-senpai-zh-0140-base",
+      "w03-stum-temporal-senpai-en-0141-base",
+      "w03-stum-temporal-senpai-zh-0142-base",
+      "w03-seom-entities-fari-en-0144-base",
+      "w03-seom-entities-fari-en-0145-base",
+      "w03-seom-entities-fari-en-0146-base",
+      "w03-seom-entities-fari-en-0147-base",
+      "w03-seom-entities-fari-zh-0148-base",
+      "w03-seom-entities-fari-zh-0149-base",
+      "w03-seom-entities-fari-zh-0150-base",
+      "w03-seom-entities-senpai-en-0151-base",
+      "w03-seom-entities-senpai-en-0152-base",
+      "w03-seom-entities-senpai-en-0153-base",
+      "w03-seom-entities-senpai-en-0154-base",
+      "w03-seom-entities-senpai-zh-0155-base",
+      "w03-htd-task-alignment-fari-en-0156-base",
+      "w03-htd-task-alignment-fari-en-0157-base",
+      "w03-htd-task-alignment-fari-en-0158-base",
+      "w03-htd-task-alignment-fari-en-0159-base",
+      "w03-htd-task-alignment-fari-en-0160-base",
+      "w03-htd-task-alignment-fari-zh-0161-base",
+      "w03-htd-task-alignment-fari-zh-0162-base",
+      "w03-htd-task-alignment-fari-zh-0163-base",
+      "w03-htd-task-alignment-senpai-en-0164-base",
+      "w03-htd-task-alignment-senpai-en-0165-base",
+      "w03-htd-task-alignment-senpai-en-0166-base",
+      "w03-htd-task-alignment-senpai-zh-0167-base",
+      "w03-rag-fari-en-0169-base",
+      "w03-rag-fari-en-0170-base",
+      "w03-rag-fari-zh-0171-base",
+      "w03-rag-fari-zh-0172-base",
+      "w03-rag-senpai-en-0173-base",
+      "w03-rag-senpai-en-0174-base",
+      "w03-rag-senpai-zh-0175-base",
+      "w03-rag-senpai-zh-0176-base",
+      "w03-rag-fari-en-0178-base",
+      "w03-rag-fari-en-0179-base",
+      "w03-rag-fari-en-0180-base",
+      "w03-rag-fari-en-0181-base",
+      "w03-rag-fari-en-0182-base",
+      "w03-rag-fari-en-0183-base",
+      "w03-rag-fari-en-0184-base",
+      "w03-rag-fari-en-0185-base",
+      "w03-rag-fari-en-0186-base",
+      "w03-rag-fari-zh-0188-base",
+      "w03-rag-fari-zh-0189-base",
+      "w03-rag-fari-zh-0190-base",
+      "w03-rag-fari-zh-0191-base",
+      "w03-rag-senpai-en-0193-base",
+      "w03-rag-senpai-en-0194-base",
+      "w03-rag-senpai-en-0195-base",
+      "w03-rag-senpai-en-0196-base",
+      "w03-rag-senpai-zh-0198-base",
+      "w03-rag-senpai-zh-0199-base",
+      "w03-rag-senpai-zh-0200-base"
+    ]
+  },
+  "entity_classes": [
+    "person",
+    "robot",
+    "animal",
+    "furniture",
+    "mobility_aid",
+    "container",
+    "device",
+    "document",
+    "other"
+  ],
+  "action_catalog": {
+    "deliver_item": [
+      "item",
+      "recipient"
+    ],
+    "notify": [
+      "recipient",
+      "topic"
+    ],
+    "move_item": [
+      "item",
+      "destination"
+    ],
+    "open_window": [
+      "location"
+    ],
+    "close_door": [
+      "location"
+    ]
+  },
+  "review_status": "Pilot wording edits incorporated 2026-10-27; all new annotations remain drafts pending final approval and native Chinese authorship/review.",
+  "index_base": 0,
+  "legacy_schema_sha256": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9",
+  "pilot_case_ids": [
+    "w03-rag-fari-en-0101-base",
+    "w03-rag-fari-zh-0102-base",
+    "w03-rag-senpai-en-0103-base",
+    "w03-stum-spatial-senpai-en-0104-base",
+    "w03-stum-spatial-fari-en-0105-base",
+    "w03-stum-temporal-senpai-zh-0106-base",
+    "w03-seom-entities-fari-en-0107-base",
+    "w03-seom-entities-fari-zh-0108-base",
+    "w03-rag-senpai-en-0109-base",
+    "w03-htd-task-alignment-fari-en-0110-base",
+    "w03-htd-task-alignment-fari-en-0111-base",
+    "w03-htd-task-alignment-senpai-zh-0112-base"
+  ],
+  "collection": "data/W01_Evaluation_Dataset_v2.jsonl"
+}

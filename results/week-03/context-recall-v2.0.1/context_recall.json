@@ -1,0 +1,3989 @@
+{
+  "annotation_version": "2.0.1",
+  "review_status": "approved",
+  "approval": {
+    "reviewer_role": "intern_annotation_review",
+    "reviewed_on": "2026-10-27",
+    "reviewed_case_ids": [
+      "w03-rag-fari-en-0101-base",
+      "w03-rag-fari-en-0113-base",
+      "w03-rag-fari-en-0114-base",
+      "w03-rag-fari-en-0115-base",
+      "w03-rag-fari-en-0116-base",
+      "w03-rag-fari-en-0119-base",
+      "w03-rag-fari-en-0120-base",
+      "w03-rag-fari-en-0168-base",
+      "w03-rag-fari-en-0186-base",
+      "w03-rag-fari-zh-0121-base",
+      "w03-rag-fari-zh-0122-base",
+      "w03-rag-fari-zh-0172-base",
+      "w03-rag-fari-zh-0191-base",
+      "w03-rag-senpai-en-0125-base",
+      "w03-rag-senpai-en-0126-base",
+      "w03-rag-senpai-en-0128-base",
+      "w03-rag-senpai-zh-0129-base"
+    ],
+    "annotation_content_sha256": "f65b9330b2ebca5a29898193bda3dbade9a54bce72cb8e4aea98fe4389a976dd"
+  },
+  "interpretation": "Reviewed annotation-only diagnostic replay; no fresh generation or untouched held-out claim.",
+  "checks": {
+    "baseline_exact_replay": true,
+    "generation_inputs_unchanged": true,
+    "other_per_case_metrics_unchanged": true,
+    "new_generation_attempts": 0,
+    "audited_new_rag_cases": 55,
+    "amended_cases": 17
+  },
+  "per_case": [
+    {
+      "id": "w01-fari-en-0001-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0002-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0003-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0004-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0005-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0006-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0007-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0008-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0009-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0010-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0011-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0012-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0013-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0014-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0015-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0016-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0017-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0018-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0019-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0020-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0021-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0022-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0023-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0024-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0025-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0026-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0027-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0028-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 3,
+          "required_facts": 3,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0029-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0030-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0031-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0032-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0033-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0034-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0035-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0036-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0037-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0038-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0039-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0040-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0041-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0042-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0043-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0044-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0045-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0046-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0047-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0048-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0049-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0050-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0051-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0052-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0053-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0054-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0055-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0056-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      },
+      "corrected": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0057-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0058-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0059-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0060-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-en-0061-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      },
+      "corrected": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0062-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0063-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0064-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0065-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0066-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0067-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0068-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0069-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0070-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0071-base",
+      "cohort": "legacy_calibration",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0072-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0073-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-fari-zh-0074-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      },
+      "corrected": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0075-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0076-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0077-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0078-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0079-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0080-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0081-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0082-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0083-base",
+      "cohort": "legacy_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0084-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0085-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0086-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0087-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0088-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0089-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0090-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      },
+      "corrected": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-en-0091-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0092-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0093-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0094-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0095-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0096-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0097-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0098-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0099-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w01-senpai-zh-0100-base",
+      "cohort": "legacy_previously_evaluated",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0101-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0102-base",
+      "cohort": "new_calibration",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0103-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0109-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0113-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0114-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0115-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0116-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0117-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0118-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0119-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0120-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0121-base",
+      "cohort": "new_calibration",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0122-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0123-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0124-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0125-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0126-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0127-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0128-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0129-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0130-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0168-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.5,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 2,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0169-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0170-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0171-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0172-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0173-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0174-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0175-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0176-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0177-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0178-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0179-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0180-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0181-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0182-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0183-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0184-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0185-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-en-0186-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": null,
+        "status": "not_applicable",
+        "details": {
+          "required_facts": 0,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0187-base",
+      "cohort": "new_calibration",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0188-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0189-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0190-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-fari-zh-0191-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "hard",
+      "amended": true,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 0.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 0,
+          "required_facts": 1,
+          "support_source": "approved_context_recall_amendment"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0192-base",
+      "cohort": "new_calibration",
+      "language": "en",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0193-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0194-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0195-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-en-0196-base",
+      "cohort": "new_held_out",
+      "language": "en",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0197-base",
+      "cohort": "new_calibration",
+      "language": "zh",
+      "difficulty": "easy",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 1,
+          "required_facts": 1,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0198-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0199-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    },
+    {
+      "id": "w03-rag-senpai-zh-0200-base",
+      "cohort": "new_held_out",
+      "language": "zh",
+      "difficulty": "medium",
+      "amended": false,
+      "baseline": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      },
+      "corrected": {
+        "value": 1.0,
+        "status": "ok",
+        "details": {
+          "supported_facts": 2,
+          "required_facts": 2,
+          "support_source": "reviewed_reference_annotations"
+        }
+      }
+    }
+  ],
+  "context_recall_by_cohort": [
+    {
+      "cohort": "legacy_calibration",
+      "metric": "context_recall",
+      "n_total": 20,
+      "n_scored": 19,
+      "n_not_applicable": 1,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.868421052631579,
+      "std_population": 0.31797489404196244
+    },
+    {
+      "cohort": "legacy_previously_evaluated",
+      "metric": "context_recall",
+      "n_total": 80,
+      "n_scored": 77,
+      "n_not_applicable": 3,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.9285714285714286,
+      "std_population": 0.23787868940278184
+    },
+    {
+      "cohort": "new_calibration",
+      "metric": "context_recall",
+      "n_total": 11,
+      "n_scored": 11,
+      "n_not_applicable": 0,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.8181818181818182,
+      "std_population": 0.24052284646041733
+    },
+    {
+      "cohort": "new_held_out",
+      "metric": "context_recall",
+      "n_total": 44,
+      "n_scored": 43,
+      "n_not_applicable": 1,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.7441860465116279,
+      "std_population": 0.43631774509985394
+    }
+  ],
+  "baseline_context_recall_by_cohort": [
+    {
+      "cohort": "legacy_calibration",
+      "metric": "context_recall",
+      "n_total": 20,
+      "n_scored": 19,
+      "n_not_applicable": 1,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.868421052631579,
+      "std_population": 0.31797489404196244
+    },
+    {
+      "cohort": "legacy_previously_evaluated",
+      "metric": "context_recall",
+      "n_total": 80,
+      "n_scored": 77,
+      "n_not_applicable": 3,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 0.9285714285714286,
+      "std_population": 0.23787868940278184
+    },
+    {
+      "cohort": "new_calibration",
+      "metric": "context_recall",
+      "n_total": 11,
+      "n_scored": 11,
+      "n_not_applicable": 0,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 1.0,
+      "std_population": 0.0
+    },
+    {
+      "cohort": "new_held_out",
+      "metric": "context_recall",
+      "n_total": 44,
+      "n_scored": 44,
+      "n_not_applicable": 0,
+      "n_errors": 0,
+      "n_empty_response": 0,
+      "mean": 1.0,
+      "std_population": 0.0
+    }
+  ]
+}

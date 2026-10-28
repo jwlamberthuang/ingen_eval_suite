@@ -5,6 +5,11 @@ educational dialogue. Week 1 provides a reproducible evaluation design, a
 versioned annotation contract, and 100 reviewed English/Chinese cases. Week 2
 adds implemented metrics, an executed notebook, a measured local baseline, and
 failure analysis with replayable artifacts.
+Week 3 adds spatial/temporal, entity, and explicit-goal metrics, an approved
+200-case collection, a formal protocol, and a recorded extended baseline with
+an executed notebook and reflection. Results explicitly retain extraction
+failures and support-proxy limitations. A separately versioned context-recall
+annotation correction is approved after intern review of all 17 changes.
 
 ## Review by week
 
@@ -12,13 +17,17 @@ failure analysis with replayable artifacts.
 | --- | --- |
 | 1 | [Framework, specification, dataset, pilot, and reflection](deliverables/week-01/README.md) |
 | 2 | [Metrics, executed notebook, results report, validation, and failure analysis](deliverables/week-02/README.md) |
+| 3 | [200-case release, protocol, executed notebook, results, tests, and reflection](deliverables/week-03/README.md) |
 
 Each weekly entry page links the canonical artifacts for review. Shared software,
 datasets, and schemas remain in their documented project locations.
 
-All 102 checks pass. The [verification summary](deliverables/week-02/validation/tests.json)
-records dataset validation, metric tests, exact score replay, notebook execution,
-and the Word document review.
+The recorded [Week 2 verification](deliverables/week-02/validation/tests.json)
+contains 102 passing checks, exact score replay, notebook execution, dataset
+validation, and Word document review. The current suite passes **336 tests**.
+The extended suite includes 76 metric,
+61 dataset/review, 53 adapter/pipeline, 35 annotation-correction, and additional analysis/artifact checks. See the
+[Week 3 verification summary](deliverables/week-03/validation/tests.json).
 
 ## Week 1 deliverables
 
@@ -53,8 +62,8 @@ is derived from the collection and remains in calibration. Its
 [manifest](data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json) identifies the
 source collection hash. Related examples stay in the same subset.
 
-I reviewed every English and Chinese case and confirmed native
-authorship of all 35 Chinese cases. The reviewed dialogue is preserved verbatim;
+For the frozen v1 collection, I reviewed every English and Chinese case and
+confirmed native authorship of all 35 Chinese cases. The reviewed dialogue is preserved verbatim;
 annotation checks and review limitations are documented in
 [dataset documentation](data/dataset_documentation.md).
 
@@ -209,11 +218,55 @@ Substantive wrong answers are never retried to improve scores. Fresh inference
 records its own runtime, model revision, prompts, and attempts; exact generation
 equality across different hardware is not assumed.
 
+## Week 3 extended evaluation
+
+[extended_evaluator.py](src/extended_evaluator.py) implements spatial accuracy,
+temporal pair accuracy/consistency/coherence, entity recall/classification/precision,
+and explicit-goal coverage/precision. Strict parsing, symbolic reference checks,
+task-success outcomes, coverage, and grouped population summaries are included.
+The [API guide](docs/week-03/extended_metrics.md) documents reference formats and
+limitations. These metrics need no model weights or new dependencies.
+
+```sh
+.venv/bin/python -m pytest -q tests/test_extended.py
+```
+
+The synthetic fixtures verify computations; the
+[recorded 200-case baseline](docs/week-03/W03_Extended_Evaluation_Results.md)
+supplies actual model evidence. New held-out exact task success is 7/8 spatial,
+4/4 temporal, 7/12 SEOM, and 3/12 HTD-IRL. Read validity/coverage denominators
+and frozen alias limitations alongside these small-sample results.
+
+All 155 raw extraction proposals fail the strict object contract and remain
+recorded as errors. Separate inspected corrections enable assisted faithfulness
+scoring. The support proxy gives all ten deliberately flawed fixed candidates
+1.0, while some new required-fact labels encode missingness and inflate context
+recall. The report identifies these measurement limits and proposes separate
+versioned changes. No frozen scorer, threshold, references, or outputs were
+changed after observing results.
+
+The [executed notebook](notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb),
+[formal protocol](docs/week-03/W03_Evaluation_Protocol.md), and
+[reflection](weekly/Wk-03-Log.md) are linked in the weekly package. New evidence
+uses explicit names or user references while dialogue retains natural pronouns.
+The [experiment guide](docs/week-03/experiment_pipeline.md) documents generation,
+inspection, scoring, and exact offline replay. The original Week 2 source,
+dataset, and results remain frozen.
+
+```sh
+.venv/bin/python scripts/evaluation/week3.py replay
+.venv/bin/python scripts/evaluation/analyze_week3.py --replay
+.venv/bin/python scripts/evaluation/build_week3_notebook.py --execute
+```
+
 ## Next review
 
-The technical Week 2 package is assembled; the
-[midpoint sheet](docs/week-02/midpoint_review.md) awaits mentor scoring, sign-off,
-and confirmation of later scope. Next refinements are extraction reliability,
-negative calibration contrasts, source authority, and explicit resident identity.
-Later extensions cover STUM, SEOM, and HTD-IRL. Any scorer revision is a separately
-recorded experiment and must preserve the held-out boundary.
+Review the [Week 3 findings](deliverables/week-03/README.md), especially the
+context-recall annotation denominator, raw extraction reliability, source-aware
+support judgments, and explicit alias coverage. Independent response assessment
+and broader bilingual negative calibration labels remain useful next work.
+Confirm the Week 4 report and presentation structure with the mentor. Any data,
+prompt, or scorer revision requires a separately recorded experiment and must
+preserve the held-out boundary. Tuning against the now-inspected Week 3 cases
+requires fresh untouched families for subsequent held-out claims. The earlier
+[midpoint sheet](docs/week-02/midpoint_review.md) retains its recorded review status.

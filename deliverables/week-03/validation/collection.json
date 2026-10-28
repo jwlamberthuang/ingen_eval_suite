@@ -1,0 +1,51 @@
+{
+  "valid": true,
+  "profile": "release",
+  "record_count": 200,
+  "legacy_count": 100,
+  "new_count": 100,
+  "legacy_bytes_checked": true,
+  "new_type_counts": {
+    "htd_task_alignment": 15,
+    "rag": 55,
+    "seom_entities": 15,
+    "stum_spatial": 10,
+    "stum_temporal": 5
+  },
+  "new_language_counts": {
+    "en": 65,
+    "zh": 35
+  },
+  "new_domain_counts": {
+    "fari-en": 40,
+    "fari-zh": 20,
+    "senpai-en": 25,
+    "senpai-zh": 15
+  },
+  "new_difficulty_counts": {
+    "easy": 20,
+    "hard": 40,
+    "medium": 40
+  },
+  "new_group_counts": {
+    "adversarial_rag": 10,
+    "hard_rag": 20,
+    "htd": 15,
+    "seom": 15,
+    "stum": 15,
+    "targeted_rag": 25
+  },
+  "new_subset_counts": {
+    "calibration": 20,
+    "held_out": 80
+  },
+  "unapproved_count": 0,
+  "pending_native_zh_count": 0,
+  "release_ready": true,
+  "errors": [],
+  "warnings": [],
+  "limitations": [
+    "Schema and symbolic checks do not establish natural-language truth, scenario originality, authorship, or human review.",
+    "Reference smoke outputs are annotation fixtures, not measured model responses."
+  ]
+}

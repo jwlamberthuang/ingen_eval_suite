@@ -31,6 +31,9 @@ temp/
 *.tmp
 ~$*.docx
 
+# Advisory locks for resumable Week 3 experiment processes
+results/week-03/**/.run.lock
+
 # Operating system metadata
 .DS_Store
 Thumbs.db

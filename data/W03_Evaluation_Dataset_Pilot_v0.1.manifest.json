@@ -1,0 +1,86 @@
+{
+  "dataset_file": "W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+  "dataset_sha256": "d8a8a80f9e1e471ebdaa50ee6e18ece1880e9bcae73e23ede9158153ed8683dc",
+  "schema_version": "2.0.0",
+  "schema_file": "schemas/w03_evaluation_case.schema.json",
+  "schema_sha256": "ab28de15ace04a2077e69c65dcde305f9fdf9e9cb506e43673a3a25ede838dfb",
+  "legacy_dataset": "data/W01_Evaluation_Dataset_v1.jsonl",
+  "legacy_dataset_sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
+  "status": "reviewed_subset",
+  "validation": {
+    "valid": true,
+    "profile": "pilot",
+    "record_count": 12,
+    "legacy_count": 0,
+    "new_count": 12,
+    "legacy_bytes_checked": false,
+    "new_type_counts": {
+      "htd_task_alignment": 3,
+      "rag": 4,
+      "seom_entities": 2,
+      "stum_spatial": 2,
+      "stum_temporal": 1
+    },
+    "new_language_counts": {
+      "en": 8,
+      "zh": 4
+    },
+    "new_domain_counts": {
+      "fari-en": 5,
+      "fari-zh": 2,
+      "senpai-en": 3,
+      "senpai-zh": 2
+    },
+    "new_difficulty_counts": {
+      "easy": 2,
+      "hard": 4,
+      "medium": 6
+    },
+    "new_group_counts": {
+      "adversarial_rag": 1,
+      "hard_rag": 2,
+      "htd": 3,
+      "seom": 2,
+      "stum": 3,
+      "targeted_rag": 1
+    },
+    "new_subset_counts": {
+      "calibration": 12
+    },
+    "unapproved_count": 0,
+    "pending_native_zh_count": 0,
+    "release_ready": false,
+    "errors": [],
+    "warnings": [],
+    "limitations": [
+      "Schema and symbolic checks do not establish natural-language truth, scenario originality, authorship, or human review.",
+      "Reference smoke outputs are annotation fixtures, not measured model responses."
+    ]
+  },
+  "construction_inputs": [
+    {
+      "file": "configs/dataset-v2.json",
+      "sha256": "8de6dcd7b903863f046beedb6962c499adf5ad15537c5965f6c2330a61577a40"
+    },
+    {
+      "file": "schemas/w03_evaluation_case.schema.json",
+      "sha256": "ab28de15ace04a2077e69c65dcde305f9fdf9e9cb506e43673a3a25ede838dfb"
+    },
+    {
+      "file": "schemas/w01_dialogue_case.schema.json",
+      "sha256": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9"
+    },
+    {
+      "file": "src/extended_evaluator.py",
+      "sha256": "3a4c1fb1265bba4becd2f5b186ec1b22cad319cfaaa9ea09340cc0cd7402cd73"
+    },
+    {
+      "file": "scripts/datasets/v2/manage_dataset.py",
+      "sha256": "a624ed712a32c5006b80cec7299703e25b0799e910005ddcf4976f25fcf0c97d"
+    },
+    {
+      "file": "data/W01_Evaluation_Dataset_v2.jsonl",
+      "sha256": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8"
+    }
+  ]
+}

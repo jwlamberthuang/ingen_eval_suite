@@ -1,0 +1,33 @@
+{
+  "review_type": "technical_inspection",
+  "reviewer_ids": [
+    "technical-inspection"
+  ],
+  "reviewed_on": "2026-10-27",
+  "independent_human_assessment": false,
+  "method": "Every RAG answer was compared with frozen evidence and behavior criteria. Every non-successful structured prediction was inspected without changing frozen matching or references. Claim correspondence was checked against actual responses, with raw extractor outputs preserved.",
+  "verdict_definitions": {
+    "meets_reference": "Essential reference behavior is met; minor wording observations may remain.",
+    "partial": "The main answer may be correct but an assertion, register, explanation, or other explicit behavior criterion is not met.",
+    "fails_reference": "An essential answer is incorrect, contradictory, or an unsupported definite answer replaces required uncertainty.",
+    "reference_ambiguity": "Visible legacy inputs do not establish the identity link presumed by the reference; clarification is not treated as a clear model error."
+  },
+  "limitations": [
+    "Technical qualitative judgments are not an independent human accuracy benchmark or inter-rater agreement.",
+    "Failure categories can overlap and do not define a composite model score.",
+    "Claim granularity and implicit wording remain inspection judgments; post-inspection faithfulness is an assisted diagnostic.",
+    "No generation, reference, threshold, frozen parser, or matching rule was changed after observing outcomes."
+  ],
+  "input_hashes": {
+    "dataset.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "responses.jsonl": "1838fa37b6e880723c5c8f73021dd0befecd26964c19f89e1240ed54c804914c",
+    "response_review.jsonl": "80e6434cf6d2921ea5561570b5a9156fb6632b70f22420f0b3488109210ce64e",
+    "structured_failure_review.jsonl": "f5ad8fee52b0546bcc669c06f098569e5e750145c7ae0c90d1f77b5b8081a18b"
+  },
+  "raw_claim_transport": {
+    "valid_bare_array": 153,
+    "invalid_json": 2
+  },
+  "claim_corrections": 155,
+  "content_or_scope_corrections": 85
+}

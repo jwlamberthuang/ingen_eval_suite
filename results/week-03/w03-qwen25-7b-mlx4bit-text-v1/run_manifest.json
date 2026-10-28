@@ -1,0 +1,106 @@
+{
+  "identity": {
+    "pipeline_version": "week3-pipeline-v1",
+    "adapter_version": "week3-inputs-v1",
+    "config": {
+      "pipeline_version": "week3-pipeline-v1",
+      "run_name": "w03-qwen25-7b-mlx4bit-text-v1",
+      "dataset": "data/W01_Evaluation_Dataset_v2.jsonl",
+      "dataset_manifest": "data/W01_Evaluation_Dataset_v2.manifest.json",
+      "output": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1",
+      "generation": {
+        "model_id": "mlx-community/Qwen2.5-7B-Instruct-4bit",
+        "revision": "c26a38f6a37d0a51b4e9a1eb3026530fa35d9fed",
+        "runtime": "mlx-lm",
+        "temperature": 0.0,
+        "max_new_tokens": 512,
+        "seed": 17,
+        "input_limit_tokens": 4096,
+        "case_timeout_seconds": 60
+      },
+      "embedding": {
+        "model_id": "intfloat/multilingual-e5-base",
+        "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+        "device": "cpu",
+        "max_tokens": 512,
+        "batch_size": 16
+      },
+      "support": {
+        "mode": "transfer_week2",
+        "calibration_artifact": "results/week-02/baseline/calibration.json",
+        "threshold_grid": [
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9
+        ],
+        "tie_break": "larger_threshold",
+        "segmenter": "punctuation_sentences_v1",
+        "claim_extractor": "w03-qwen-json-atomic-v1"
+      }
+    },
+    "dataset_sha256": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "dataset_manifest_sha256": "20492441d37912efe3c0289fbfc60b4e3a1271bca0daee14b24a05a7099a8800",
+    "input_plan_sha256": "99b0f507e0d8d857506babea4117cf68c16d494cb3e5f4856fa7bfd949140afe",
+    "source_hashes": {
+      "src/week3_inputs.py": "a33fb3c02800a7037ffe3cba7ea224d8e20f9953165879b07468bda31dc60fdc",
+      "src/week3_experiment.py": "60884c9c6923ba56b740c683e5b08f6427f1aede6fce3a55cb6f8c7bef026e1a",
+      "src/evaluator.py": "92ef111ead152a0951d4fd4b8a40218f372b6d213e87b1ae991a7dc68cb569e8",
+      "src/extended_evaluator.py": "3a4c1fb1265bba4becd2f5b186ec1b22cad319cfaaa9ea09340cc0cd7402cd73",
+      "src/model_inputs.py": "5d1f554a4244de0ff801ada845be58a709e6767011e5d6c24e7808660e3d00f1",
+      "src/embeddings.py": "0888e5b5cef1a145ea7bce63ad2aee238737b4300d4d20c776159ca9cd186e4f",
+      "scripts/datasets/v2/manage_dataset.py": "a624ed712a32c5006b80cec7299703e25b0799e910005ddcf4976f25fcf0c97d",
+      "scripts/evaluation/week3.py": "c8ec2e375596873c9a2c932540d6880aa49aabeb1c18fae1ac949d3076466308",
+      "configs/dataset-v2.json": "8de6dcd7b903863f046beedb6962c499adf5ad15537c5965f6c2330a61577a40",
+      "schemas/w03_evaluation_case.schema.json": "ab28de15ace04a2077e69c65dcde305f9fdf9e9cb506e43673a3a25ede838dfb",
+      "schemas/w01_dialogue_case.schema.json": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9",
+      "requirements-evaluation.txt": "f2623678bd4556a84e200af5db3394749c7a56d1b31ce9ab26b73e029d77788c",
+      "requirements-generation.txt": "40300b3f1af53a8a5f1905704c6122b2c5ca5ee2c7df01062bce2f94f684baa5",
+      "requirements-validation.txt": "c9dc80a5981d20aa57354f53a5c26a6f055841b4ce5173d885caeecaa27b603a",
+      "docs/week-03/W03_Evaluation_Protocol.md": "2048c00d8835d54b60df0c1407ebd70695deeb236a71ecf4f9e90ce4c8fc4912"
+    },
+    "support_source_sha256": "2149f39729c3fef33d34224f3a673008f0db16255a001ef3777d5123923bf09f"
+  },
+  "fingerprint": "4f8e48b21f1671fe4e6d576e72b9ce4cd725002d58f48e07968b43ed3287a5be",
+  "created_at": "2026-10-28T02:25:41.593699+00:00",
+  "status": "complete",
+  "stages": {
+    "calibration": "complete",
+    "responses": "complete",
+    "claims": "complete",
+    "scoring": "complete"
+  },
+  "artifacts": {
+    "dataset.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "config.json": "66154c00da2b60ee0402119411aaea7eb2e369c4afa2c844f72efadce7eba127",
+    "validation.json": "8d09a1ec039dec878e8b505d89cdb9403968698d017c6c6b04a03a39108c952b",
+    "inputs.jsonl": "f98d34ed28914f8ceb64bf65bd7a1ea89e71d3f30b587dd4d01ed56fac4fc58e",
+    "calibration.json": "97dd16da7cbebb386dc87c84d3068fcf4cbf70a535095e7e0cdee362d26a9cad",
+    "responses.jsonl": "1838fa37b6e880723c5c8f73021dd0befecd26964c19f89e1240ed54c804914c",
+    "responses_attempts.jsonl": "e95b8da43ff9249d18a7ba3aad276994a457a7c0ca4da9e3f7f6aceab21c0586",
+    "claims.jsonl": "abd0b29fd02a984b06af347fdcd60790f956395f413c94238b56635277ca1160",
+    "claims_attempts.jsonl": "026cc4a5ecc8cb56d40d694af1de31486f4e3a6e1348d83fc398317dbff0a26f",
+    "scores.json": "032127033d1b1d570931af7add18132cf09e38119586d37c6c825ff55f7af51c",
+    "embeddings.json": "1d59e1224da232c56ab979bbef361bad173db9d3cea3936c58963e4020e6f3a2",
+    "embeddings.npz": "5900042c9812369a4b5645f70f700650ee1413de10617bfae4d30c303ba98fee",
+    "claim_review.json": "3f97fdd768034800299f6807af0621de35c97de7c4f429d38d62d84271e53b8c"
+  },
+  "runtime": {
+    "responses": {
+      "system": "Darwin",
+      "architecture": "arm64",
+      "mlx": "0.32.4",
+      "mlx-lm": "0.32.2",
+      "transformers": "5.20.2"
+    },
+    "claims": {
+      "system": "Darwin",
+      "architecture": "arm64",
+      "mlx": "0.32.4",
+      "mlx-lm": "0.32.2",
+      "transformers": "5.20.2"
+    }
+  },
+  "completed_at": "2026-10-28T03:15:15.015659+00:00"
+}

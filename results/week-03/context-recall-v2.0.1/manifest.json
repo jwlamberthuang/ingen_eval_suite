@@ -1,0 +1,48 @@
+{
+  "annotation_version": "2.0.1",
+  "review_status": "approved",
+  "approval": {
+    "reviewer_role": "intern_annotation_review",
+    "reviewed_on": "2026-10-27",
+    "reviewed_case_ids": [
+      "w03-rag-fari-en-0101-base",
+      "w03-rag-fari-en-0113-base",
+      "w03-rag-fari-en-0114-base",
+      "w03-rag-fari-en-0115-base",
+      "w03-rag-fari-en-0116-base",
+      "w03-rag-fari-en-0119-base",
+      "w03-rag-fari-en-0120-base",
+      "w03-rag-fari-en-0168-base",
+      "w03-rag-fari-en-0186-base",
+      "w03-rag-fari-zh-0121-base",
+      "w03-rag-fari-zh-0122-base",
+      "w03-rag-fari-zh-0172-base",
+      "w03-rag-fari-zh-0191-base",
+      "w03-rag-senpai-en-0125-base",
+      "w03-rag-senpai-en-0126-base",
+      "w03-rag-senpai-en-0128-base",
+      "w03-rag-senpai-zh-0129-base"
+    ],
+    "annotation_content_sha256": "f65b9330b2ebca5a29898193bda3dbade9a54bce72cb8e4aea98fe4389a976dd"
+  },
+  "input_hashes": {
+    "configs/week-03.json": "316819dee81fa28bdf190adeada051e02ad8f8d98388a21f84a987e363e95cb1",
+    "data/W01_Evaluation_Dataset_v2.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "data/W01_Evaluation_Dataset_v2.manifest.json": "20492441d37912efe3c0289fbfc60b4e3a1271bca0daee14b24a05a7099a8800",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/run_manifest.json": "490e04abc4c3a508f7f09753b016038935b0d701552b40a87eddbbdb24ab8bc2",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/dataset.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/inputs.jsonl": "f98d34ed28914f8ceb64bf65bd7a1ea89e71d3f30b587dd4d01ed56fac4fc58e",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/responses.jsonl": "1838fa37b6e880723c5c8f73021dd0befecd26964c19f89e1240ed54c804914c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claims.jsonl": "abd0b29fd02a984b06af347fdcd60790f956395f413c94238b56635277ca1160",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claim_review.json": "3f97fdd768034800299f6807af0621de35c97de7c4f429d38d62d84271e53b8c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/calibration.json": "97dd16da7cbebb386dc87c84d3068fcf4cbf70a535095e7e0cdee362d26a9cad",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/scores.json": "032127033d1b1d570931af7add18132cf09e38119586d37c6c825ff55f7af51c",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.json": "1d59e1224da232c56ab979bbef361bad173db9d3cea3936c58963e4020e6f3a2",
+    "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.npz": "5900042c9812369a4b5645f70f700650ee1413de10617bfae4d30c303ba98fee",
+    "data/annotations/W03_Context_Recall_v2.0.1.json": "6122c339c61af27d195e64f1c4f37dd9689d60ac6513869f8edcac91e3e02b23",
+    "schemas/w03_context_recall_amendment.schema.json": "6b76ba5b12e97f7c0b4e1238dcafe0ad32574eab629482314a46b5490ce4fc0e",
+    "src/week3_context_recall.py": "8b88404e221bf52f29dae26435560c613562d4286d49867d3a2bbf73dc3fd074",
+    "scripts/evaluation/correct_week3_context_recall.py": "334782bda8322fa9f5bf39a641e43c71c3c348928abbe9c04e0a8ec3751beb1a"
+  },
+  "artifact_sha256": "51b129cb3b2bff2815f7951f8b562e01f9ede079bf674bc8c1d5aa4d419e2250"
+}

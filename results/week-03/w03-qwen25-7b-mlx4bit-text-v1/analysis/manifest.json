@@ -1,0 +1,22 @@
+{
+  "scope": "Supplementary analysis; fixed candidates are not model generations.",
+  "input_hashes": {
+    "run_manifest.json": "490e04abc4c3a508f7f09753b016038935b0d701552b40a87eddbbdb24ab8bc2",
+    "dataset.jsonl": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+    "scores.json": "032127033d1b1d570931af7add18132cf09e38119586d37c6c825ff55f7af51c",
+    "response_review.jsonl": "80e6434cf6d2921ea5561570b5a9156fb6632b70f22420f0b3488109210ce64e",
+    "response_review_metadata.json": "cf43686c0e8623813b9a68f0c59bc6041ed0dd3be6c2fd2a1949943d97dfe90d",
+    "structured_failure_review.jsonl": "f5ad8fee52b0546bcc669c06f098569e5e750145c7ae0c90d1f77b5b8081a18b",
+    "calibration.json": "97dd16da7cbebb386dc87c84d3068fcf4cbf70a535095e7e0cdee362d26a9cad"
+  },
+  "source_hashes": {
+    "src/week3_analysis.py": "0fa9d7c9ddcfe7d797751be5dc07e50d257a0f8c28425064642bae3c9e91e9de",
+    "scripts/evaluation/analyze_week3.py": "2bc6299f6910cc10a07ce02d88e26e41cb3ffc8aafd134b63a094d30afa83a40"
+  },
+  "artifact_hashes": {
+    "fixed_probes.json": "aee2573591901a5a5837821d696a1b0587b06770592befa648861a3c199a4cb3",
+    "summary.json": "f7edb7e4a3f65c174d6ede671fdbb2a916336fad4f7cc53b93a1ce74f5e59221",
+    "embeddings.json": "28cb6193f5929405855de6f956c59b9680fb1268b30ff1d29b8a81df4fdfe8a8",
+    "embeddings.npz": "23afbc6b73d8c8c5f3c740d89eb9a81f9c5285c835556375d2a2db63923d6884"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "transfer_week2",
+  "threshold": 0.8,
+  "source_file": "results/week-02/baseline/calibration.json",
+  "source_sha256": "2149f39729c3fef33d34224f3a673008f0db16255a001ef3777d5123923bf09f",
+  "new_calibration_case_ids": [],
+  "limitations": [
+    "Historical threshold transferred without new fitting; new-case validity is unestablished."
+  ]
+}
