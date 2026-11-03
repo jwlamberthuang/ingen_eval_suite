@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
 M = "{http://schemas.openxmlformats.org/officeDocument/2006/math}"
 PRIVATE_PATH = re.compile(r"file://(?=[A-Za-z/])|/(?:Users|home|private|tmp)/|(?<![A-Za-z0-9_])[A-Za-z]:\\", re.I)
-DOCUMENTS = ("W01_InGen_AI_Evaluation_Framework", "W01_Dataset_Specification")
+DOCUMENTS = ("methodology/evaluation_framework", "datasets/dialogue_specification")
 
 
 def check_reference(path, target):
@@ -28,7 +28,7 @@ def check_reference(path, target):
 
 def published_text_files():
     roots = [ROOT / name for name in ("data", "docs", "schemas", "scripts", "tests", "weekly",
-                                     "src", "configs", "deliverables", "notebooks", "results")]
+                                     "src", "configs", "validation", "notebooks", "results", "reproducibility")]
     paths = [p for p in ROOT.iterdir() if p.is_file()]
     paths += [p for directory in roots for p in directory.rglob("*") if p.is_file()]
     return [p for p in paths if p.suffix in {".md", ".json", ".jsonl", ".py", ".txt", ".ipynb"}
@@ -106,7 +106,7 @@ def test_word_deliverables_have_public_links_and_requested_fonts(stem):
         for run in document.iter(M + "r"):
             fonts = run.find(W + "rPr/" + W + "rFonts")
             assert fonts is not None and fonts.get(W + "ascii") == "Times New Roman"
-        if stem.endswith("Framework"):
+        if stem.endswith("evaluation_framework"):
             assert len(list(document.iter(M + "oMath"))) == 4
         else:
             assert chinese_runs > 0
@@ -115,16 +115,16 @@ def test_word_deliverables_have_public_links_and_requested_fonts(stem):
 def test_required_week1_artifacts_and_log_length():
     for stem in DOCUMENTS:
         assert (ROOT / "docs" / f"{stem}.docx").is_file()
-        assert (ROOT / "docs/sources" / f"{stem}.json").is_file()
+        assert (ROOT / "docs/sources" / f"{Path(stem).name}.json").is_file()
     assert (ROOT / "data/W01_Evaluation_Dataset_v1.jsonl").is_file()
-    words = (ROOT / "weekly/Wk-01-Log.md").read_text().split("\n", 2)[-1].split()
+    words = (ROOT / "docs/reflections/phase_01.md").read_text().split("\n", 2)[-1].split()
     assert 300 <= len(words) <= 500
 
 
 def test_specification_schema_and_config_versions_match():
     config = json.loads((ROOT / "dataset_config.json").read_text())
     schema = json.loads((ROOT / "schemas/w01_dialogue_case.schema.json").read_text())
-    source = json.loads((ROOT / "docs/sources/W01_Dataset_Specification.json").read_text())
+    source = json.loads((ROOT / "docs/sources/dialogue_specification.json").read_text())
     assert config["collection"]["version"] == source["version"] == "1.0.0"
     assert schema["$defs"]["labels"]["properties"]["schema_version"]["const"] == "1.1.0"
     label_table = next(b for b in source["blocks"] if b.get("caption", "").startswith("Table 5"))

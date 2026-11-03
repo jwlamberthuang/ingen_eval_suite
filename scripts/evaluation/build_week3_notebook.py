@@ -5,7 +5,7 @@ from pathlib import Path
 import nbformat as nbf
 
 ROOT = Path(__file__).resolve().parents[2]
-TARGET = ROOT / 'notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb'
+TARGET = ROOT / 'notebooks/extended_evaluation.ipynb'
 
 
 def build():
@@ -15,7 +15,7 @@ def build():
     def code(text):
         cells.append(nbf.v4.new_code_cell(text))
 
-    md('''# Week 3 extended evaluation suite
+    md('''# Extended evaluation suite
 
 This notebook replays a frozen 200-case text-only experiment and demonstrates
 the assigned STUM, SEOM, and HTD-IRL tasks with actual recorded model outputs.
@@ -35,13 +35,13 @@ import matplotlib.pyplot as plt
 from IPython.display import display, HTML
 
 ROOT = next(p for p in [Path.cwd(), *Path.cwd().parents]
-            if (p / 'configs/week-03.json').is_file())
+            if (p / 'configs/extended_baseline.json').is_file())
 sys.path.insert(0, str(ROOT))
 from src.week3_analysis import inspect_run, score_probes, sha256
 from src.week3_experiment import score_stage
 from src.embeddings import ReplayEncoder
 from src.week3_context_recall import rescore, run as replay_amendment, OUTPUT as AMENDED_OUTPUT
-config = json.loads((ROOT / 'configs/week-03.json').read_text())
+config = json.loads((ROOT / 'configs/extended_baseline.json').read_text())
 OUT = ROOT / config['output']
 ANALYSIS = OUT / 'analysis'
 run = inspect_run(ROOT, config)
@@ -267,7 +267,7 @@ The task labels do not establish physical perception, tool execution, or audio
 quality. Review the results report and reflection for specific follow-up work.
 ''')
     code('''display(pd.DataFrame(run['timing']).T)
-tests = json.loads((ROOT / 'deliverables/week-03/validation/tests.json').read_text())
+tests = json.loads((ROOT / 'validation/recorded/extended/tests.json').read_text())
 print('Test suite:', tests['passed'], 'passed;', tests['failures'], 'failures;', tests['errors'], 'errors')
 print('Primary new held-out: 80 cases, with RAG and structured metric families reported separately.')
 ''')
@@ -286,8 +286,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     notebook = build()
     if args.execute:
-        from nbclient import NotebookClient
-        NotebookClient(notebook, timeout=120, kernel_name='python3',
-                       resources={'metadata': {'path': str(ROOT)}}).execute()
+        from execute_week2_notebook import execute_notebook
+        execute_notebook(notebook, root=ROOT, timeout=120)
         nbf.write(notebook, TARGET)
     print(TARGET.relative_to(ROOT))

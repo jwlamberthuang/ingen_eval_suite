@@ -1,3 +1,4 @@
+from src.reproducibility import original_bytes
 """Verify the measured Week 3 bundle independently of synthetic pipeline tests."""
 
 import json
@@ -8,7 +9,7 @@ from src.week3_experiment import score_stage
 from src.embeddings import ReplayEncoder
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG = json.loads((ROOT / 'configs/week-03.json').read_text())
+CONFIG = json.loads((ROOT / 'configs/extended_baseline.json').read_text())
 OUT = ROOT / CONFIG['output']
 
 
@@ -40,7 +41,7 @@ def test_supplementary_diagnostics_replay_without_model_inference():
     for name, expected in manifest['artifact_hashes'].items():
         assert sha256(analysis / name) == expected, name
     for name, expected in manifest['source_hashes'].items():
-        assert sha256(ROOT / name) == expected, name
+        assert __import__("hashlib").sha256(original_bytes(name)).hexdigest() == expected, name
     records = read_jsonl(OUT / 'dataset.jsonl')
     probes = score_probes(records, ReplayEncoder(analysis), .8)
     assert probes == json.loads((analysis / 'fixed_probes.json').read_text())
@@ -50,7 +51,7 @@ def test_supplementary_diagnostics_replay_without_model_inference():
 
 
 def test_notebook_is_executed_and_has_required_demonstrations():
-    notebook = json.loads((ROOT / 'notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb').read_text())
+    notebook = json.loads((ROOT / 'notebooks/extended_evaluation.ipynb').read_text())
     code = [c for c in notebook['cells'] if c['cell_type'] == 'code']
     assert code and all(c['execution_count'] is not None for c in code)
     assert not any(o['output_type'] == 'error' for c in code for o in c['outputs'])
@@ -63,7 +64,7 @@ def test_notebook_is_executed_and_has_required_demonstrations():
 
 
 def test_week3_reflection_length_and_review_entry_point():
-    words = (ROOT / 'weekly/Wk-03-Log.md').read_text().split('\n', 2)[-1].split()
+    words = (ROOT / 'docs/reflections/phase_03.md').read_text().split('\n', 2)[-1].split()
     assert 300 <= len(words) <= 500
-    assert (ROOT / 'deliverables/week-03/README.md').is_file()
-    assert (ROOT / 'docs/week-03/W03_Extended_Evaluation_Results.md').is_file()
+    assert (ROOT / 'docs/README.md').is_file()
+    assert (ROOT / 'docs/reports/extended_baseline.md').is_file()

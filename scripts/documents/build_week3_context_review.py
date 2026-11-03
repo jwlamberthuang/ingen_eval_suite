@@ -12,7 +12,7 @@ from docx.shared import Inches, Pt, RGBColor
 from set_bilingual_fonts import apply_bilingual_fonts
 
 ROOT = Path(__file__).resolve().parents[2]
-STEM = 'W03_Context_Recall_Review_v2.0.1'
+STEM = 'context_recall_v2.0.1'
 
 
 def read(path):
@@ -30,11 +30,11 @@ def build(output_dir):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     word = output_dir / (STEM + '.docx')
-    markdown = output_dir / 'context_recall_correction.md'
+    markdown = output_dir / 'context_recall_v2.0.1.md'
     if word.exists() or markdown.exists():
         raise FileExistsError('Use a fresh directory to preserve reviewer edits')
     patch = read('data/annotations/W03_Context_Recall_v2.0.1.json')
-    result = read('results/week-03/context-recall-v2.0.1/context_recall.json')
+    result = read('results/context_recall_v2.0.1/context_recall.json')
     scores = {r['id']: r for r in result['per_case']}
     records = {r['id']: r for r in [json.loads(l) for l in
                (ROOT / 'data/W01_Evaluation_Dataset_v2.jsonl').read_text().splitlines()]}
@@ -86,8 +86,8 @@ def build(output_dir):
     paragraph('Preserve this approved record before revising target granularity, support status, evidence links, or N/A decisions. Requested answer values remain unresolved unless authoritative evidence supplies them. Changed annotation content requires renewed review and a new sealed version; do not overwrite the frozen baseline.')
     md.extend(['[Annotation amendment](../../data/annotations/W03_Context_Recall_v2.0.1.json) · '
                '[Schema](../../schemas/w03_context_recall_amendment.schema.json) · '
-               '[Replay results](../../results/week-03/context-recall-v2.0.1/context_recall.json) · '
-               '[Replay manifest](../../results/week-03/context-recall-v2.0.1/manifest.json)', ''])
+               '[Replay results](../../results/context_recall_v2.0.1/context_recall.json) · '
+               '[Replay manifest](../../results/context_recall_v2.0.1/manifest.json)', ''])
     for index, edit in enumerate(patch['edits']):
         if index % 2 == 0:
             doc.add_page_break()
@@ -126,5 +126,5 @@ def build(output_dir):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output-dir', type=Path, default=ROOT / 'docs/week-03')
+    parser.add_argument('--output-dir', type=Path, default=ROOT / 'docs/reviews')
     build(parser.parse_args().output_dir)

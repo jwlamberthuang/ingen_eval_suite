@@ -13,20 +13,19 @@ from jupyter_client.kernelspec import KernelSpecManager
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def execute():
-    """Use a temporary kernelspec without changing the user's Jupyter settings."""
-    path = ROOT/"notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb"
-    notebook = nbformat.read(path, as_version=4)
+def execute_notebook(notebook, root=ROOT, timeout=180):
+    """Bind the kernel to this interpreter without changing Jupyter settings."""
     with tempfile.TemporaryDirectory(prefix="ingen-notebook-") as temporary:
         directory = Path(temporary)/"ingen-evaluation"
         directory.mkdir()
         (directory/"kernel.json").write_text(json.dumps({
             "argv": [sys.executable, "-m", "ipykernel_launcher", "-f", "{connection_file}"],
+            "env": {"MPLBACKEND": "module://matplotlib_inline.backend_inline"},
             "display_name": "Evaluation Python", "language": "python"}))
         specs = KernelSpecManager(kernel_dirs=[temporary])
         manager = KernelManager(kernel_name="ingen-evaluation", kernel_spec_manager=specs)
-        client = NotebookClient(notebook, km=manager, timeout=180,
-                                resources={"metadata": {"path": str(ROOT)}})
+        client = NotebookClient(notebook, km=manager, timeout=timeout,
+                                resources={"metadata": {"path": str(root)}})
         try:
             client.execute()
         finally:
@@ -34,6 +33,14 @@ def execute():
                 manager.shutdown_kernel(now=True)
     assert all(output.get("output_type") != "error" for cell in notebook.cells
                if cell.cell_type == "code" for output in cell.get("outputs", []))
+    return notebook
+
+
+def execute():
+    """Execute saved RAG cells using the invoking environment."""
+    path = ROOT/"notebooks/rag_evaluation.ipynb"
+    notebook = nbformat.read(path, as_version=4)
+    execute_notebook(notebook)
     nbformat.write(notebook, path)
     print("All Week 2 notebook code cells executed; saved-score replay is exact.")
 

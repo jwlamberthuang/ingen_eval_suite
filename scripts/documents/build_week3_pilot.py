@@ -25,7 +25,7 @@ from scripts.datasets.v2.manage_dataset import expected_prediction, read_records
 NAMES = {"rag": "Grounded dialogue", "stum_spatial": "Spatial reasoning",
          "stum_temporal": "Event ordering", "seom_entities": "Entities and classes",
          "htd_task_alignment": "Requested tasks"}
-STEM = "W03_Dataset_Pilot_Review_v0.1"
+STEM = "expanded_pilot"
 
 
 def sections(record):
@@ -107,8 +107,8 @@ def build(source, output_dir, mode="pilot"):
         raise ValueError("Unexpected review case count or missing task type")
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    stem = STEM if mode == "pilot" else "W03_Dataset_Additions_Review_v0.1"
-    word, markdown = output_dir / f"{stem}.docx", output_dir / f"{mode if mode == 'pilot' else 'additions'}_review.md"
+    stem = STEM if mode == "pilot" else "expanded_additions"
+    word, markdown = output_dir / f"{stem}.docx", output_dir / f"{stem}.md"
     if word.exists() or markdown.exists():
         raise FileExistsError("Review files already exist; use a fresh output directory to preserve edits")
     doc = Document()
@@ -225,7 +225,7 @@ def build(source, output_dir, mode="pilot"):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=ROOT / "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl")
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/week-03")
+    parser.add_argument("--output-dir", type=Path, default=ROOT / "docs/reviews")
     parser.add_argument("--mode", choices=("pilot", "additions"), default="pilot")
     args = parser.parse_args()
     for path in build(args.source, args.output_dir, args.mode):

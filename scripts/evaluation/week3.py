@@ -15,7 +15,7 @@ from src.week3_experiment import (preflight, freeze_run, calibrate_stage,
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("stage", choices=("preflight", "freeze", "calibrate", "generate", "extract", "review-template", "score", "replay"))
-    parser.add_argument("--config", type=Path, default=ROOT / "configs/week-03.json")
+    parser.add_argument("--config", type=Path, default=ROOT / "configs/extended_baseline.json")
     args = parser.parse_args()
     config = loads(args.config.read_text())
     stages = {"preflight": lambda: preflight(ROOT, config),

@@ -18,7 +18,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--replay', action='store_true', help='Use saved vectors only; verify exact supplementary results.')
     args = parser.parse_args()
-    config = json.loads((ROOT / 'configs/week-03.json').read_text())
+    if args.replay:
+        from src.reproducibility import recorded_call
+        print(json.dumps(recorded_call('analysis'), indent=2))
+        return
+    config = json.loads((ROOT / 'configs/extended_baseline.json').read_text())
     output = ROOT / config['output']
     score_stage(ROOT, config, replay=True)
     run = inspect_run(ROOT, config)

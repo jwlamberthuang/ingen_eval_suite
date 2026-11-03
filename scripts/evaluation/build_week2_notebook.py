@@ -36,7 +36,7 @@ from IPython.display import display
 ROOT = next(p for p in [Path.cwd(), *Path.cwd().parents] if (p / 'dataset_config.json').is_file())
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / 'scripts/datasets'))
-config = json.loads((ROOT / 'configs/week-02.json').read_text())
+config = json.loads((ROOT / 'configs/rag_baseline.json').read_text())
 OUT = ROOT / config['output']
 records = [json.loads(line) for line in (ROOT / config['dataset']).read_text().splitlines()]
 scores = json.loads((OUT / 'scores.json').read_text())
@@ -245,7 +245,7 @@ STUM, SEOM, and HTD-IRL.
     notebook = nbf.v4.new_notebook(cells=cells)
     notebook.metadata = {"kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
                          "language_info": {"name": "python", "version": "3.12"}}
-    output = ROOT/"notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb"
+    output = ROOT/"notebooks/rag_evaluation.ipynb"
     output.parent.mkdir(parents=True, exist_ok=True)
     nbf.write(notebook, output)
     print(f'Built {output.relative_to(ROOT)}')

@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "checked_on": "2026-11-02",
+  "scope": "Reviewed seven-page Word companion and Markdown source; current LaTeX PDF is validated separately.",
+  "artifacts": {
+    "docs/reports/technical_report.md": "ef495d9c50f6ada69f8af91e8697c3080e82eef8ce384d43afd6d81c1d7cbcac",
+    "docs/reports/technical_report.docx": "3e73d0b175377e52498ce7552404ae97b3d0f3b13b024006db559d3a97348c06",
+    "scripts/documents/build_technical_report.py": "4ccc1cc6f1ba2a0ddc08872ee779eb9ed969148bb57433013c6d9a5efa86baf2"
+  },
+  "evidence_sha256": "232c4d5788323782d682fff0faa4fc287d76fa48902620dbafefd8aa4dc3dfb3",
+  "pages": 7,
+  "abstract_words": 168,
+  "required_sections": [
+    "Abstract",
+    "Introduction",
+    "Methodology",
+    "Results",
+    "Error analysis",
+    "Discussion",
+    "Conclusion"
+  ],
+  "scientific_tables": 5,
+  "table_source_parity": true,
+  "saved_numeric_summary_checks": true,
+  "recommendations": 3,
+  "fonts": {
+    "latin": "Times New Roman",
+    "chinese": "Songti SC",
+    "latin_runs_checked": 147,
+    "chinese_runs_checked": 2
+  },
+  "public_hyperlinks_only": true,
+  "private_path_scan": "passed",
+  "author_metadata": "omitted",
+  "source_review": {
+    "findings_approved_by_intern": "2026-11-02",
+    "formatting_and_added_source-derived_tables": "ready_for_intern_review"
+  },
+  "new_inference_attempts": 0,
+  "dataset_or_metric_changes": false,
+  "committed": false,
+  "pushed": false,
+  "current_tests": {
+    "passed": 357,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 32.064
+  },
+  "recorded_input_hash_check": "All canonical frozen inputs match the preserved layout inventory.",
+  "report_evidence_freshness_check": "passed",
+  "canonical_pdf_validation": "validation/technical_report_latex.json",
+  "visual_review": {
+    "pages_inspected": 7,
+    "overlap_or_clipping": false,
+    "missing_chinese_glyphs": false,
+    "status": "passed",
+    "format": "Word companion"
+  },
+  "source_whitespace_normalization": {
+    "checked_on": "2026-11-03",
+    "change": "Remove one surplus terminal blank line; scientific text and Word/PDF exports unchanged."
+  }
+}

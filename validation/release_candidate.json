@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "checked_on": "2026-11-03",
+  "status": "passed",
+  "scope": "Pre-commit candidate in a fresh public-base clone with staged candidate files materialized before commit; published-tag verification remains separate.",
+  "proposed_tag": "ingen_eval_v1.0",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "architecture": "arm64",
+    "macos": "14.2.1",
+    "system_site_packages": false,
+    "user_site_packages": false,
+    "verified_pinned_distributions": 104
+  },
+  "dependency_installation": {
+    "fresh_virtual_environment": true,
+    "system_site_packages": false,
+    "source": "PyPI",
+    "full_requirements": "requirements.txt",
+    "all_active_pins_verified": true,
+    "pip_check": "passed"
+  },
+  "verification": {
+    "current_tests": {
+      "passed": 357,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 34.67
+    },
+    "historical_tests": {
+      "passed": 336,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 28.05
+    },
+    "datasets": [
+      {
+        "file": "data/W01_Evaluation_Dataset_v1.jsonl",
+        "profile": "release",
+        "cases": 100,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "file": "data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
+        "profile": "pilot",
+        "cases": 12,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "file": "data/W01_Evaluation_Dataset_v2.jsonl",
+        "profile": "release",
+        "cases": 200,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "file": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+        "profile": "pilot",
+        "cases": 12,
+        "errors": 0,
+        "warnings": 0
+      }
+    ],
+    "rebuilds": {
+      "datasets_and_pilots": "byte_identical",
+      "manifests": "byte_identical",
+      "compared_files": 8
+    },
+    "exact_replay": {
+      "rag": {
+        "status": "exact_replay",
+        "cases": 100
+      },
+      "extended": {
+        "status": "exact_replay",
+        "cases": 200
+      },
+      "amendment": {
+        "status": "exact_replay",
+        "baseline_exact_replay": true,
+        "generation_inputs_unchanged": true,
+        "other_per_case_metrics_unchanged": true,
+        "new_generation_attempts": 0,
+        "audited_new_rag_cases": 55,
+        "amended_cases": 17,
+        "review_status": "approved"
+      },
+      "analysis": {
+        "status": "exact_replay",
+        "probes": 10
+      }
+    },
+    "report_evidence_freshness": "passed",
+    "notebooks": [
+      {
+        "file": "notebooks/rag_evaluation.ipynb",
+        "executed_code_cells": 11,
+        "errors": 0
+      },
+      {
+        "file": "notebooks/extended_evaluation.ipynb",
+        "executed_code_cells": 12,
+        "errors": 0
+      }
+    ],
+    "kernel_binding": {
+      "invoking_interpreter": "passed",
+      "inline_figure_output": "passed",
+      "global_jupyter_settings_modified": false
+    },
+    "public_boundary": {
+      "status": "passed",
+      "workstation_or_private_file_references": 0,
+      "secret_pattern_findings": 0,
+      "explicit_assistant_attribution": 0,
+      "nested_office_and_historical_archive_scanned": true,
+      "public_markdown_source_urls_checked": 16,
+      "public_url_http_200_count": 16,
+      "candidate_files_scanned": 187
+    },
+    "document_artifacts": {
+      "font_and_omitted_author_metadata_checks": 9,
+      "technical_report_pdf_pages": 6,
+      "capstone_pdf_pages": 10,
+      "pdf_fonts_embedded": true,
+      "native_powerpoint_application_test": false,
+      "reviewed_binary_deliverable_hashes_unchanged": true,
+      "reviewed_scientific_text_unchanged": true
+    },
+    "notebook_output_parity": {
+      "sources": "identical",
+      "all_saved_outputs": "identical",
+      "inline_figures": 5
+    },
+    "staged_candidate_checkout": {
+      "method": "Fresh public repository clone at the recorded base; materialize staged candidate files without creating a commit.",
+      "base_commit": "e701bc57f568c293d922a1921c60d46def7a6a74",
+      "current_tests_passed": 357,
+      "kernel_interpreter_and_inline_output": "passed",
+      "exact_replay": "passed",
+      "report_evidence": "passed",
+      "current_tests_seconds": 34.67
+    },
+    "markdown_whitespace": "passed",
+    "report_source_regeneration": "LaTeX is byte-identical after terminal Markdown whitespace normalization.",
+    "frozen_canonical_file_hashes_verified": 99
+  },
+  "preservation": {
+    "original_datasets_and_manifests": "unchanged",
+    "raw_model_outputs_and_scores": "unchanged",
+    "thresholds_and_aliases": "unchanged",
+    "recorded_source_identities": "preserved",
+    "new_model_inference_attempts": 0
+  },
+  "changes_during_audit": [
+    "Bind both notebook executors to the invoking interpreter and inline plotting backend.",
+    "Ignore Office lock files and mark PDF/PowerPoint/workbook formats as Git binary.",
+    "Prepare release notes and current audit documentation.",
+    "Normalize Markdown whitespace and refresh derived builder fingerprints; scientific text and exported document bytes stay unchanged."
+  ],
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "tag_created": false,
+    "github_release_published": false,
+    "published_tag_clone_verified": false
+  },
+  "remaining": [
+    "Approval before commit and push.",
+    "Publish the commit, tag and GitHub release; verify a new clone of the published tag.",
+    "Rehearse and deliver the final readout; obtain the mentor-signed rubric."
+  ],
+  "candidate_files": {
+    "count": 187,
+    "payload_count_excluding_this_report": 186,
+    "payload_inventory_sha256": "9ffda5d685f95e9c5d5b0ab60c7d35e7db10cf769fce18fa1d020e313efa43a6",
+    "digest_definition": "SHA-256 of sorted UTF-8 entries: <file sha256>  <repository-relative path> followed by newline; excludes validation/release_candidate.json to avoid self-reference."
+  }
+}

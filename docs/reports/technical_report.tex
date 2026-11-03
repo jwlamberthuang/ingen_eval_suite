@@ -1,0 +1,281 @@
+% !TeX program = xelatex
+% Self-contained AMS article: bibliography, mathematical definitions and tables.
+% Compile twice to resolve the contents, citations and cross-references.
+\documentclass{amsart}
+\usepackage{amssymb}
+\usepackage[letterpaper,margin=1in,heightrounded]{geometry}
+\usepackage{fontspec}
+% Keep the class's standard Computer Modern-style text and mathematics.
+% fontspec is needed only for the Chinese quotation font.
+\IfFontExistsTF{Songti SC}{\newfontfamily\songti{Songti SC}}
+  {\newfontfamily\songti{FandolSong-Regular.otf}}
+\newcommand{\zh}[1]{{\songti\XeTeXlinebreaklocale "zh"\relax #1}}
+\usepackage{booktabs,tabularx,array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{url}
+\usepackage[unicode,bookmarksnumbered=true,colorlinks=true,
+  linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{pdftitle={Technical evaluation of bilingual dialogue and structured reasoning},
+  pdfauthor={},pdfsubject={Bilingual dialogue and structured reasoning evaluation}}
+\newtheorem{thm}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{exmp}{Example}[section]
+\newtheorem{rem}{Remark}[section]
+% Independent environment names preserve correct autoref labels while sharing
+% the sequence of statements and equations, as in an AMS REU article.
+\makeatletter
+\let\c@defn\c@thm
+\let\c@exmp\c@thm
+\let\c@rem\c@thm
+\let\c@equation\c@thm
+\numberwithin{equation}{section}
+\makeatother
+\newcommand{\defnautorefname}{Definition}
+\newcommand{\exmpautorefname}{Example}
+\newcommand{\remautorefname}{Remark}
+\let\fullref\autoref
+\newcommand{\scorecell}[3]{\shortstack{$#1\pm#2$\\[-1pt]{\scriptsize #3}}}
+\newcommand{\NAAA}{\textnormal{N/A}}
+\setlength{\emergencystretch}{1.5em}
+\title[Bilingual dialogue and structured reasoning evaluation]
+  {Technical evaluation of bilingual dialogue and structured reasoning}
+\date{2 November 2026}
+\begin{document}
+\raggedbottom
+
+\begin{abstract}
+This study develops a reproducible evaluation suite for bilingual companion and educational dialogue and three structured reasoning capabilities: spatial and temporal understanding, entity recognition and classification, and explicit-goal alignment. A reviewed 200-case collection combines 100 historical dialogue cases with 100 additions, separating 20 new calibration cases from 80 new held-out cases. A pinned, quantized Qwen2.5-7B-Instruct baseline is evaluated with reference-based context recall, an embedding faithfulness proxy, semantic relevance, and strict structured-task metrics. The new held-out results show exact task success of 7/8 spatial, 4/4 temporal, 7/12 entity, and 3/12 planning cases. Assisted faithfulness averages 0.9050 over 43 defined RAG cases, yet all ten deliberately flawed fixed probes receive a perfect proxy score. Every raw claim proposal fails its strict output contract. A separately approved annotation correction yields context recall of 0.7442 over 43 defined held-out cases without changing generated answers. These findings motivate explicit coverage reporting, authority-aware support assessment, and prospective output and matching improvements. Exact offline replay establishes computational reproducibility while exposing substantive limits in measurement validity.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+Grounded dialogue must use the supplied evidence, address the user's question, and respond appropriately when information is missing or contradictory. A robot interaction also raises questions about spatial relationships, temporal ordering, entity identity and requested actions. A single similarity score cannot establish all of these properties.
+
+The suite evaluates text tasks in Fari companion and Senpai educational settings. The framework in the public suite \cite{suite} maps the assigned GRPO, STUM, SEOM and HTD-IRL capability labels to observable evaluation objectives. These are task proxies: the study has no access to internal InGen models and does not measure perception, robot actuation or audio delivery. The public source register distinguishes public product descriptions from assigned capability terminology. AMDC and CRL-MRS remain future evaluation areas.
+
+The contribution is a reviewed bilingual collection, explicit metric contracts, controlled model inputs, tested scoring, and retained artifacts that expose both model failures and failures of the measurement approximation. The initial RAG study supplies historical evidence; the extended study supplies the primary new cohort.
+
+\section{Methodology}\label{sec:methodology}
+\subsection{Data and experimental boundaries}
+The reviewed collection contains 130 English and 70 Chinese cases: 155 RAG, 10 spatial, 5 temporal, 15 entity and 15 goal-alignment tasks. Cases contain queries, supplied evidence, hidden references, scenario families and subsets. Fictional contexts are self-contained; public facts have citations. New evidence uses explicit names or user references. Native Chinese authorship or substantive native reworking and review were confirmed. This review is distinct from independent assessment of generated responses.
+
+The 100 historical cases retain their original subsets. The 100 additions have 20 calibration and 80 new held-out cases (44 RAG, 36 structured). Families and input allowlists were frozen before generation. The collections overlap. Models see queries, evidence and permitted metadata, not expected answers, support labels, hidden graphs or goal references. The protocol and specification provide full contracts.
+
+\subsection{Models and protocol}
+The pinned four-bit Qwen2.5-7B-Instruct conversion \cite{qwen} uses MLX \cite{mlx}, temperature zero, seed 17, 512 output tokens and a 4096-token input limit. Multilingual-e5-base \cite{e5} embeds text on CPU. The same generator proposes claims. The support threshold transfers unchanged at 0.80 from initial calibration; sparse negative labels limit cross-language validity. Revisions, prompts, runtime and attempts remain in the run manifest. No tuning uses held-out results.
+
+\subsection{Formal metric specifications}
+\begin{defn}[Reference context recall]\label{def:recall}
+Let $F$ be the required-fact inventory, let $C$ denote the supplied context,
+and let $S(f,C)\in\{0,1\}$ indicate reviewed support for $f$. For $F\ne\varnothing$,
+\begin{equation}\label{eq:recall}
+  \mathrm{CR}(F,C)=\frac{1}{|F|}\sum_{f\in F}S(f,C).
+\end{equation}
+An empty $F$ is \NAAA. The approved annotation revision changes 17 inventories
+after inspection without changing model inputs or other metrics; it is a
+post-inspection diagnostic, not fresh held-out evidence.
+\end{defn}
+\begin{defn}[Faithfulness proxy]\label{def:faithfulness}
+Let $A$ be the inspected atomic claims and $C_{\rm seg}$ the segmented evidence.
+Let $E_q$ and $E_p$ use the E5 query and passage prefixes. For nonempty $A$ and
+$C_{\rm seg}$, define
+\begin{equation}\label{eq:faithfulness}
+ \widehat{\mathrm{Faith}}(A,C)=\frac{1}{|A|}\sum_{a\in A}
+ \mathbf{1}\!\left\{\max_{c\in C_{\rm seg}}
+ \cos\bigl(E_q(a),E_p(c)\bigr)\geq0.80\right\}.
+\end{equation}
+Empty evidence gives zero claim credit. Appropriate claim-free responses are
+\NAAA. This approximation to factual support~\cite{ragas} does not prove entailment.
+\end{defn}
+\begin{defn}[Semantic relevance]\label{def:relevance}
+For query $q$ and response $r$ with valid nonzero embeddings,
+\begin{equation}\label{eq:relevance}
+ \mathrm{SR}(q,r)=
+ \frac{\langle E_q(q),E_q(r)\rangle}
+ {\|E_q(q)\|_2\,\|E_q(r)\|_2}\in[-1,1].
+\end{equation}
+Invalid vectors and over-limit inputs are scorer errors. Lexical reference
+recall is supplementary and wording-sensitive.
+\end{defn}
+Spatial accuracy indicates an exact relation match. Temporal pair accuracy is
+correct/requested pairs; coherence multiplies it by binary consistency against
+contradictions or cycles. Entity recall and class accuracy divide correct
+identities and correctly classified identities by the gold count; precision
+divides matches by predictions. Goal coverage is $M/G$ and precision $M/P$ for
+maximum one-to-one matches $M$, gold goals $G$ and predictions $P$, with
+precedence constraints and frozen aliases.
+
+Means and population standard deviations use defined values ($\mathrm{ddof}=0$).
+\NAAA\ and errors retain counts. Malformed structured outputs have null core
+metrics and task success zero; valid empty inventories follow explicit denominator
+rules. Exact success and parse coverage accompany conditional means. No composite
+score combines capabilities. Saved-vector replay verifies recorded computations
+independently of fresh inference.
+
+\section{Results}\label{sec:results}
+\subsection{New held-out RAG measurements}
+\autoref{tab:rag} reports the new held-out RAG measurements.
+
+\begin{table}[htbp]
+\centering\small
+
+\caption{Core RAG results for the new held-out cohort.}
+\label{tab:rag}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrccc@{}}
+\toprule
+\textbf{Measurement} & \textbf{Mean} & \textbf{SD} & \textbf{Defined / eligible} & \textbf{N/A} & \textbf{Errors} \\
+\midrule
+Context recall, annotation v2.0.1 & 0.7442 & 0.4363 & 43/44 & 1 & 0 \\
+Inspected-claim faithfulness proxy & 0.9050 & 0.2085 & 43/44 & 1 & 0 \\
+Semantic relevance & 0.8922 & 0.0369 & 44/44 & 0 & 0 \\
+Lexical reference recall & 0.4386 & 0.2137 & 44/44 & 0 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The recall diagnostic gives 0.8182 \(\pm\) 0.2405 on 11 new calibration cases (9/11) and 0.7442 \(\pm\) 0.4363 on 43 defined held-out cases (32/43). The original fact inventories yielded mean 1.0000 \(\pm\) 0.0000 for all 11 and 44 respective cases; supported descriptions of missingness could receive full recall despite unavailable requested information. The amended inventory makes that distinction visible and makes one held-out ambiguous-speaker case N/A. Original annotations and scores remain available beside the amendment.
+
+\subsection{New held-out structured tasks}
+\autoref{tab:structured} summarizes structured-task success and metric coverage.
+
+\begin{table}[htbp]
+\centering\small
+
+\caption{Structured tasks retain invalid outputs in the eligible denominator.}
+\label{tab:structured}
+\begin{tabularx}{\linewidth}{@{}p{.12\linewidth}c>{\raggedright\arraybackslash}p{.20\linewidth}X@{}}
+\toprule
+\textbf{Task} & \textbf{Valid / eligible} & \textbf{Exact success: n/N; mean \(\pm\) SD} & \textbf{Core mean \(\pm\) population SD (defined count)} \\
+\midrule
+Spatial & 8/8 & \shortstack{7/8\\0.8750 \(\pm\) 0.3307} & Accuracy 0.8750 \(\pm\) 0.3307 (8) \\
+Temporal & 4/4 & \shortstack{4/4\\1.0000 \(\pm\) 0.0000} & Pair accuracy, consistency, coherence each 1.0000 \(\pm\) 0.0000 (4) \\
+Entity & 12/12 & \shortstack{7/12\\0.5833 \(\pm\) 0.4930} & Recall 0.8125 \(\pm\) 0.2724 (12); class accuracy 0.7708 \(\pm\) 0.2787 (12); precision 1.0000 \(\pm\) 0.0000 (12) \\
+Goal planning & 7/12 & \shortstack{3/12\\0.2500 \(\pm\) 0.4330} & Coverage 0.8611 \(\pm\) 0.2022 (6); precision 0.6905 \(\pm\) 0.3384 (7) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+Five malformed held-out plans have undefined core metrics and zero task success. One valid no-goal reference has undefined coverage; an extra prediction gives precision zero. Conditional planning coverage therefore does not summarize end-to-end planning success. Four successful temporal cases are too few for a strong generalization claim.
+
+\subsection{Domain and difficulty results}
+\autoref{tab:subgroups} gives the domain, difficulty and language breakdowns.
+
+\begin{table}[htbp]
+\centering\small
+\renewcommand{\arraystretch}{1.28}
+\caption{New held-out RAG subgroups. Each metric cell is mean \(\pm\) population SD, followed by defined/eligible count. Context recall uses annotation v2.0.1.}
+\label{tab:subgroups}
+\begin{tabularx}{\linewidth}{@{}p{.18\linewidth}*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+\textbf{Group} & \textbf{Context recall} & \textbf{Faithfulness proxy} & \textbf{Semantic relevance} \\
+\midrule
+Fari EN & \scorecell{0.7059}{0.4556}{17/18} & \scorecell{0.8056}{0.2792}{18/18} & \scorecell{0.8690}{0.0311}{18/18} \\
+Fari ZH & \scorecell{0.7778}{0.4157}{9/9} & \scorecell{1.0000}{0.0000}{9/9} & \scorecell{0.9260}{0.0160}{9/9} \\
+Senpai EN & \scorecell{0.7000}{0.4583}{10/10} & \scorecell{0.9352}{0.1228}{9/10} & \scorecell{0.8808}{0.0319}{10/10} \\
+Senpai ZH & \scorecell{0.8571}{0.3499}{7/7} & \scorecell{1.0000}{0.0000}{7/7} & \scorecell{0.9246}{0.0142}{7/7} \\
+Tier: Easy & \scorecell{1.0000}{0.0000}{1/1} & \scorecell{1.0000}{0.0000}{1/1} & \scorecell{0.9065}{0.0000}{1/1} \\
+Tier: Medium & \scorecell{1.0000}{0.0000}{17/17} & \scorecell{0.9167}{0.1566}{17/17} & \scorecell{0.8886}{0.0455}{17/17} \\
+Tier: Hard & \scorecell{0.5600}{0.4964}{25/26} & \scorecell{0.8933}{0.2398}{25/26} & \scorecell{0.8939}{0.0305}{26/26} \\
+Language: English & \scorecell{0.7037}{0.4566}{27/28} & \scorecell{0.8488}{0.2464}{27/28} & \scorecell{0.8732}{0.0319}{28/28} \\
+Language: Chinese & \scorecell{0.8125}{0.3903}{16/16} & \scorecell{1.0000}{0.0000}{16/16} & \scorecell{0.9254}{0.0153}{16/16} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The domain, tier and language tables retain small group sizes and all denominators. English and Chinese scenarios are authored natively rather than matched translations. Descriptive language differences cannot isolate a causal language effect. Differences from the earlier baseline also mix changed scenario composition, input transport and claim inspection; they do not establish model improvement.
+
+Hard cases have amended recall 0.5600 \(\pm\) 0.4964 (25/26 defined), while the single easy case and 17 medium cases have recall 1.0000 \(\pm\) 0.0000. The easy stratum supports no broad estimate. All 16 Chinese RAG examples receive proxy faithfulness 1.0000 \(\pm\) 0.0000; this is compatible with the measurement failures below and cannot certify answer correctness.
+
+For historical context, the initial RAG experiment's 80 held-out cases have recall 0.9286 \(\pm\) 0.2379 (77 defined), faithfulness proxy 0.9602 \(\pm\) 0.1224 (80), and relevance 0.8852 \(\pm\) 0.0380 (80). These are descriptive earlier-run results, not an independent comparison or evidence of model improvement.
+
+\section{Error analysis}\label{sec:error-analysis}
+The initial 100-case RAG inspection flagged context utilization in 8/100 cases (8\%), hallucination in 3/100 (3\%), cross-language failure in 1/100 (1\%), difficulty-tier calibration checks in 2/100 (2\%), and no out-of-domain failure. These overlapping flags describe the earlier run; they are separate from the new held-out cohort below. Difficulty flags concern dataset calibration as well as model behavior.
+
+All 200 response attempts returned nonempty outputs. Raw extraction completed 155 attempts, but 0/155 satisfied the strict claims-object contract: 153 bare arrays and two malformed JSON proposals remain recorded as scorer errors. The separate inspection contains 155 corrections: 70 transport normalizations and 85 content/scope changes. Two inspected responses are claim-free. Reported faithfulness is consequently an assisted diagnostic, not a fully automatic result.
+
+Technical inspection of 44 new held-out RAG responses assigns 29 meets-reference, 10 partial and five fails-reference verdicts. This is a technical inspection, not independent human accuracy. Categories overlap: prompt injection and speaker role confusion each appear in 4/44 cases (9.1\%), reasoning error in 3/44 (6.8\%); other categories and their exact counts are in the failure tables. These counts must not be summed as mutually exclusive failures.
+
+Of 36 new held-out structured cases, 15 lack exact success. \autoref{tab:failures} assigns one inspection category to each such case. Fractions use all 36 eligible structured cases, including successes. The two alias cases retain strict scores despite legitimate unlisted paraphrases; they are matcher limitations rather than demonstrated model intent failures.
+
+\begin{table}[htbp]
+\centering\small
+
+\caption{Exclusive structured inspection categories in the new held-out cohort.}
+\label{tab:failures}
+\begin{tabularx}{\linewidth}{@{}Xcc@{}}
+\toprule
+\textbf{Category} & \textbf{Cases / 36} & \textbf{Fraction} \\
+\midrule
+Output format & 5/36 & 13.9\% \\
+Missing entity & 4/36 & 11.1\% \\
+Frozen alias limitation & 2/36 & 5.6\% \\
+Extra goal & 2/36 & 5.6\% \\
+Class error & 1/36 & 2.8\% \\
+Conflict resolution & 1/36 & 2.8\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+The measurement counterexamples are consequential. All ten prewritten flawed candidates receive faithfulness proxy 1.0 despite ideal supported-claim fractions of zero or one half. They are fixed probes, not model generations. In case 0170, permission to take a tablet is similar to evidence about a prohibition; in 0103, a wrong seven-star assertion can match an untrusted quoted instruction despite trusted arithmetic giving twenty. These examples expose missing authority, negation and quantity reasoning in cosine similarity. Original model outputs, probe texts and inspected explanations remain accessible in the extended report.
+
+\begin{exmp}[Entity binding in a Chinese response]\label{ex:identity}
+The Chinese case w03-rag-fari-zh-0171-base makes the identity error explicit. Trusted context states “\zh{钥匙是给陈阿姨留的，包裹才是给王阿姨的。}” and locates the key at the service desk. The actual model response is “\zh{那把钥匙是给王阿姨留的，放在服务台。}” The recipient is wrong while the location is right. The separately prewritten two-claim probe has ideal support 1/2 but proxy score 1.0. Similar topic and wording do not preserve entity binding.
+\end{exmp}
+\section{Discussion}\label{sec:discussion}
+Three prospective improvements follow from the retained evidence:
+
+\begin{enumerate}
+\item \textbf{Validate evidence support against bilingual negative labels.} Build reviewed authority, contradiction, quantity, negation and entity-binding judgments before a new calibration. Compare the current proxy with a proposed support method on false-positive rate, balanced accuracy and per-language coverage. Freeze the method on calibration and evaluate untouched families; do not optimize a mean similarity score on the inspected held-out cases.
+\item \textbf{Improve the claims output contract and measure correspondence separately.} Evaluate constrained structured extraction or explicit transport normalization in a new version. Report raw parse coverage, omitted/duplicated assertions, correspondence errors and assisted versus automatic scoring. The baseline is 0/155 strict contract success; a future pipeline must preserve raw attempts and distinguish formatting improvements from faithful claim extraction.
+\item \textbf{Separate structured output reliability from reference matching.} Test schema enforcement, entity completeness and goal precision, and review bilingual alias coverage before freezing a new version. Report exact success over every eligible case, parsing coverage, conditional metric means and alias disagreement counts. The current 3/12 planning exact success and two retained alias limitations define concrete targets for a prospective comparison without rewriting the baseline.
+\end{enumerate}
+The study has one quantized public model, small structured groups, constructed scenarios, sparse negative calibration labels and non-independent technical inspection. Saved-score replay establishes reproducibility of computations, not construct validity. Future AMDC and CRL-MRS work needs its own observable task contract and data specification before implementation. Audio, sensing and physical execution require separate experiments and evidence.
+
+\section{Conclusion}\label{sec:conclusion}
+The suite provides an auditable bilingual dataset, manually verified metric implementations and exact replay across a project-oriented repository layout. The strongest findings concern measurement: high embedding support scores can accept false or unauthorized assertions, and conditional planning coverage can hide malformed outputs and extra goals. Coverage, explicit denominators, separate failure inspection and retained raw artifacts make these limits visible. The next evaluation cycle should validate support judgments and output contracts prospectively on new scenario families while preserving the recorded baseline.
+
+\section{Reproducibility}\label{sec:reproducibility}
+\subsection{Artifact and source identities}
+\autoref{tab:artifacts} indexes the retained evidence and reproducibility artifacts.
+
+\begin{table}[htbp]
+\centering\small
+
+\caption{Repository-relative paths identify the report's evidence. They require no private files.}
+\label{tab:artifacts}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.33\linewidth}X@{}}
+\toprule
+\textbf{Evidence} & \textbf{Repository path} \\
+\midrule
+Complete numeric tables and input hashes & \nolinkurl{docs/reports/evidence/summary.json} \\
+Protocol and task definitions & \nolinkurl{docs/methodology/evaluation_protocol.md} \\
+Dataset and approved release manifest & \nolinkurl{data/W01_Evaluation_Dataset_v2.jsonl} and matching \nolinkurl{.manifest.json} \\
+Actual model responses and inspections & \nolinkurl{results/extended_baseline/} \\
+Approved annotation-only diagnostic & \nolinkurl{results/context_recall_v2.0.1/} \\
+Exact historical source and layout identities & \nolinkurl{reproducibility/layout_manifest.json} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+Generator revision: \mbox{c26a38f6}\allowbreak\mbox{a37d0a51}\allowbreak\mbox{b4e9a1eb}\allowbreak\mbox{3026530f}\allowbreak\mbox{a35d9fed}; embedding revision: \mbox{d1287505}\allowbreak\mbox{97153bb5}\allowbreak\mbox{987e10b1}\allowbreak\mbox{c3493a34}\allowbreak\mbox{e5a4502a}. Full prompts, settings, raw attempts and source fingerprints remain in the recorded run. Historical source paths resolve through the verified layout migration; experiment identities were not resealed.
+
+From the repository root, run \nolinkurl{python}\ \nolinkurl{scripts/evaluation/replay.py}\ \nolinkurl{all} to recompute the RAG and extended scores, approved amendment and fixed probes without downloads or new inference. Run \nolinkurl{python}\ \nolinkurl{scripts/reporting/build_report_evidence.py}\ \nolinkurl{--check} to verify the report's derived tables against retained inputs. Setup and pinned dependencies are documented in \nolinkurl{docs/reproducibility.md}.
+
+Replay proves that saved computations reproduce. It does not establish identical fresh generations across hardware, logical entailment from embedding similarity, or independent human agreement. The recorded data and inspection status govern interpretation of every table.
+
+\begin{thebibliography}{9}
+\bibitem{suite} \emph{ingen\_eval\_suite}.
+\href{https://github.com/jwlamberthuang/ingen_eval_suite}{Public evaluation repository}.
+The repository-relative paths in \autoref{tab:artifacts} identify the retained evidence.
+\bibitem{qwen} Qwen team, \href{https://huggingface.co/Qwen/Qwen2.5-7B-Instruct}
+{Qwen2.5 7B Instruct model card}; MLX Community,
+\href{https://huggingface.co/mlx-community/Qwen2.5-7B-Instruct-4bit}{four-bit conversion}.
+The study evaluates the pinned conversion, not all parent-model configurations.
+\bibitem{e5} intfloat, \href{https://huggingface.co/intfloat/multilingual-e5-base}
+{Multilingual E5 base model card}. Embedding prefixes, pooling, token limits and interpretation.
+\bibitem{ragas} Ragas, \href{https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/}
+{context recall} and \href{https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/}
+{faithfulness}. Claim-support definitions provide methodological context; the
+suite's cosine proxy is a distinct implementation.
+\bibitem{mlx} MLX team, \href{https://github.com/ml-explore/mlx-lm}{MLX LM}.
+Runtime for the recorded quantized inference.
+\end{thebibliography}
+
+\end{document}

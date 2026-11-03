@@ -39,7 +39,7 @@ Every record has nine required fields: `id`, `domain`, `language`, `difficulty`,
 `query`, `context`, `ideal_response`, `evaluation_labels`, and `construction_notes`.
 Optional `input_metadata` supplies dialogue history and learner profiles. Senpai
 records include a learner level and learning objective. The
-[specification](../docs/dataset_specification.md) defines operational tier rules,
+[specification](../docs/datasets/dialogue_specification.md) defines operational tier rules,
 expected behavior, evidence support, edge tags, and annotation fields. The
 [JSON Schema](../schemas/w01_dialogue_case.schema.json) is version 1.1.0.
 
@@ -69,7 +69,7 @@ resurfacing closure. Sources and substantive factual labels are unchanged.
 
 People, schedules, class policies, and contact details in original scenarios are
 fictional. Cultural passages have public citations in each record and the
-[source register](../docs/public_sources.md). Hidden canonical facts support
+[source register](../docs/references/public_sources.md). Hidden canonical facts support
 missing-evidence tests but must not be supplied to the model under test.
 
 Validate from the repository root:
@@ -83,5 +83,5 @@ Validate from the repository root:
 Validation rejects malformed records, stale hashes, broken evidence/source
 references, unreviewed releases, and family leakage; it cannot establish truth or
 authorship by itself. Manifests record hashes and review scope. See the
-[framework](../docs/evaluation_framework.md) for metrics, applicability,
+[framework](../docs/methodology/evaluation_framework.md) for metrics, applicability,
 calibration, model input boundaries, and reporting.

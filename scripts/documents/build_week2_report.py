@@ -17,7 +17,7 @@ NAMES = {"context_recall": "Context recall", "faithfulness_proxy": "Faithfulness
 
 def build_report():
     """Generate editable sources, Markdown, and Word using actual recorded values."""
-    config = json.loads((ROOT/"configs/week-02.json").read_text())
+    config = json.loads((ROOT/"configs/rag_baseline.json").read_text())
     output = ROOT/config["output"]
     scores = json.loads((output/"scores.json").read_text())
     manifest = json.loads((output/"run_manifest.json").read_text())
@@ -75,7 +75,7 @@ def build_report():
          "families. Related examples and the twelve-case pilot stay in calibration.")
     text("The dataset/schema hash issue was repaired before execution. All reviewed queries, contexts, ideal "
          "responses, permitted input metadata, IDs, language/domain labels, and tiers are unchanged. Both release "
-         "and pilot validation have zero errors and warnings. The [validation update](validation_update.md) records "
+         "and pilot validation have zero errors and warnings. The [validation update](../reviews/rag_validation.md) records "
          "the current hashes and repair method.")
     table("Table 1 Execution configuration", ["Component", "Recorded setting"], [
         ["Generation", "Qwen2.5 7B Instruct, four-bit MLX conversion"],
@@ -211,9 +211,9 @@ def build_report():
          "scoring and sign-off are pending in the midpoint review sheet; later capability extensions remain STUM, "
          "SEOM, and HTD-IRL.")
     heading("Reproduction and references")
-    text("The [executed notebook](../../notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb), "
+    text("The [executed notebook](../../notebooks/rag_evaluation.ipynb), "
          "[metric module](../../src/evaluator.py), [metric tests](../../tests/test_evaluator.py), "
-         "[methodology](metric_methodology.md), and [run manifest](../../results/week-02/baseline/run_manifest.json) "
+         "[methodology](../methodology/rag_metrics.md), and [run manifest](../../results/rag_baseline/run_manifest.json) "
          "provide the reproduction entry points. The run folder contains exact responses, raw and inspected "
          "claims, calibration decisions, vectors, scores, and technical review evidence.")
     text("Public implementation references: [Qwen four-bit checkpoint](https://huggingface.co/mlx-community/Qwen2.5-7B-Instruct-4bit), "
@@ -222,9 +222,9 @@ def build_report():
          "[context recall definition](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/context_recall/), "
          "and [faithfulness definition](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/).")
 
-    directory = ROOT/"docs/week-02"
+    directory = ROOT/"docs/reports"
     directory.mkdir(parents=True,exist_ok=True)
-    source = directory/"sources/W02_RAG_Evaluation_Results.json"
+    source = ROOT/"docs/sources/rag_baseline.json"
     source.parent.mkdir(parents=True,exist_ok=True)
     payload = {"title":"Week 2 RAG Evaluation Results", "subject":"Measured bilingual fixed-context baseline and failure analysis",
                "author":"", "version":"1.0.0", "formatting":{"font":"Times New Roman","body_size_points":12},"blocks":blocks}
@@ -238,8 +238,8 @@ def build_report():
         elif kind=='list':lines.append('\n'.join(f"{i}. {item}" for i,item in enumerate(block['items'],1)))
         elif kind=='table':
             lines.append('**'+block['caption']+'**\n\n'+'| '+' | '.join(block['headers'])+' |\n| '+' | '.join('---' for _ in block['headers'])+' |\n'+'\n'.join('| '+' | '.join(str(v).replace('\n','; ') for v in row)+' |' for row in block['rows']))
-    (directory/"W02_RAG_Evaluation_Results.md").write_text('\n\n'.join(lines)+'\n')
-    build(source, directory/"W02_RAG_Evaluation_Results.docx")
+    (directory/"rag_baseline.md").write_text('\n\n'.join(lines)+'\n')
+    build(source, directory/"rag_baseline.docx")
 
 
 if __name__ == "__main__":

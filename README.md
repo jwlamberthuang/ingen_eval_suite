@@ -1,272 +1,97 @@
 # ingen_eval_suite
 
-A bilingual evaluation suite for grounded Fari companion dialogue and Senpai
-educational dialogue. Week 1 provides a reproducible evaluation design, a
-versioned annotation contract, and 100 reviewed English/Chinese cases. Week 2
-adds implemented metrics, an executed notebook, a measured local baseline, and
-failure analysis with replayable artifacts.
-Week 3 adds spatial/temporal, entity, and explicit-goal metrics, an approved
-200-case collection, a formal protocol, and a recorded extended baseline with
-an executed notebook and reflection. Results explicitly retain extraction
-failures and support-proxy limitations. A separately versioned context-recall
-annotation correction is approved after intern review of all 17 changes.
+A reproducible English/Chinese evaluation suite for grounded companion and
+educational dialogue, spatial/temporal reasoning, entity recognition, and
+explicit-goal planning. It includes reviewed datasets, tested metrics, controlled
+model inputs, recorded public-model baselines, and offline score replay.
 
-## Review by week
+The experiments use Qwen2.5-7B-Instruct and multilingual-e5-base as public task
+proxies. They do not establish performance of internal InGen models or physical
+robots. Results retain malformed outputs, inspected claim corrections, and known
+limits of embedding-based support judgments.
 
-| Week | Review package |
+## Start here
+
+| Goal | Entry point |
 | --- | --- |
-| 1 | [Framework, specification, dataset, pilot, and reflection](deliverables/week-01/README.md) |
-| 2 | [Metrics, executed notebook, results report, validation, and failure analysis](deliverables/week-02/README.md) |
-| 3 | [200-case release, protocol, executed notebook, results, tests, and reflection](deliverables/week-03/README.md) |
+| Read the technical evaluation report | [PDF](docs/technical_report.pdf) · [LaTeX](docs/reports/technical_report.tex) · [Word](docs/reports/technical_report.docx) · [Markdown](docs/reports/technical_report.md) |
+| Review the capstone presentation | [PDF](docs/presentation/W04_Capstone_Deck.pdf) · [Editable PowerPoint](docs/presentation/capstone.pptx) · [Slide guide](docs/presentation/README.md) |
+| Read the retrospective and methodological logs | [Reflections](docs/reflections/README.md) |
+| Review methods and public sources | [Documentation index](docs/README.md) |
+| Inspect the 100- and 200-case datasets | [Dataset guide](data/README.md) |
+| Explore recorded model behavior | [Executed notebooks](notebooks/README.md) |
+| Inspect results, reviews, and manifests | [Experiment results](results/README.md) |
+| Install, test, and replay | [Reproduction guide](docs/reproducibility.md) |
+| Prepare a new experiment | [Experiment workflow](docs/methodology/experiment_pipeline.md) |
+| Review release readiness | [Release notes](docs/release_notes.md) · [Release checklist](docs/release_checklist.md) |
 
-Each weekly entry page links the canonical artifacts for review. Shared software,
-datasets, and schemas remain in their documented project locations.
+## Current findings
 
-The recorded [Week 2 verification](deliverables/week-02/validation/tests.json)
-contains 102 passing checks, exact score replay, notebook execution, dataset
-validation, and Word document review. The current suite passes **336 tests**.
-The extended suite includes 76 metric,
-61 dataset/review, 53 adapter/pipeline, 35 annotation-correction, and additional analysis/artifact checks. See the
-[Week 3 verification summary](deliverables/week-03/validation/tests.json).
+The primary extended experiment evaluates **80 new held-out cases**, comprising
+44 RAG and 36 structured tasks. Twenty new calibration cases and 100 previously
+evaluated cases remain separate. This is one model baseline, not a model ranking.
 
-## Week 1 deliverables
+| New held-out measurement | Result | Interpretation |
+| --- | ---: | --- |
+| Context recall, approved annotation v2.0.1 | 0.7442; 43/44 defined | Post-inspection annotation-only diagnostic |
+| Inspected-claim faithfulness proxy | 0.9050; 43/44 defined | Assisted scoring; high similarity can accept false claims |
+| Semantic relevance | 0.8922; 44/44 defined | Query–response similarity, not correctness |
+| Spatial exact task success | 7/8 | 8/8 valid outputs |
+| Temporal exact task success | 4/4 | Small descriptive sample |
+| Entity exact task success | 7/12 | 12/12 valid outputs |
+| Goal-planning exact task success | 3/12 | 7/12 valid outputs; retain format failures |
 
-| Deliverable | Artifact |
-| --- | --- |
-| Evaluation framework | [Word](docs/W01_InGen_AI_Evaluation_Framework.docx) · [Markdown](docs/evaluation_framework.md) |
-| Dataset specification | [Word](docs/W01_Dataset_Specification.docx) · [Markdown](docs/dataset_specification.md) |
-| 100-case dataset v1 | [JSONL](data/W01_Evaluation_Dataset_v1.jsonl) · [Manifest](data/W01_Evaluation_Dataset_v1.manifest.json) |
-| Methodological reflection | [Week 1 log](weekly/Wk-01-Log.md) |
+All 155 raw claim proposals fail the strict object contract. Separate inspected
+corrections support the assisted diagnostic; they do not repair model answers.
+All ten deliberately flawed fixed probes receive proxy faithfulness 1.0. These
+probes are distinct from generated responses. Read the
+[extended results](docs/reports/extended_baseline.md) and
+[evidence tables](docs/reports/evidence_tables.md) for denominators, dispersion,
+subgroups, technical inspection, and limitations.
 
-The framework audits GRPO, STUM, SEOM, HTD-IRL, AMDC, and CRL-MRS. It defines
-context recall, faithfulness, semantic relevance, answer coverage, domain rubrics,
-model input boundaries, calibration, replay, and reporting. The primary dialogue
-scope is GRPO task evaluation; later hands-on extensions cover STUM, SEOM, and
-HTD-IRL. AMDC and CRL-MRS remain future work. Public product terminology and suite
-capability names are documented separately in the
-[source register](docs/public_sources.md).
+## Quick start
 
-## Dataset and current results
-
-| Domain | Easy | Medium | Hard | Total |
-| --- | ---: | ---: | ---: | ---: |
-| Fari English | 16 | 16 | 8 | 40 |
-| Fari Chinese | 8 | 8 | 4 | 20 |
-| Senpai English | 10 | 10 | 5 | 25 |
-| Senpai Chinese | 6 | 6 | 3 | 15 |
-| Total | 40 | 40 | 20 | 100 |
-
-Dataset v1 has 99 scenario families, 48 edge-tagged cases, 20 calibration cases,
-and 80 held-out cases. The [twelve-case pilot](data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl)
-is derived from the collection and remains in calibration. Its
-[manifest](data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json) identifies the
-source collection hash. Related examples stay in the same subset.
-
-For the frozen v1 collection, I reviewed every English and Chinese case and
-confirmed native authorship of all 35 Chinese cases. The reviewed dialogue is preserved verbatim;
-annotation checks and review limitations are documented in
-[dataset documentation](data/dataset_documentation.md).
-
-| Check | Current state |
-| --- | --- |
-| Release schema, counts, and annotation relationships | Valid |
-| Native Chinese authorship and language review | Recorded for all 35 Chinese cases |
-| Pilot synchronization and exact dataset rebuild | Verified |
-| Model generations and metric scores | 100 recorded responses; frozen scores and inspected failures in Week 2 |
-| Audio evaluation | Outside the current text experiment |
-
-The recorded local generation baseline is the four-bit MLX conversion of
-Qwen2.5-7B-Instruct, with multilingual-e5-base for embedding metrics. These are
-public task proxies. No result in
-this repository establishes performance of an unavailable InGen model or a
-physical robot.
-
-## Setup and reproduce dataset checks
-
-Use Python 3.12 and run from the repository root:
+Use Python 3.12 from the repository root:
 
 ```sh
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python scripts/datasets/validate_dataset.py data/W01_Evaluation_Dataset_v1.jsonl --profile release --manifest data/W01_Evaluation_Dataset_v1.manifest.json
-.venv/bin/python scripts/datasets/validate_dataset.py data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl --profile pilot --manifest data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json
 .venv/bin/python -m pytest -q
+.venv/bin/python scripts/evaluation/replay.py all
+.venv/bin/python scripts/reporting/build_report_evidence.py --check
 ```
 
-The suite tests data, maintenance tooling, core metric computations, input
-boundaries, experiment hashes, the executed notebook, and exact score replay.
-The metric/input module contains 41 tests, including at least three hand-computed
-examples per core metric. The `release` profile requires approved annotations,
-assigned subsets, and native Chinese author/review records. Validation cannot
-establish truth or actual authorship by itself.
+Saved-vector replay does not download models and does not require Apple GPU
+inference. Fresh generation uses the recorded Apple Silicon/MLX runtime; details
+and platform boundaries are in the [reproduction guide](docs/reproducibility.md).
 
-Reproduce both JSONL files and manifests in a fresh output directory:
+## Repository structure
 
-```sh
-.venv/bin/python scripts/datasets/build_dataset.py --output-dir build/reproduced
+```text
+configs/          Dataset policies and experiment configurations
+schemas/          Versioned dialogue, extended-task, and amendment contracts
+data/             Reviewed collections, pilots, annotations, and manifests
+src/              Core metrics, adapters, generation, scoring, and replay
+scripts/          Dataset maintenance, experiment, document, and report tools
+tests/            Manually verified metric cases and pipeline/artifact checks
+notebooks/        Executed RAG and extended-evaluation demonstrations
+results/          Named immutable baseline and annotation-diagnostic results
+docs/             Methods, specifications, reports, reviews, and reflections
+validation/       Recorded validation evidence
+reproducibility/  Verified layout map and deduplicated historical source snapshot
 ```
 
-The authoritative JSONL is copied byte for byte. The pilot is selected from it
-using [dataset_config.json](dataset_config.json). Existing output files are never
-overwritten by a preview build.
+The public layout is organized by purpose. Case IDs, schema identifiers, original
+run names, and some internal module names retain historical phase prefixes to
+preserve their identity. The [layout migration](reproducibility/README.md) maps
+original paths to canonical files and preserves exact historical sources. No
+recorded experiment identity, score, label, or model-visible input was resealed.
 
-After intentional master edits, refresh the derived pilot and manifests with:
-
-```sh
-.venv/bin/python scripts/datasets/build_dataset.py --refresh
-```
-
-Refresh preserves the master and refuses to discard direct pilot edits. A changed
-source hash invalidates the recorded release/review match; building grants no
-renewed approval. Version and review metadata must be updated only after the
-revised content is accepted.
-
-## Maintained tooling
-
-| File | Purpose |
-| --- | --- |
-| [Schema](schemas/w01_dialogue_case.schema.json) | Record contract 1.1.0 |
-| [build_dataset.py](scripts/datasets/build_dataset.py) | Validate master and derive pilot/manifests |
-| [update_dataset.py](scripts/datasets/update_dataset.py) | Guarded content edits to a separate preview |
-| [validate_dataset.py](scripts/datasets/validate_dataset.py) | Structure, evidence, family, coverage, release, and hash checks |
-| [dataset_io.py](scripts/datasets/dataset_io.py) | Serialization and manifest support |
-| [Validation tests](tests/test_dataset_validation.py) | Known contract acceptance/rejection cases |
-| [Workflow tests](tests/test_dataset_workflow.py) | Edit protection, synchronization, rebuild, and release safeguards |
-| [Publication tests](tests/test_public_artifacts.py) | Public document links and publication boundary |
-| [build_docx.py](scripts/documents/build_docx.py) | Word deliverables from tracked document sources |
-| [set_bilingual_fonts.py](scripts/documents/set_bilingual_fonts.py) | Times New Roman for English; Songti SC for Chinese |
-| [requirements.txt](requirements.txt) | Complete Week 1 and Week 2 setup |
-| [requirements-validation.txt](requirements-validation.txt) | Pinned validation/test packages |
-| [requirements-documents.txt](requirements-documents.txt) | Pinned Word tooling packages |
-| [.gitignore](.gitignore) | Environments, caches, reports, and scratch outputs |
-
-The updater accepts a JSON object with `base_dataset_sha256` and an `edits` array.
-Each edit names a case `id` and `changes` containing `path`, `before`, and `after`.
-For example, a query edit uses `/query`. It rejects stale hashes/values, duplicate
-edits, unknown cases, and attempts to change identity, split, or approval. Changed
-cases require renewed review, including renewed Chinese author confirmation when
-Chinese content changes. Promote an inspected preview only as a reviewed revision.
-
-Editable Word sources are tracked alongside the methods:
-
-- [Framework source](docs/sources/W01_InGen_AI_Evaluation_Framework.json)
-- [Specification source](docs/sources/W01_Dataset_Specification.json)
-
-To regenerate the Word deliverables:
-
-```sh
-.venv/bin/python scripts/documents/build_docx.py docs/sources/W01_InGen_AI_Evaluation_Framework.json docs/W01_InGen_AI_Evaluation_Framework.docx
-.venv/bin/python scripts/documents/build_docx.py docs/sources/W01_Dataset_Specification.json docs/W01_Dataset_Specification.docx
-```
-
-## Week 2 results and reproduce scores
-
-The complete fixed-context run produced 100 responses without generation errors.
-Primary evaluation uses eighty held-out cases, after freezing support calibration
-on the designated twenty cases.
-
-| Core measurement | Held out mean | Population SD | Defined cases |
-| --- | ---: | ---: | ---: |
-| Context recall | 0.9286 | 0.2379 | 77 |
-| Faithfulness proxy | 0.9602 | 0.1224 | 80 |
-| Semantic relevance | 0.8852 | 0.0380 | 80 |
-
-The support proxy has only 66.7 percent balanced calibration accuracy and gives
-perfect scores to several incorrect responses. Raw claim extraction required
-99 inspected corrections, recorded separately from unmodified model responses.
-Read the [results report](docs/week-02/W02_RAG_Evaluation_Results.md) and
-[methodology](docs/week-02/metric_methodology.md) before interpreting the means.
-Technical inspection flags nine failures and one dataset-identity review across
-all 100 cases; this is not an independent human accuracy estimate.
-
-Recompute every saved score and aggregate without downloading models:
-
-```sh
-.venv/bin/python scripts/evaluation/score_week2.py replay
-.venv/bin/python scripts/evaluation/execute_week2_notebook.py
-```
-
-The notebook reads full recorded responses, inspected claims, calibration,
-embedding vectors, and scores under [the run manifest](results/week-02/baseline/run_manifest.json).
-It checks exact reproduction and shows distributions, language/tier tables,
-lexical recall, calibration errors, and classified response failures.
-
-## Fresh model execution
-
-The recorded generation runtime requires Apple Silicon and MLX LM. Scoring,
-tests, and saved-vector replay are independent of Apple GPU inference. Pinned
-generation packages use platform markers in requirements-generation.txt.
-
-```sh
-.venv/bin/python scripts/evaluation/prepare_models.py
-.venv/bin/python scripts/evaluation/generate_week2.py
-.venv/bin/python scripts/evaluation/score_week2.py calibrate
-```
-
-Existing generation artifacts are protected by input fingerprints. To create a
-fresh experiment, copy the tracked configuration to a new config with a distinct
-run_name and output directory, then pass --config to the generation and scoring
-commands. Freeze calibration before inspecting held-out outputs. Inspect every
-response/claim correspondence and record matching input hashes before scoring:
-
-```sh
-.venv/bin/python scripts/evaluation/score_week2.py score
-```
-
-Claim-review and correction formats are exemplified in the recorded run folder.
-Substantive wrong answers are never retried to improve scores. Fresh inference
-records its own runtime, model revision, prompts, and attempts; exact generation
-equality across different hardware is not assumed.
-
-## Week 3 extended evaluation
-
-[extended_evaluator.py](src/extended_evaluator.py) implements spatial accuracy,
-temporal pair accuracy/consistency/coherence, entity recall/classification/precision,
-and explicit-goal coverage/precision. Strict parsing, symbolic reference checks,
-task-success outcomes, coverage, and grouped population summaries are included.
-The [API guide](docs/week-03/extended_metrics.md) documents reference formats and
-limitations. These metrics need no model weights or new dependencies.
-
-```sh
-.venv/bin/python -m pytest -q tests/test_extended.py
-```
-
-The synthetic fixtures verify computations; the
-[recorded 200-case baseline](docs/week-03/W03_Extended_Evaluation_Results.md)
-supplies actual model evidence. New held-out exact task success is 7/8 spatial,
-4/4 temporal, 7/12 SEOM, and 3/12 HTD-IRL. Read validity/coverage denominators
-and frozen alias limitations alongside these small-sample results.
-
-All 155 raw extraction proposals fail the strict object contract and remain
-recorded as errors. Separate inspected corrections enable assisted faithfulness
-scoring. The support proxy gives all ten deliberately flawed fixed candidates
-1.0, while some new required-fact labels encode missingness and inflate context
-recall. The report identifies these measurement limits and proposes separate
-versioned changes. No frozen scorer, threshold, references, or outputs were
-changed after observing results.
-
-The [executed notebook](notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb),
-[formal protocol](docs/week-03/W03_Evaluation_Protocol.md), and
-[reflection](weekly/Wk-03-Log.md) are linked in the weekly package. New evidence
-uses explicit names or user references while dialogue retains natural pronouns.
-The [experiment guide](docs/week-03/experiment_pipeline.md) documents generation,
-inspection, scoring, and exact offline replay. The original Week 2 source,
-dataset, and results remain frozen.
-
-```sh
-.venv/bin/python scripts/evaluation/week3.py replay
-.venv/bin/python scripts/evaluation/analyze_week3.py --replay
-.venv/bin/python scripts/evaluation/build_week3_notebook.py --execute
-```
-
-## Next review
-
-Review the [Week 3 findings](deliverables/week-03/README.md), especially the
-context-recall annotation denominator, raw extraction reliability, source-aware
-support judgments, and explicit alias coverage. Independent response assessment
-and broader bilingual negative calibration labels remain useful next work.
-Confirm the Week 4 report and presentation structure with the mentor. Any data,
-prompt, or scorer revision requires a separately recorded experiment and must
-preserve the held-out boundary. Tuning against the now-inspected Week 3 cases
-requires fresh untouched families for subsequent held-out claims. The earlier
-[midpoint sheet](docs/week-02/midpoint_review.md) retains its recorded review status.
+The six-page LaTeX technical report uses an AMS article layout, with a standalone
+LaTeX source and compiled PDF, a Word companion, reviewed Markdown and validated
+evidence tables. The intern has reviewed the ten-slide capstone presentation and
+one-page retrospective; a separate final methodological log is also available.
+Pre-commit installation and verification are recorded in the
+[candidate audit](validation/release_candidate.json). Publication of the reviewed
+commit and release tag, followed by a tagged-clone check and rehearsal, remain on the
+[release checklist](docs/release_checklist.md).

@@ -125,7 +125,7 @@ def test_legacy_scoring_reproduces_the_frozen_week2_metric_values(records):
     from src.embeddings import ReplayEncoder
     from src.experiment import _claims_for_scoring
     from src.generation import read_jsonl
-    output = v2.ROOT / "results/week-02/baseline"
+    output = v2.ROOT / "results/rag_baseline"
     old = json.loads((output / "scores.json").read_text())
     adapted = [adapter.rag_scoring_record(r) for r in records[:100]]
     assert compute_metrics(adapted, read_jsonl(output / "responses.jsonl"), ReplayEncoder(output),

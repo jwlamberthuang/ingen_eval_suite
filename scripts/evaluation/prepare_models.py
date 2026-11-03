@@ -6,7 +6,7 @@ from huggingface_hub import snapshot_download
 ROOT = Path(__file__).resolve().parents[2]
 
 if __name__ == "__main__":
-    config = json.loads((ROOT/"configs/week-02.json").read_text())
+    config = json.loads((ROOT/"configs/rag_baseline.json").read_text())
     for role in ["generation", "embedding"]:
         model = config[role]
         snapshot_download(model["model_id"], revision=model["revision"],

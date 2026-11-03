@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "checked_on": "2026-11-02",
+  "scope": "Current six-page AMS-style LaTeX source and exported PDF; reviewed scientific content preserved.",
+  "source_artifacts": {
+    "docs/reports/technical_report.tex": "aec99d189ad3f6833e181d1b652a2ecb96836af96c7a3f68f8f8f35d2e8aa6c8",
+    "scripts/documents/build_latex_report.py": "c4e1be55b120b8b127f9950b2c298ff6a1f310fc4750a9db4ab2e9b39a4f9c7b",
+    "docs/reports/technical_report.md": "ef495d9c50f6ada69f8af91e8697c3080e82eef8ce384d43afd6d81c1d7cbcac"
+  },
+  "layout": {
+    "document_class": "amsart",
+    "class_font_size_pt": 10,
+    "latin_text": "Latin Modern (Computer Modern style)",
+    "mathematics": "Computer Modern / AMS",
+    "chinese": "Songti SC, with Fandol Song fallback",
+    "margins_inches": 1,
+    "forced_page_breaks": 0,
+    "table_placement": "htbp",
+    "ragged_bottom": true,
+    "typesetting_diagnostic_pages": 6,
+    "abstract_words": 168,
+    "scientific_tables": 5,
+    "numbered_metric_equations": 3,
+    "contents_includes_subsections": true
+  },
+  "compilation": {
+    "desktop_editor_compile": "passed",
+    "additional_layout_check": "XeLaTeX -no-pdf; XDV only",
+    "unresolved_references": 0,
+    "missing_glyph_warnings": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "pdf_export_engine": "XeLaTeX / TeX Live 2025",
+    "successful_pdf_export_passes": 2
+  },
+  "verification": {
+    "source_regenerates_exactly": true,
+    "scientific_body_and_table_contents_preserved": true,
+    "word_companion_unchanged": true,
+    "private_path_scan": "passed",
+    "pdf_matches_current_source": true,
+    "source_numeric_tokens_found_in_pdf": 106,
+    "all_five_tables_present": true,
+    "chinese_example_text_extraction": "passed",
+    "public_https_uri_annotations": 7,
+    "author_metadata": "omitted",
+    "reviewed_markdown_scientific_content_unchanged": true
+  },
+  "visual_review": {
+    "status": "passed",
+    "pages_inspected": 6,
+    "scope": "Current exported PDF",
+    "overlap_or_clipping": false,
+    "missing_chinese_glyphs": false
+  },
+  "pdf_export": {
+    "path": "docs/technical_report.pdf",
+    "sha256": "158bdbe23c77ce308b1d01f984eec2189e50d9102dc64a64d900c51244a63a61",
+    "status": "current",
+    "pages": 6,
+    "all_fonts_embedded": true,
+    "embedded_fonts": {
+      "/TQFHXE+LMRoman10-Bold-Identity-H": true,
+      "/LGWAUN+LMRomanCaps10-Regular-Identity-H": true,
+      "/DWWHGD+LMRoman8-Regular-Identity-H": true,
+      "/UZOJWW+LMRoman10-Regular-Identity-H": true,
+      "/FINFTL+LMRoman8-Italic-Identity-H": true,
+      "/NDSNKO+LMRoman7-Regular-Identity-H": true,
+      "/HLSLBM+CMMI10": true,
+      "/SSGELZ+CMR10": true,
+      "/ZVQJBL+CMSY10": true,
+      "/LSTJAE+MSBM10": true,
+      "/GIRRSD+CMEX10": true,
+      "/VNLZKM+CMMI7": true,
+      "/BDBZBK+CMSY7": true,
+      "/UWIAWL+LMRomanDemi10-Regular-Identity-H": true,
+      "/GZDNIG+LMRoman5-Regular-Identity-H": true,
+      "/UWPVUG+CMR7": true,
+      "/TZZIKS+LMRoman9-Bold-Identity-H": true,
+      "/WFGOII+LMRoman9-Regular-Identity-H": true,
+      "/WGUFOS+CMSY9": true,
+      "/KRXLAB+CMR9": true,
+      "/AMODRZ+CMMI9": true,
+      "/MLOMDL+STSongti-SC-Regular": true,
+      "/QMOOPZ+LMMono10-Regular-Identity-H": true,
+      "/EFOVEJ+LMMono9-Regular-Identity-H": true
+    }
+  },
+  "new_inference_attempts": 0,
+  "dataset_or_metric_changes": false,
+  "committed": false,
+  "pushed": false,
+  "source_whitespace_normalization": {
+    "checked_on": "2026-11-03",
+    "change": "Remove one surplus terminal blank line; scientific text and Word/PDF exports unchanged."
+  }
+}

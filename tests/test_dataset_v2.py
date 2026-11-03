@@ -144,7 +144,7 @@ def test_published_pilot_manifest_matches_current_source(pilot):
 
 
 def test_word_review_is_synchronized_and_has_requested_fonts(pilot):
-    path = v2.ROOT / "docs/week-03/W03_Dataset_Pilot_Review_v0.1.docx"
+    path = v2.ROOT / "docs/reviews/expanded_pilot.docx"
     w = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
     with ZipFile(path) as archive:
         core = archive.read("docProps/core.xml").decode()

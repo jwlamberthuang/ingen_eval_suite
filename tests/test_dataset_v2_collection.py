@@ -172,7 +172,7 @@ def test_full_master_edit_preserves_every_untouched_line(collection, tmp_path):
 
 def test_additions_review_contains_all_88_cases_and_requested_fonts(collection):
     records, raw = collection
-    word = v2.ROOT / "docs/week-03/W03_Dataset_Additions_Review_v0.1.docx"
+    word = v2.ROOT / "docs/reviews/expanded_additions.docx"
     w = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
     with ZipFile(word) as archive:
         assert "collection-sha256:" + v2.digest(raw) in archive.read("docProps/core.xml").decode()

@@ -1,0 +1,902 @@
+{
+  "format_version": 1,
+  "baseline_commit": "e701bc57f568c293d922a1921c60d46def7a6a74",
+  "purpose": "Exact public baseline replay after project-oriented layout migration; no experiment identities resealed.",
+  "snapshot": {
+    "file": "reproducibility/frozen_sources.zip",
+    "sha256": "cbe9b0ec4830b20c2b89362bc93e76d3e1ecbe5f1b15d200e2d49c879172b3e1"
+  },
+  "files": [
+    {
+      "original": ".gitignore",
+      "sha256": "e5d8d6300dea626c50e3085c99b860f838d1b62f2680c7cdafe107eeafc00a31",
+      "snapshot": ".gitignore",
+      "canonical": ".gitignore"
+    },
+    {
+      "original": "README.md",
+      "sha256": "be354cbdf0542cdebd71498c3b19fe10da90c55ac05e5cde1f56d62fea560037",
+      "snapshot": "README.md",
+      "canonical": "README.md"
+    },
+    {
+      "original": "configs/dataset-v2.json",
+      "sha256": "8de6dcd7b903863f046beedb6962c499adf5ad15537c5965f6c2330a61577a40",
+      "current": "configs/dataset-v2.json",
+      "canonical": "configs/dataset-v2.json"
+    },
+    {
+      "original": "configs/week-02.json",
+      "sha256": "f49d8ec0f849aa08826a9e91aa13edda2d3b8cff116714d30d38d61278c9d81c",
+      "snapshot": "configs/week-02.json",
+      "canonical": "configs/rag_baseline.json"
+    },
+    {
+      "original": "configs/week-03.json",
+      "sha256": "316819dee81fa28bdf190adeada051e02ad8f8d98388a21f84a987e363e95cb1",
+      "snapshot": "configs/week-03.json",
+      "canonical": "configs/extended_baseline.json"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
+      "sha256": "4bd7236d724283aea2ab3b7f5aaf9a4e9bcbf05d7fe28818964f42969b1226b1",
+      "current": "data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
+      "canonical": "data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json",
+      "sha256": "1ce5df74e6968e1855db799b10f900661197191fb5d00794e5b64e593d1a7353",
+      "current": "data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json",
+      "canonical": "data/W01_Evaluation_Dataset_Pilot_v0.4.manifest.json"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_v1.jsonl",
+      "sha256": "3d974dbcac596c4698b3a070c5865e96f045c1ab75ff30c521b622c5738a7e54",
+      "current": "data/W01_Evaluation_Dataset_v1.jsonl",
+      "canonical": "data/W01_Evaluation_Dataset_v1.jsonl"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_v1.manifest.json",
+      "sha256": "5cc75d7e2884bf00e794bf6c68e923f84ff7dfc7929c0a71e8a902856e3a03d8",
+      "current": "data/W01_Evaluation_Dataset_v1.manifest.json",
+      "canonical": "data/W01_Evaluation_Dataset_v1.manifest.json"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_v2.jsonl",
+      "sha256": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+      "current": "data/W01_Evaluation_Dataset_v2.jsonl",
+      "canonical": "data/W01_Evaluation_Dataset_v2.jsonl"
+    },
+    {
+      "original": "data/W01_Evaluation_Dataset_v2.manifest.json",
+      "sha256": "20492441d37912efe3c0289fbfc60b4e3a1271bca0daee14b24a05a7099a8800",
+      "current": "data/W01_Evaluation_Dataset_v2.manifest.json",
+      "canonical": "data/W01_Evaluation_Dataset_v2.manifest.json"
+    },
+    {
+      "original": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+      "sha256": "d8a8a80f9e1e471ebdaa50ee6e18ece1880e9bcae73e23ede9158153ed8683dc",
+      "current": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+      "canonical": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl"
+    },
+    {
+      "original": "data/W03_Evaluation_Dataset_Pilot_v0.1.manifest.json",
+      "sha256": "dc2c05ac6735ec913bdcf7b7255a9d5f7f8df74e4633efda4c774b78a2fc8fa5",
+      "current": "data/W03_Evaluation_Dataset_Pilot_v0.1.manifest.json",
+      "canonical": "data/W03_Evaluation_Dataset_Pilot_v0.1.manifest.json"
+    },
+    {
+      "original": "data/annotations/W03_Context_Recall_v2.0.1.json",
+      "sha256": "6122c339c61af27d195e64f1c4f37dd9689d60ac6513869f8edcac91e3e02b23",
+      "current": "data/annotations/W03_Context_Recall_v2.0.1.json",
+      "canonical": "data/annotations/W03_Context_Recall_v2.0.1.json"
+    },
+    {
+      "original": "data/dataset_documentation.md",
+      "sha256": "c130e1ce3b9680251d09301b3e87f5425840f8fc98765b585ef8b3d3dbe9296a",
+      "snapshot": "data/dataset_documentation.md",
+      "canonical": "data/dataset_documentation.md"
+    },
+    {
+      "original": "dataset_config.json",
+      "sha256": "81b65f96fcebd6c2d3070720d942b47a7f8dcdbc57466bf8eb6d7c6bd32b2a35",
+      "current": "dataset_config.json",
+      "canonical": "dataset_config.json"
+    },
+    {
+      "original": "deliverables/week-01/README.md",
+      "sha256": "02e974d8e99cf93cb382e7e442e7a970f0cb4f3951178512edb4da92a4701a19",
+      "snapshot": "deliverables/week-01/README.md"
+    },
+    {
+      "original": "deliverables/week-02/README.md",
+      "sha256": "edafcffb40011414b6439795d0dbf94fb88cc063a6db5f17119ddeae9d9ccf9e",
+      "snapshot": "deliverables/week-02/README.md"
+    },
+    {
+      "original": "deliverables/week-02/validation/dataset.json",
+      "sha256": "bbfb4de6cca72eb0929ac5a1189942f1b6bbe3fe56c82f2ff0a4bd40c476da46",
+      "current": "validation/recorded/rag/dataset.json",
+      "canonical": "validation/recorded/rag/dataset.json"
+    },
+    {
+      "original": "deliverables/week-02/validation/pilot.json",
+      "sha256": "958395c871c2df805dd9ddc8bdf794386065293d6cfd8b645e0f1bd3b0ade4cf",
+      "current": "validation/recorded/rag/pilot.json",
+      "canonical": "validation/recorded/rag/pilot.json"
+    },
+    {
+      "original": "deliverables/week-02/validation/tests.json",
+      "sha256": "e4d74a45ca4c6077c0b3cf382265a6f7b05712a991611c8eb5d5885aefe7fb2d",
+      "current": "validation/recorded/rag/tests.json",
+      "canonical": "validation/recorded/rag/tests.json"
+    },
+    {
+      "original": "deliverables/week-03/README.md",
+      "sha256": "56aaf939228bb25d25dc16b1bdc3fdef54e90aefa89d45587ea9547c3826f4de",
+      "snapshot": "deliverables/week-03/README.md"
+    },
+    {
+      "original": "deliverables/week-03/validation/collection.json",
+      "sha256": "2c297ac9b78aa9b67d420f2ba5b5e8fd2805a2cfacea85129b3e23fe317d991e",
+      "current": "validation/recorded/extended/collection.json",
+      "canonical": "validation/recorded/extended/collection.json"
+    },
+    {
+      "original": "deliverables/week-03/validation/pilot.json",
+      "sha256": "15a0dcd2a7e0b57ac702bff302c767805afe3f1a14c94dd5ebd641119529c0de",
+      "current": "validation/recorded/extended/pilot.json",
+      "canonical": "validation/recorded/extended/pilot.json"
+    },
+    {
+      "original": "deliverables/week-03/validation/pipeline.json",
+      "sha256": "df6ff6b4e9fded5dba75f9a78e3a77e236795ad4d83aebe0869803b29c828c0a",
+      "current": "validation/recorded/extended/pipeline.json",
+      "canonical": "validation/recorded/extended/pipeline.json"
+    },
+    {
+      "original": "deliverables/week-03/validation/tests.json",
+      "sha256": "446d87078bcf8894633b2624e0098e4f88d2f3443f0ff1cb08f8244edd3697f5",
+      "current": "validation/recorded/extended/tests.json",
+      "canonical": "validation/recorded/extended/tests.json"
+    },
+    {
+      "original": "docs/W01_Dataset_Specification.docx",
+      "sha256": "d07224ea1fe05acc1499017f92ff8199d8db0a9e1933333d36f57f29aac64c0d",
+      "snapshot": "docs/W01_Dataset_Specification.docx",
+      "canonical": "docs/datasets/dialogue_specification.docx"
+    },
+    {
+      "original": "docs/W01_InGen_AI_Evaluation_Framework.docx",
+      "sha256": "d2c7fbfc3c30333f0b146b795f818045ff2d10bd4a1a7c28bee1ed65ffc639d7",
+      "snapshot": "docs/W01_InGen_AI_Evaluation_Framework.docx",
+      "canonical": "docs/methodology/evaluation_framework.docx"
+    },
+    {
+      "original": "docs/dataset_specification.md",
+      "sha256": "9fea820f249d68cecba324b909a1db986d9cea1914424a9161a4a1020b905eb5",
+      "snapshot": "docs/dataset_specification.md",
+      "canonical": "docs/datasets/dialogue_specification.md"
+    },
+    {
+      "original": "docs/evaluation_framework.md",
+      "sha256": "0a243773b0ad2c1ea04dab735767a6fd9443f4c51aa3796de2125350bbb7395d",
+      "snapshot": "docs/evaluation_framework.md",
+      "canonical": "docs/methodology/evaluation_framework.md"
+    },
+    {
+      "original": "docs/public_sources.md",
+      "sha256": "c02ecb95f52cc8f833e636b3eee40eeed5ffaaed3d9d3b9a45780b8dcc3ebb2e",
+      "current": "docs/references/public_sources.md",
+      "canonical": "docs/references/public_sources.md"
+    },
+    {
+      "original": "docs/sources/W01_Dataset_Specification.json",
+      "sha256": "39adc58e6031909e6ed3251bc17be16711ce740f130dafc35b1b5f2d4ec6136e",
+      "snapshot": "docs/sources/W01_Dataset_Specification.json",
+      "canonical": "docs/sources/dialogue_specification.json"
+    },
+    {
+      "original": "docs/sources/W01_InGen_AI_Evaluation_Framework.json",
+      "sha256": "f4ab251d2ffcea12f6d142fbef2247cdf5e7918cc163f410348f2dce7c5d9c0a",
+      "snapshot": "docs/sources/W01_InGen_AI_Evaluation_Framework.json",
+      "canonical": "docs/sources/evaluation_framework.json"
+    },
+    {
+      "original": "docs/week-02/W02_RAG_Evaluation_Results.docx",
+      "sha256": "b4423e567f8b9c371dd9032f02454a97d04123585c9705ac62777e57990abae0",
+      "snapshot": "docs/week-02/W02_RAG_Evaluation_Results.docx",
+      "canonical": "docs/reports/rag_baseline.docx"
+    },
+    {
+      "original": "docs/week-02/W02_RAG_Evaluation_Results.md",
+      "sha256": "f92ffb641c1073115c3e2f8fe7d790d86b496ca91f90544c1032cb24e86470c8",
+      "snapshot": "docs/week-02/W02_RAG_Evaluation_Results.md",
+      "canonical": "docs/reports/rag_baseline.md"
+    },
+    {
+      "original": "docs/week-02/metric_methodology.md",
+      "sha256": "232f92cd25f91a8cbdaa15fa63266f5e7aa7c51ef5481a8952d99b9378ccbaa5",
+      "current": "docs/methodology/rag_metrics.md",
+      "canonical": "docs/methodology/rag_metrics.md"
+    },
+    {
+      "original": "docs/week-02/midpoint_review.md",
+      "sha256": "36ef6690bccd8cb685ac648d275dad679c8c5d16844f09decb69d9f9d760d6ed",
+      "current": "docs/reviews/midpoint.md",
+      "canonical": "docs/reviews/midpoint.md"
+    },
+    {
+      "original": "docs/week-02/sources/W02_RAG_Evaluation_Results.json",
+      "sha256": "6adc28a58f13ec4e4284d194bfe72930585937bd025d44b9c5bcbbf446111112",
+      "snapshot": "docs/week-02/sources/W02_RAG_Evaluation_Results.json",
+      "canonical": "docs/sources/rag_baseline.json"
+    },
+    {
+      "original": "docs/week-02/validation_update.md",
+      "sha256": "3ad91451ae05f4d5743cba1d4e6c029f50391e2c5afae97e57f1c3d774ef4309",
+      "snapshot": "docs/week-02/validation_update.md",
+      "canonical": "docs/reviews/rag_validation.md"
+    },
+    {
+      "original": "docs/week-03/W03_Context_Recall_Review_v2.0.1.docx",
+      "sha256": "a2e0c32d4ae7d1d19ad35a71337702ae0c1353b224dc945fe216c434aa5910dc",
+      "current": "docs/reviews/context_recall_v2.0.1.docx",
+      "canonical": "docs/reviews/context_recall_v2.0.1.docx"
+    },
+    {
+      "original": "docs/week-03/W03_Dataset_Additions_Review_v0.1.docx",
+      "sha256": "4de68dc09317f941f4134930e83f6bb608c48f65ef58f0f93953dc9ff04a44ac",
+      "current": "docs/reviews/expanded_additions.docx",
+      "canonical": "docs/reviews/expanded_additions.docx"
+    },
+    {
+      "original": "docs/week-03/W03_Dataset_Pilot_Review_v0.1.docx",
+      "sha256": "7ec57d896d9bfd24f9c04417d9ff29b52ef8d5c1bbe63f20f91006138411e6a3",
+      "current": "docs/reviews/expanded_pilot.docx",
+      "canonical": "docs/reviews/expanded_pilot.docx"
+    },
+    {
+      "original": "docs/week-03/W03_Evaluation_Protocol.docx",
+      "sha256": "89373aeeef6aa8ca3decc329b09fd862a37c09c0f899e8ca116d9c015eaf1974",
+      "snapshot": "docs/week-03/W03_Evaluation_Protocol.docx",
+      "canonical": "docs/methodology/evaluation_protocol.docx"
+    },
+    {
+      "original": "docs/week-03/W03_Evaluation_Protocol.md",
+      "sha256": "2048c00d8835d54b60df0c1407ebd70695deeb236a71ecf4f9e90ce4c8fc4912",
+      "snapshot": "docs/week-03/W03_Evaluation_Protocol.md",
+      "canonical": "docs/methodology/evaluation_protocol.md"
+    },
+    {
+      "original": "docs/week-03/W03_Extended_Evaluation_Results.md",
+      "sha256": "b9a1c35fc2671d023433b40a68d6d6dca67408ad8f524d86ca86d708c7661050",
+      "snapshot": "docs/week-03/W03_Extended_Evaluation_Results.md",
+      "canonical": "docs/reports/extended_baseline.md"
+    },
+    {
+      "original": "docs/week-03/additions_review.md",
+      "sha256": "3f89a727ca3b04200d2143225748a85295cbc78c58c7a20273d139f4e98ab2f4",
+      "current": "docs/reviews/expanded_additions.md",
+      "canonical": "docs/reviews/expanded_additions.md"
+    },
+    {
+      "original": "docs/week-03/context_recall_correction.md",
+      "sha256": "2b632f6ddfa33d02356830fa60d8b95f618339120f160270591e0e8bb05add11",
+      "snapshot": "docs/week-03/context_recall_correction.md",
+      "canonical": "docs/reports/context_recall_v2.0.1.md"
+    },
+    {
+      "original": "docs/week-03/dataset_v2_specification.md",
+      "sha256": "4188152692f2f9b397fe01228fd07b661e472dd4f86245ce72d46844e7b46fb7",
+      "snapshot": "docs/week-03/dataset_v2_specification.md",
+      "canonical": "docs/datasets/expanded_specification.md"
+    },
+    {
+      "original": "docs/week-03/dataset_v2_workflow.md",
+      "sha256": "a6a98bb28f7030206384984406d4e887036dcaafe50e20027b6108667684d0d2",
+      "snapshot": "docs/week-03/dataset_v2_workflow.md",
+      "canonical": "docs/datasets/expanded_workflow.md"
+    },
+    {
+      "original": "docs/week-03/experiment_pipeline.md",
+      "sha256": "c61f9d39f2720bc6b288050aa0bd7286fb475893eba8a1fddec4ad05817b0e0a",
+      "snapshot": "docs/week-03/experiment_pipeline.md",
+      "canonical": "docs/methodology/experiment_pipeline.md"
+    },
+    {
+      "original": "docs/week-03/extended_metrics.md",
+      "sha256": "4a2c74269e0999ef5781599290da3b809ba7223a4fe013edf023d83eecc2316e",
+      "snapshot": "docs/week-03/extended_metrics.md",
+      "canonical": "docs/methodology/extended_metrics.md"
+    },
+    {
+      "original": "docs/week-03/pilot_review.md",
+      "sha256": "203491247301cc5330b030eaf8185b9c183a5ffcd983d6635cfee15f3d6ef05b",
+      "current": "docs/reviews/expanded_pilot.md",
+      "canonical": "docs/reviews/expanded_pilot.md"
+    },
+    {
+      "original": "notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb",
+      "sha256": "d6483633e4f63c2525fad500ba7d39507e8d7bd7adf91383bf698fb32d6bd2f3",
+      "snapshot": "notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb",
+      "canonical": "notebooks/rag_evaluation.ipynb"
+    },
+    {
+      "original": "notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb",
+      "sha256": "e886b7514a959f80022b11dde55cf18ba8559698b7555154f85f43912bf8d557",
+      "snapshot": "notebooks/week-03/W03_Extended_Evaluation_Suite.ipynb",
+      "canonical": "notebooks/extended_evaluation.ipynb"
+    },
+    {
+      "original": "requirements-documents.txt",
+      "sha256": "5968b4e0563926c5d777d2e059e360b355df071626e3c68e6510fffb2278279d",
+      "current": "requirements-documents.txt",
+      "canonical": "requirements-documents.txt"
+    },
+    {
+      "original": "requirements-evaluation.txt",
+      "sha256": "f2623678bd4556a84e200af5db3394749c7a56d1b31ce9ab26b73e029d77788c",
+      "current": "requirements-evaluation.txt",
+      "canonical": "requirements-evaluation.txt"
+    },
+    {
+      "original": "requirements-generation.txt",
+      "sha256": "40300b3f1af53a8a5f1905704c6122b2c5ca5ee2c7df01062bce2f94f684baa5",
+      "current": "requirements-generation.txt",
+      "canonical": "requirements-generation.txt"
+    },
+    {
+      "original": "requirements-validation.txt",
+      "sha256": "c9dc80a5981d20aa57354f53a5c26a6f055841b4ce5173d885caeecaa27b603a",
+      "current": "requirements-validation.txt",
+      "canonical": "requirements-validation.txt"
+    },
+    {
+      "original": "requirements.txt",
+      "sha256": "34aad03ab987b680d0d27dd07dfd8b52b9ff8ecfb8db842384e5d51ffe28b6e5",
+      "current": "requirements.txt",
+      "canonical": "requirements.txt"
+    },
+    {
+      "original": "results/week-02/baseline/calibration.json",
+      "sha256": "2149f39729c3fef33d34224f3a673008f0db16255a001ef3777d5123923bf09f",
+      "current": "results/rag_baseline/calibration.json",
+      "canonical": "results/rag_baseline/calibration.json"
+    },
+    {
+      "original": "results/week-02/baseline/calibration_claims.jsonl",
+      "sha256": "b3255c8b877d2c9a93506513f0482c70171cc4998cea32b982b3e5978f2297ee",
+      "current": "results/rag_baseline/calibration_claims.jsonl",
+      "canonical": "results/rag_baseline/calibration_claims.jsonl"
+    },
+    {
+      "original": "results/week-02/baseline/claim_corrections.jsonl",
+      "sha256": "92c566b8c8f2321c26cd821c18539ba14b93e38a2c14120bc08cc56b6b4456d7",
+      "current": "results/rag_baseline/claim_corrections.jsonl",
+      "canonical": "results/rag_baseline/claim_corrections.jsonl"
+    },
+    {
+      "original": "results/week-02/baseline/claim_review.json",
+      "sha256": "5814ba3083588cb0e11629d901b499c5c345ad13cbd68c65aa5faacc425f642d",
+      "current": "results/rag_baseline/claim_review.json",
+      "canonical": "results/rag_baseline/claim_review.json"
+    },
+    {
+      "original": "results/week-02/baseline/claims.jsonl",
+      "sha256": "f16747c2e4b8ba5a252f98bbc59fe0ae04384b7cbfa44b6151bdaeec2e1e1e45",
+      "current": "results/rag_baseline/claims.jsonl",
+      "canonical": "results/rag_baseline/claims.jsonl"
+    },
+    {
+      "original": "results/week-02/baseline/embeddings.json",
+      "sha256": "8565274e58219be877435bbd71b60cb3c6124abd06993412128257889afdf08c",
+      "current": "results/rag_baseline/embeddings.json",
+      "canonical": "results/rag_baseline/embeddings.json"
+    },
+    {
+      "original": "results/week-02/baseline/embeddings.npz",
+      "sha256": "ba5518f6ee5d7a59f579adc823e650abe720cc3c69466f572db596a0af171460",
+      "current": "results/rag_baseline/embeddings.npz",
+      "canonical": "results/rag_baseline/embeddings.npz"
+    },
+    {
+      "original": "results/week-02/baseline/response_review.jsonl",
+      "sha256": "7675fbe666f42944edc28ea2afee59efb29362738e25cc7c11f2254e39d793bf",
+      "current": "results/rag_baseline/response_review.jsonl",
+      "canonical": "results/rag_baseline/response_review.jsonl"
+    },
+    {
+      "original": "results/week-02/baseline/responses.jsonl",
+      "sha256": "eb446a43d5e004b35139996b1f82db0f085ed4d256f5914a19f6ef46f8f394b5",
+      "current": "results/rag_baseline/responses.jsonl",
+      "canonical": "results/rag_baseline/responses.jsonl"
+    },
+    {
+      "original": "results/week-02/baseline/run_manifest.json",
+      "sha256": "b5d5e4dcd7dae13a6111b418d894059abaf207a2ffca27a56a2e1b6430cf96ba",
+      "current": "results/rag_baseline/run_manifest.json",
+      "canonical": "results/rag_baseline/run_manifest.json"
+    },
+    {
+      "original": "results/week-02/baseline/scores.json",
+      "sha256": "02eb19924c7052fc344959a08f0289e15f3499d022b7a4a4fa0ee6e5d7dd5c21",
+      "current": "results/rag_baseline/scores.json",
+      "canonical": "results/rag_baseline/scores.json"
+    },
+    {
+      "original": "results/week-03/context-recall-v2.0.1/context_recall.json",
+      "sha256": "51b129cb3b2bff2815f7951f8b562e01f9ede079bf674bc8c1d5aa4d419e2250",
+      "current": "results/context_recall_v2.0.1/context_recall.json",
+      "canonical": "results/context_recall_v2.0.1/context_recall.json"
+    },
+    {
+      "original": "results/week-03/context-recall-v2.0.1/figures/rag_held_out.png",
+      "sha256": "3d76078563285a6e7d7c15e7226488713e2bce6a9f2589dd0cff8e3a3dd636e1",
+      "current": "results/context_recall_v2.0.1/figures/rag_held_out.png",
+      "canonical": "results/context_recall_v2.0.1/figures/rag_held_out.png"
+    },
+    {
+      "original": "results/week-03/context-recall-v2.0.1/manifest.json",
+      "sha256": "ff8a5f5f4fa86a06ba47c7f063c63dfab05b9c27c4e24ba4e632b1ab3d597bee",
+      "current": "results/context_recall_v2.0.1/manifest.json",
+      "canonical": "results/context_recall_v2.0.1/manifest.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/embeddings.json",
+      "sha256": "28cb6193f5929405855de6f956c59b9680fb1268b30ff1d29b8a81df4fdfe8a8",
+      "current": "results/extended_baseline/analysis/embeddings.json",
+      "canonical": "results/extended_baseline/analysis/embeddings.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/embeddings.npz",
+      "sha256": "23afbc6b73d8c8c5f3c740d89eb9a81f9c5285c835556375d2a2db63923d6884",
+      "current": "results/extended_baseline/analysis/embeddings.npz",
+      "canonical": "results/extended_baseline/analysis/embeddings.npz"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/fixed_probe_boundaries.png",
+      "sha256": "c8f546f54b28ae448aef6df9e7e7730e131efbd8991d7d0fe12aecd966c18286",
+      "current": "results/extended_baseline/analysis/fixed_probe_boundaries.png",
+      "canonical": "results/extended_baseline/analysis/fixed_probe_boundaries.png"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/fixed_probes.json",
+      "sha256": "aee2573591901a5a5837821d696a1b0587b06770592befa648861a3c199a4cb3",
+      "current": "results/extended_baseline/analysis/fixed_probes.json",
+      "canonical": "results/extended_baseline/analysis/fixed_probes.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/manifest.json",
+      "sha256": "506548621dbcab2d0558ba6f15bc0659ef158e716a3de66a748bd8754968f07a",
+      "current": "results/extended_baseline/analysis/manifest.json",
+      "canonical": "results/extended_baseline/analysis/manifest.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/rag_held_out.png",
+      "sha256": "84bdf6c564036c85d6446afb4990bafb5e8957418be683737371cc24f9f3d929",
+      "current": "results/extended_baseline/analysis/rag_held_out.png",
+      "canonical": "results/extended_baseline/analysis/rag_held_out.png"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/structured_held_out.png",
+      "sha256": "c655c42133967e64e2a9fcbedf8d027bdc936410163604cfc8ec22f16a5a37e7",
+      "current": "results/extended_baseline/analysis/structured_held_out.png",
+      "canonical": "results/extended_baseline/analysis/structured_held_out.png"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/analysis/summary.json",
+      "sha256": "f7edb7e4a3f65c174d6ede671fdbb2a916336fad4f7cc53b93a1ce74f5e59221",
+      "current": "results/extended_baseline/analysis/summary.json",
+      "canonical": "results/extended_baseline/analysis/summary.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/calibration.json",
+      "sha256": "97dd16da7cbebb386dc87c84d3068fcf4cbf70a535095e7e0cdee362d26a9cad",
+      "current": "results/extended_baseline/calibration.json",
+      "canonical": "results/extended_baseline/calibration.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claim_review.json",
+      "sha256": "3f97fdd768034800299f6807af0621de35c97de7c4f429d38d62d84271e53b8c",
+      "current": "results/extended_baseline/claim_review.json",
+      "canonical": "results/extended_baseline/claim_review.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claims.jsonl",
+      "sha256": "abd0b29fd02a984b06af347fdcd60790f956395f413c94238b56635277ca1160",
+      "current": "results/extended_baseline/claims.jsonl",
+      "canonical": "results/extended_baseline/claims.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/claims_attempts.jsonl",
+      "sha256": "026cc4a5ecc8cb56d40d694af1de31486f4e3a6e1348d83fc398317dbff0a26f",
+      "current": "results/extended_baseline/claims_attempts.jsonl",
+      "canonical": "results/extended_baseline/claims_attempts.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/config.json",
+      "sha256": "66154c00da2b60ee0402119411aaea7eb2e369c4afa2c844f72efadce7eba127",
+      "current": "results/extended_baseline/config.json",
+      "canonical": "results/extended_baseline/config.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/dataset.jsonl",
+      "sha256": "42620b25fee64ae36c0ccd03badb0f1964d683f7e1129b335c58aee965db3be8",
+      "current": "results/extended_baseline/dataset.jsonl",
+      "canonical": "results/extended_baseline/dataset.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.json",
+      "sha256": "1d59e1224da232c56ab979bbef361bad173db9d3cea3936c58963e4020e6f3a2",
+      "current": "results/extended_baseline/embeddings.json",
+      "canonical": "results/extended_baseline/embeddings.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/embeddings.npz",
+      "sha256": "5900042c9812369a4b5645f70f700650ee1413de10617bfae4d30c303ba98fee",
+      "current": "results/extended_baseline/embeddings.npz",
+      "canonical": "results/extended_baseline/embeddings.npz"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/inputs.jsonl",
+      "sha256": "f98d34ed28914f8ceb64bf65bd7a1ea89e71d3f30b587dd4d01ed56fac4fc58e",
+      "current": "results/extended_baseline/inputs.jsonl",
+      "canonical": "results/extended_baseline/inputs.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/response_review.jsonl",
+      "sha256": "80e6434cf6d2921ea5561570b5a9156fb6632b70f22420f0b3488109210ce64e",
+      "current": "results/extended_baseline/response_review.jsonl",
+      "canonical": "results/extended_baseline/response_review.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/response_review_metadata.json",
+      "sha256": "cf43686c0e8623813b9a68f0c59bc6041ed0dd3be6c2fd2a1949943d97dfe90d",
+      "current": "results/extended_baseline/response_review_metadata.json",
+      "canonical": "results/extended_baseline/response_review_metadata.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/responses.jsonl",
+      "sha256": "1838fa37b6e880723c5c8f73021dd0befecd26964c19f89e1240ed54c804914c",
+      "current": "results/extended_baseline/responses.jsonl",
+      "canonical": "results/extended_baseline/responses.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/responses_attempts.jsonl",
+      "sha256": "e95b8da43ff9249d18a7ba3aad276994a457a7c0ca4da9e3f7f6aceab21c0586",
+      "current": "results/extended_baseline/responses_attempts.jsonl",
+      "canonical": "results/extended_baseline/responses_attempts.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/run_manifest.json",
+      "sha256": "490e04abc4c3a508f7f09753b016038935b0d701552b40a87eddbbdb24ab8bc2",
+      "current": "results/extended_baseline/run_manifest.json",
+      "canonical": "results/extended_baseline/run_manifest.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/scores.json",
+      "sha256": "032127033d1b1d570931af7add18132cf09e38119586d37c6c825ff55f7af51c",
+      "current": "results/extended_baseline/scores.json",
+      "canonical": "results/extended_baseline/scores.json"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/structured_failure_review.jsonl",
+      "sha256": "f5ad8fee52b0546bcc669c06f098569e5e750145c7ae0c90d1f77b5b8081a18b",
+      "current": "results/extended_baseline/structured_failure_review.jsonl",
+      "canonical": "results/extended_baseline/structured_failure_review.jsonl"
+    },
+    {
+      "original": "results/week-03/w03-qwen25-7b-mlx4bit-text-v1/validation.json",
+      "sha256": "8d09a1ec039dec878e8b505d89cdb9403968698d017c6c6b04a03a39108c952b",
+      "current": "results/extended_baseline/validation.json",
+      "canonical": "results/extended_baseline/validation.json"
+    },
+    {
+      "original": "schemas/w01_dialogue_case.schema.json",
+      "sha256": "7dbf46ed47f20e81b6a927e18605ad31ad04d38c765829c787636661948cadb9",
+      "current": "schemas/w01_dialogue_case.schema.json",
+      "canonical": "schemas/w01_dialogue_case.schema.json"
+    },
+    {
+      "original": "schemas/w03_context_recall_amendment.schema.json",
+      "sha256": "6b76ba5b12e97f7c0b4e1238dcafe0ad32574eab629482314a46b5490ce4fc0e",
+      "current": "schemas/w03_context_recall_amendment.schema.json",
+      "canonical": "schemas/w03_context_recall_amendment.schema.json"
+    },
+    {
+      "original": "schemas/w03_evaluation_case.schema.json",
+      "sha256": "ab28de15ace04a2077e69c65dcde305f9fdf9e9cb506e43673a3a25ede838dfb",
+      "current": "schemas/w03_evaluation_case.schema.json",
+      "canonical": "schemas/w03_evaluation_case.schema.json"
+    },
+    {
+      "original": "scripts/datasets/build_dataset.py",
+      "sha256": "6e0e90d8a9099f21d86f408da279d300adfaff4a56b76f14d8179fbc01feefb5",
+      "current": "scripts/datasets/build_dataset.py",
+      "canonical": "scripts/datasets/build_dataset.py"
+    },
+    {
+      "original": "scripts/datasets/dataset_io.py",
+      "sha256": "5b1dae509caa9e9b0fe35cd620db29e2295c5981450bbe66ceea44b0b521e0bb",
+      "current": "scripts/datasets/dataset_io.py",
+      "canonical": "scripts/datasets/dataset_io.py"
+    },
+    {
+      "original": "scripts/datasets/update_dataset.py",
+      "sha256": "ad724ffe22cfbd5c9a60d2e96571c19043ca3292039640050fda4f86d94f7411",
+      "current": "scripts/datasets/update_dataset.py",
+      "canonical": "scripts/datasets/update_dataset.py"
+    },
+    {
+      "original": "scripts/datasets/v2/manage_dataset.py",
+      "sha256": "a624ed712a32c5006b80cec7299703e25b0799e910005ddcf4976f25fcf0c97d",
+      "current": "scripts/datasets/v2/manage_dataset.py",
+      "canonical": "scripts/datasets/v2/manage_dataset.py"
+    },
+    {
+      "original": "scripts/datasets/validate_dataset.py",
+      "sha256": "f6fa79cb6953963bdcaa687e43fc641ef7b43e09cbe5c6280a14a20f7f822623",
+      "current": "scripts/datasets/validate_dataset.py",
+      "canonical": "scripts/datasets/validate_dataset.py"
+    },
+    {
+      "original": "scripts/documents/build_docx.py",
+      "sha256": "c6ee4011c320cf9bc71eab3253109e86697d19b71d7ed90384e9c9d38a67c42c",
+      "current": "scripts/documents/build_docx.py",
+      "canonical": "scripts/documents/build_docx.py"
+    },
+    {
+      "original": "scripts/documents/build_week2_report.py",
+      "sha256": "ff279df42c0c1aafe9760ee48d858d3ff4536923e049bbf836cde00df2ad58f1",
+      "snapshot": "scripts/documents/build_week2_report.py",
+      "canonical": "scripts/documents/build_week2_report.py"
+    },
+    {
+      "original": "scripts/documents/build_week3_context_review.py",
+      "sha256": "7347e163f8620d343d1d69ff5ff9de99a4b766ed741d27418efa5950f336076a",
+      "snapshot": "scripts/documents/build_week3_context_review.py",
+      "canonical": "scripts/documents/build_week3_context_review.py"
+    },
+    {
+      "original": "scripts/documents/build_week3_pilot.py",
+      "sha256": "fdeeacddb627cab9c61e180332ba4378f6a484c1d4b350a63e5f3963a90ab504",
+      "snapshot": "scripts/documents/build_week3_pilot.py",
+      "canonical": "scripts/documents/build_week3_pilot.py"
+    },
+    {
+      "original": "scripts/documents/build_week3_protocol.py",
+      "sha256": "7df606d4fbcd00c66f9582e365f886272a7551ed45646fd93efcef8af6df8dc2",
+      "snapshot": "scripts/documents/build_week3_protocol.py",
+      "canonical": "scripts/documents/build_week3_protocol.py"
+    },
+    {
+      "original": "scripts/documents/set_bilingual_fonts.py",
+      "sha256": "ee16a39aa35db5ecc5cb9ac323346aaa0a9f5c62b44f68a0b37b59fe913af8ec",
+      "current": "scripts/documents/set_bilingual_fonts.py",
+      "canonical": "scripts/documents/set_bilingual_fonts.py"
+    },
+    {
+      "original": "scripts/evaluation/analyze_week3.py",
+      "sha256": "2bc6299f6910cc10a07ce02d88e26e41cb3ffc8aafd134b63a094d30afa83a40",
+      "snapshot": "scripts/evaluation/analyze_week3.py",
+      "canonical": "scripts/evaluation/analyze_week3.py"
+    },
+    {
+      "original": "scripts/evaluation/build_week2_notebook.py",
+      "sha256": "b51526e8bc2894284e178cc233b3dbe3c315bf32c0b03fe357cc0ca6111e084e",
+      "snapshot": "scripts/evaluation/build_week2_notebook.py",
+      "canonical": "scripts/evaluation/build_week2_notebook.py"
+    },
+    {
+      "original": "scripts/evaluation/build_week3_notebook.py",
+      "sha256": "25ab552d66be7e298fcff3a63791ff7166b441da7e67661268551060c555e8ec",
+      "snapshot": "scripts/evaluation/build_week3_notebook.py",
+      "canonical": "scripts/evaluation/build_week3_notebook.py"
+    },
+    {
+      "original": "scripts/evaluation/correct_week3_context_recall.py",
+      "sha256": "334782bda8322fa9f5bf39a641e43c71c3c348928abbe9c04e0a8ec3751beb1a",
+      "current": "scripts/evaluation/correct_week3_context_recall.py",
+      "canonical": "scripts/evaluation/correct_week3_context_recall.py"
+    },
+    {
+      "original": "scripts/evaluation/execute_week2_notebook.py",
+      "sha256": "bbbbb446f92d4fbe3b0345f7e01d2468a75521d32b9537c869ddf4d5b09429bc",
+      "snapshot": "scripts/evaluation/execute_week2_notebook.py",
+      "canonical": "scripts/evaluation/execute_week2_notebook.py"
+    },
+    {
+      "original": "scripts/evaluation/generate_week2.py",
+      "sha256": "908f0b19768ff732d4d1eddee757c298cb51f81fcacae313dc6e61d064d79420",
+      "snapshot": "scripts/evaluation/generate_week2.py",
+      "canonical": "scripts/evaluation/generate_week2.py"
+    },
+    {
+      "original": "scripts/evaluation/prepare_models.py",
+      "sha256": "90718276f33eabb484c4487c3f25198e56e7b50aedaf723fca494e4b317d70cd",
+      "snapshot": "scripts/evaluation/prepare_models.py",
+      "canonical": "scripts/evaluation/prepare_models.py"
+    },
+    {
+      "original": "scripts/evaluation/score_week2.py",
+      "sha256": "36ae3ae30d116037db76adff73ddf344aa235d51428e624a7cfcca0b1bba88e2",
+      "snapshot": "scripts/evaluation/score_week2.py",
+      "canonical": "scripts/evaluation/score_week2.py"
+    },
+    {
+      "original": "scripts/evaluation/week3.py",
+      "sha256": "c8ec2e375596873c9a2c932540d6880aa49aabeb1c18fae1ac949d3076466308",
+      "snapshot": "scripts/evaluation/week3.py",
+      "canonical": "scripts/evaluation/week3.py"
+    },
+    {
+      "original": "src/__init__.py",
+      "sha256": "345490ec168a0e792485f9fec679c097f64fca3246ed8f718c70d8e53bfcc7ed",
+      "current": "src/__init__.py",
+      "canonical": "src/__init__.py"
+    },
+    {
+      "original": "src/embeddings.py",
+      "sha256": "0888e5b5cef1a145ea7bce63ad2aee238737b4300d4d20c776159ca9cd186e4f",
+      "current": "src/embeddings.py",
+      "canonical": "src/embeddings.py"
+    },
+    {
+      "original": "src/evaluator.py",
+      "sha256": "92ef111ead152a0951d4fd4b8a40218f372b6d213e87b1ae991a7dc68cb569e8",
+      "current": "src/evaluator.py",
+      "canonical": "src/evaluator.py"
+    },
+    {
+      "original": "src/experiment.py",
+      "sha256": "d58f2942aabd90bd7d3cf10cd02f100c1551fd612ff9887a51866901cd0bc6ac",
+      "snapshot": "src/experiment.py",
+      "canonical": "src/experiment.py"
+    },
+    {
+      "original": "src/extended_evaluator.py",
+      "sha256": "3a4c1fb1265bba4becd2f5b186ec1b22cad319cfaaa9ea09340cc0cd7402cd73",
+      "current": "src/extended_evaluator.py",
+      "canonical": "src/extended_evaluator.py"
+    },
+    {
+      "original": "src/generation.py",
+      "sha256": "7e21d9022878b5cce8e704fe84b2d62466b9499778a0d3e28a0c65bc78b478aa",
+      "current": "src/generation.py",
+      "canonical": "src/generation.py"
+    },
+    {
+      "original": "src/model_inputs.py",
+      "sha256": "5d1f554a4244de0ff801ada845be58a709e6767011e5d6c24e7808660e3d00f1",
+      "current": "src/model_inputs.py",
+      "canonical": "src/model_inputs.py"
+    },
+    {
+      "original": "src/week3_analysis.py",
+      "sha256": "0fa9d7c9ddcfe7d797751be5dc07e50d257a0f8c28425064642bae3c9e91e9de",
+      "current": "src/week3_analysis.py",
+      "canonical": "src/week3_analysis.py"
+    },
+    {
+      "original": "src/week3_context_recall.py",
+      "sha256": "8b88404e221bf52f29dae26435560c613562d4286d49867d3a2bbf73dc3fd074",
+      "snapshot": "src/week3_context_recall.py",
+      "canonical": "src/week3_context_recall.py"
+    },
+    {
+      "original": "src/week3_experiment.py",
+      "sha256": "60884c9c6923ba56b740c683e5b08f6427f1aede6fce3a55cb6f8c7bef026e1a",
+      "snapshot": "src/week3_experiment.py",
+      "canonical": "src/week3_experiment.py"
+    },
+    {
+      "original": "src/week3_inputs.py",
+      "sha256": "a33fb3c02800a7037ffe3cba7ea224d8e20f9953165879b07468bda31dc60fdc",
+      "current": "src/week3_inputs.py",
+      "canonical": "src/week3_inputs.py"
+    },
+    {
+      "original": "tests/test_dataset_v2.py",
+      "sha256": "46d1a3d8128c45bfc7452e30a48ab1eb45257daf15306eadad73528578f96960",
+      "snapshot": "tests/test_dataset_v2.py",
+      "canonical": "tests/test_dataset_v2.py"
+    },
+    {
+      "original": "tests/test_dataset_v2_collection.py",
+      "sha256": "88c2ff380f5eea02f7cbbbac9eb7e646830d9b4f0d10c82441488ab3cc83f28b",
+      "snapshot": "tests/test_dataset_v2_collection.py",
+      "canonical": "tests/test_dataset_v2_collection.py"
+    },
+    {
+      "original": "tests/test_dataset_validation.py",
+      "sha256": "b581e8ea5796b3426bebf70d4c29419558cbd896a71e9bf441ee6598a30df043",
+      "current": "tests/test_dataset_validation.py",
+      "canonical": "tests/test_dataset_validation.py"
+    },
+    {
+      "original": "tests/test_dataset_workflow.py",
+      "sha256": "28edb7efc78d9744f95ebb87106ea3fedad57bc92b694a04d47c3c40e0655571",
+      "current": "tests/test_dataset_workflow.py",
+      "canonical": "tests/test_dataset_workflow.py"
+    },
+    {
+      "original": "tests/test_evaluator.py",
+      "sha256": "d273f68000d26b9331ca33b0e841176c0a858e72ef613fccde85a5a5c454d86c",
+      "current": "tests/test_evaluator.py",
+      "canonical": "tests/test_evaluator.py"
+    },
+    {
+      "original": "tests/test_extended.py",
+      "sha256": "118d00d070c48011a038aba1be300275eb2b8bfd419597cb8519bb2390fd619e",
+      "current": "tests/test_extended.py",
+      "canonical": "tests/test_extended.py"
+    },
+    {
+      "original": "tests/test_manifest_integrity.py",
+      "sha256": "18c9451714453d4fdb0f966940925d86c3fb9faf44da563a148ba328b5f018b0",
+      "current": "tests/test_manifest_integrity.py",
+      "canonical": "tests/test_manifest_integrity.py"
+    },
+    {
+      "original": "tests/test_public_artifacts.py",
+      "sha256": "f8df37a5ab49583e208058293fb5f85414d3b521d252c0da50ff2b8b71615637",
+      "snapshot": "tests/test_public_artifacts.py",
+      "canonical": "tests/test_public_artifacts.py"
+    },
+    {
+      "original": "tests/test_week2_artifacts.py",
+      "sha256": "53f4c551ec9fa82a23769271750898838907f629ddbffaf52f328df73b39a851",
+      "snapshot": "tests/test_week2_artifacts.py",
+      "canonical": "tests/test_week2_artifacts.py"
+    },
+    {
+      "original": "tests/test_week3_analysis.py",
+      "sha256": "b5900a6e9397142bb533a0a84718d466f0fda3822e910b3c0b64e26316ac5248",
+      "current": "tests/test_week3_analysis.py",
+      "canonical": "tests/test_week3_analysis.py"
+    },
+    {
+      "original": "tests/test_week3_artifacts.py",
+      "sha256": "b97070503ca2174bb9c2273c8491d841a3ea1105c759c6a733c54538fb76305a",
+      "snapshot": "tests/test_week3_artifacts.py",
+      "canonical": "tests/test_week3_artifacts.py"
+    },
+    {
+      "original": "tests/test_week3_context_recall.py",
+      "sha256": "88bd2a584213d65fda96c2770c1c892857649d2378a9b753501edaf122da975f",
+      "current": "tests/test_week3_context_recall.py",
+      "canonical": "tests/test_week3_context_recall.py"
+    },
+    {
+      "original": "tests/test_week3_experiment.py",
+      "sha256": "1e7a1ebcff75236a4f447160296eb72e8b09e4e27e5008a12a9c83be97b74679",
+      "snapshot": "tests/test_week3_experiment.py",
+      "canonical": "tests/test_week3_experiment.py"
+    },
+    {
+      "original": "tests/test_week3_inputs.py",
+      "sha256": "e98087908c8a523eab9e1444d520b69dc50051b2bddbf6205fb501480b0f82e8",
+      "snapshot": "tests/test_week3_inputs.py",
+      "canonical": "tests/test_week3_inputs.py"
+    },
+    {
+      "original": "weekly/Wk-01-Log.md",
+      "sha256": "76ebe3542a14507090e6b1cb2e2ab569ac7e4f775008d21c9c386773a2de086b",
+      "current": "docs/reflections/phase_01.md",
+      "canonical": "docs/reflections/phase_01.md"
+    },
+    {
+      "original": "weekly/Wk-02-Log.md",
+      "sha256": "36db707d5fc60b47fe5c4f0cb549eb440e144672d736908d846d64673768f515",
+      "current": "docs/reflections/phase_02.md",
+      "canonical": "docs/reflections/phase_02.md"
+    },
+    {
+      "original": "weekly/Wk-03-Log.md",
+      "sha256": "2fc1f79359df9d9aa765be5ba5d9742901719445c0cdaac5db37fa1f4f681b03",
+      "current": "docs/reflections/phase_03.md",
+      "canonical": "docs/reflections/phase_03.md"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Exact experiment hashes require portable LF checkout bytes for text artifacts.
+* text=auto eol=lf
+*.docx binary
+*.pdf binary
+*.pptx binary
+*.xlsx binary
+*.npz binary
+*.png binary
+*.zip binary

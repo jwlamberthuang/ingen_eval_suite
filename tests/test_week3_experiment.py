@@ -58,7 +58,7 @@ class FixtureBackend:
 @pytest.fixture
 def sandbox(tmp_path, monkeypatch, cases):
     """A release-qualified fixture loader does not approve the real collection."""
-    config = json.loads((v2.ROOT / "configs/week-03.json").read_text())
+    config = json.loads((v2.ROOT / "configs/example_experiment.json").read_text())
     for name in pipeline.SOURCE_FILES:
         p = tmp_path / name
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -102,7 +102,7 @@ def approve_fixture_review(root, config, output):
 
 
 def test_real_preflight_is_read_only_and_cannot_freeze_unreviewed_data(tmp_path):
-    config = json.loads((v2.ROOT / "configs/week-03.json").read_text())
+    config = json.loads((v2.ROOT / "configs/example_experiment.json").read_text())
     result = pipeline.preflight(v2.ROOT, config)
     assert result["input_count"] == 200 and result["model_calls"] == 0 and result["ready"]
     assert result["type_counts"]["rag"] == 155
@@ -136,7 +136,7 @@ def test_cached_checkpoint_requires_only_pinned_inference_files(monkeypatch):
 
 
 @pytest.mark.parametrize("field,value", [("output", "results/week-02/overwrite"), ("dataset", "../outside.jsonl"),
-                                         ("output", "results/week-03/../other"), ("pipeline_version", "unknown")])
+                                         ("output", "results/experiments/../other"), ("pipeline_version", "unknown")])
 def test_config_refuses_scope_escape_and_unknown_version(sandbox, field, value):
     root, config, _ = sandbox
     config[field] = value
@@ -352,7 +352,7 @@ def test_all_200_cases_dispatch_without_treating_fixtures_as_model_results():
 
 
 def test_manifest_drift_blocks_preflight_before_model_setup(monkeypatch):
-    config = json.loads((v2.ROOT / "configs/week-03.json").read_text())
+    config = json.loads((v2.ROOT / "configs/example_experiment.json").read_text())
     monkeypatch.setattr(v2, "verify_manifest", lambda *args: False)
     with pytest.raises(ValueError, match="manifest integrity"):
         pipeline.preflight(v2.ROOT, config)

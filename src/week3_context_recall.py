@@ -20,7 +20,7 @@ from .week3_inputs import generation_messages
 ROOT = Path(__file__).resolve().parents[1]
 AMENDMENT = 'data/annotations/W03_Context_Recall_v2.0.1.json'
 SCHEMA = 'schemas/w03_context_recall_amendment.schema.json'
-OUTPUT = 'results/week-03/context-recall-v2.0.1'
+OUTPUT = 'results/context_recall_v2.0.1'
 SOURCES = ['src/week3_context_recall.py', 'scripts/evaluation/correct_week3_context_recall.py']
 
 
@@ -94,8 +94,21 @@ def rescore(root=ROOT):
     """Replay sealed inputs and vectors; assert all other measurements identical."""
     root = Path(root)
     amendment = load(root / AMENDMENT)
-    config = load(root / 'configs/week-03.json')
-    required_base = {'configs/week-03.json', config['dataset'], config['dataset_manifest']}
+    from .reproducibility import MANIFEST, ROOT as CURRENT_ROOT, recorded_workspace, recorded_call
+    if root.resolve() == CURRENT_ROOT and (root / MANIFEST).is_file():
+        # Validate caller-visible approval/base hashes before isolated historical replay.
+        with recorded_workspace(root) as frozen:
+            original = load(frozen / AMENDMENT)
+            if set(amendment['base_hashes']) != set(original['base_hashes']):
+                raise ValueError('Amendment must bind the complete baseline input set')
+            for name, expected in amendment['base_hashes'].items():
+                if sha256(frozen / name) != expected:
+                    raise ValueError('Amendment base changed: ' + name)
+            if amendment != original:
+                raise ValueError('Annotation content changed after approval')
+        return tuple(recorded_call('annotations', root))
+    config = load(root / 'configs/extended_baseline.json')
+    required_base = {'configs/extended_baseline.json', config['dataset'], config['dataset_manifest']}
     required_base.update(config['output'] + '/' + name for name in (
         'run_manifest.json', 'dataset.jsonl', 'inputs.jsonl', 'responses.jsonl',
         'claims.jsonl', 'claim_review.json', 'calibration.json', 'scores.json',
@@ -145,6 +158,11 @@ def rescore(root=ROOT):
 
 
 def run(root=ROOT, replay=False):
+    from .reproducibility import MANIFEST, ROOT as CURRENT_ROOT, recorded_call
+    if Path(root).resolve() == CURRENT_ROOT and (Path(root) / MANIFEST).is_file():
+        if not replay:
+            raise FileExistsError('Correction is frozen; use replay or a new annotation version')
+        return recorded_call('amendment', root)
     root = Path(root)
     artifact, _ = rescore(root)
     amendment = load(root / AMENDMENT)

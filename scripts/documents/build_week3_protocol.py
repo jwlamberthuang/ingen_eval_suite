@@ -60,7 +60,7 @@ def blocks_from_markdown(text):
 def build_protocol(source, output_dir):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    output = output_dir / "W03_Evaluation_Protocol.docx"
+    output = output_dir / "evaluation_protocol.docx"
     if output.exists():
         raise FileExistsError("Protocol exists; use a fresh output directory")
     text = source.read_text(encoding="utf-8")
@@ -78,7 +78,7 @@ def build_protocol(source, output_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path,
-                        default=ROOT / "docs/week-03/W03_Evaluation_Protocol.md")
+                        default=ROOT / "docs/methodology/evaluation_protocol.md")
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
     build_protocol(args.source, args.output_dir)

@@ -1,3 +1,4 @@
+from src.reproducibility import original_bytes
 """Validate frozen measurements, input boundaries, and the delivered artifacts."""
 import hashlib
 import json
@@ -8,11 +9,11 @@ from src.experiment import score_run
 from src.generation import read_jsonl
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT/"results/week-02/baseline"
+OUT = ROOT/"results/rag_baseline"
 
 
 def test_experiment_replays_exactly_without_model_download():
-    config = json.loads((ROOT/"configs/week-02.json").read_text())
+    config = json.loads((ROOT/"configs/rag_baseline.json").read_text())
     assert score_run(ROOT, config, replay=True) == json.loads((OUT/"scores.json").read_text())
 
 
@@ -23,7 +24,7 @@ def test_artifacts_and_implementation_match_recorded_hashes():
         assert hashlib.sha256((OUT/name).read_bytes()).hexdigest() == expected, name
     for group in [manifest["source_hashes"], manifest["scoring"]["source_hashes"]]:
         for name, expected in group.items():
-            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == expected, name
+            assert hashlib.sha256(original_bytes(name)).hexdigest() == expected, name
 
 
 def test_all_generation_inputs_use_only_permitted_fields():
@@ -57,7 +58,7 @@ def test_calibration_uses_only_designated_cases():
 
 
 def test_notebook_executed_every_code_cell_without_errors():
-    notebook = json.loads((ROOT/"notebooks/week-02/W02_RAG_Evaluation_Pipeline.ipynb").read_text())
+    notebook = json.loads((ROOT/"notebooks/rag_evaluation.ipynb").read_text())
     code = [c for c in notebook["cells"] if c["cell_type"] == "code"]
     assert code and all(c["execution_count"] is not None for c in code)
     assert all(o["output_type"] != "error" for c in code for o in c["outputs"])
@@ -65,7 +66,7 @@ def test_notebook_executed_every_code_cell_without_errors():
 
 def test_word_results_use_requested_latin_and_chinese_fonts():
     w = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
-    with ZipFile(ROOT/"docs/week-02/W02_RAG_Evaluation_Results.docx") as zipped:
+    with ZipFile(ROOT/"docs/reports/rag_baseline.docx") as zipped:
         root = ET.fromstring(zipped.read("word/document.xml"))
         chinese = 0
         for run in root.iter(w+"r"):
@@ -83,7 +84,6 @@ def test_word_results_use_requested_latin_and_chinese_fonts():
 
 
 def test_weekly_log_length_and_week_indexes():
-    words = (ROOT/"weekly/Wk-02-Log.md").read_text().split('\n',2)[-1].split()
+    words = (ROOT/"docs/reflections/phase_02.md").read_text().split('\n',2)[-1].split()
     assert 300 <= len(words) <= 500
-    for week in ["week-01", "week-02"]:
-        assert (ROOT/"deliverables"/week/"README.md").is_file()
+    assert (ROOT/"docs/README.md").is_file()

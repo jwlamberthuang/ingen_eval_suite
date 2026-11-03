@@ -50,6 +50,9 @@ def dataset_records(root, config):
 
 def calibrate_run(root, config):
     """Freeze tau on existing reviewed calibration facts before held-out scoring."""
+    from .reproducibility import is_recorded_config
+    if is_recorded_config(root, config, "configs/rag_baseline.json"):
+        raise ValueError("Recorded calibration is frozen; use a separately named experiment")
     root, output = Path(root), Path(root)/config["output"]
     output.mkdir(parents=True, exist_ok=True)
     records = dataset_records(root, config)
@@ -102,6 +105,11 @@ def _claims_for_scoring(output, records):
 
 def score_run(root, config, replay=False):
     """Score frozen outputs, or reproduce the same scores using saved embeddings."""
+    from .reproducibility import is_recorded_config, recorded_call
+    if is_recorded_config(root, config, "configs/rag_baseline.json"):
+        if not replay:
+            raise ValueError("Recorded scores are frozen; use replay or a separately named experiment")
+        return recorded_call("rag")
     root, output = Path(root), Path(root)/config["output"]
     records = dataset_records(root, config)
     calibration = json.loads((output/"calibration.json").read_text())

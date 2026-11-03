@@ -1,0 +1,181 @@
+{
+  "status": "passed",
+  "checked_on": "2026-10-31",
+  "scope": "Project-oriented layout migration and first consolidated report draft; not a final release audit.",
+  "baseline_commit": "e701bc57f568c293d922a1921c60d46def7a6a74",
+  "current_tests": {
+    "passed": 357,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 32.177
+  },
+  "historical_tests": {
+    "passed": 336,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 27.59,
+    "scope": "Exact reconstructed 149-file baseline"
+  },
+  "offline_replay": {
+    "rag": {
+      "status": "exact_replay",
+      "cases": 100
+    },
+    "extended": {
+      "status": "exact_replay",
+      "cases": 200
+    },
+    "amendment": {
+      "status": "exact_replay",
+      "baseline_exact_replay": true,
+      "generation_inputs_unchanged": true,
+      "other_per_case_metrics_unchanged": true,
+      "new_generation_attempts": 0,
+      "audited_new_rag_cases": 55,
+      "amended_cases": 17,
+      "review_status": "approved"
+    },
+    "analysis": {
+      "status": "exact_replay",
+      "probes": 10
+    }
+  },
+  "dataset_validation": [
+    {
+      "file": "data/W01_Evaluation_Dataset_v1.jsonl",
+      "profile": "release",
+      "record_count": 100,
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "file": "data/W01_Evaluation_Dataset_Pilot_v0.4.jsonl",
+      "profile": "pilot",
+      "record_count": 12,
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "file": "data/W01_Evaluation_Dataset_v2.jsonl",
+      "profile": "release",
+      "record_count": 200,
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "file": "data/W03_Evaluation_Dataset_Pilot_v0.1.jsonl",
+      "profile": "pilot",
+      "record_count": 12,
+      "valid": true,
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "notebooks": [
+    {
+      "file": "notebooks/extended_evaluation.ipynb",
+      "executed_code_cells": 12,
+      "errors": 0
+    },
+    {
+      "file": "notebooks/rag_evaluation.ipynb",
+      "executed_code_cells": 11,
+      "errors": 0
+    }
+  ],
+  "word_checks": {
+    "documents": [
+      {
+        "file": "docs/datasets/dialogue_specification.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 5
+      },
+      {
+        "file": "docs/methodology/evaluation_framework.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 0
+      },
+      {
+        "file": "docs/methodology/evaluation_protocol.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 1
+      },
+      {
+        "file": "docs/reports/rag_baseline.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 3
+      },
+      {
+        "file": "docs/reviews/context_recall_v2.0.1.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 25
+      },
+      {
+        "file": "docs/reviews/expanded_additions.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 194
+      },
+      {
+        "file": "docs/reviews/expanded_pilot.docx",
+        "latin_font": "Times New Roman",
+        "chinese_font": "Songti SC",
+        "chinese_runs": 47
+      }
+    ],
+    "all_relative_links_resolve": true,
+    "only_relationship_bytes_changed": true,
+    "rendered_changed_documents": {
+      "evaluation_framework": 16,
+      "dialogue_specification": 10,
+      "evaluation_protocol": 9,
+      "rag_baseline": 6
+    },
+    "font_aware_render_review": "All changed-document pages rendered and visually checked; Chinese glyphs verified with font configuration."
+  },
+  "public_copy": {
+    "file_count": 168,
+    "git_history": false,
+    "private_or_ignored_files": false,
+    "uses_existing_dependency_environment": true,
+    "fresh_dependency_install_performed": false,
+    "tests_passed": 357,
+    "exact_replay": "passed",
+    "report_evidence_check": "passed"
+  },
+  "preservation": {
+    "dataset_and_pilot_bytes": "unchanged",
+    "recorded_result_bytes": "unchanged",
+    "schema_and_case_ids": "unchanged",
+    "model_visible_inputs": "unchanged",
+    "original_run_manifests": "unchanged",
+    "new_inference_attempts": 0
+  },
+  "report_draft": {
+    "file": "docs/reports/technical_report.md",
+    "abstract_words": 168,
+    "required_sections": 7,
+    "recommendations": 3,
+    "sha256": "38494ac20a5f55eeca95d8e29a971d9861c679354181913e2b925977b66482e6",
+    "evidence": "docs/reports/evidence/summary.json"
+  },
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "tag_created": false
+  },
+  "remaining_release_checks": [
+    "Final report content review and 5–7-page Word/PDF layout",
+    "Ten-slide presentation and personal retrospective/final log",
+    "Fresh dependency installation on the release candidate",
+    "Final artifact consistency checks and approved publication"
+  ]
+}

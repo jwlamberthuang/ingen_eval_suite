@@ -22,17 +22,18 @@ htmlcov/
 
 # Build previews, reports, review payloads, and scratch work
 .local/
+/.chart-data-*/
 data/validation/
 data/batches/
 data/revisions/
-reports/
+/reports/
 tmp/
 temp/
 *.tmp
-~$*.docx
+~$*
 
-# Advisory locks for resumable Week 3 experiment processes
-results/week-03/**/.run.lock
+# Advisory locks for resumable experiment processes
+results/**/.run.lock
 
 # Operating system metadata
 .DS_Store

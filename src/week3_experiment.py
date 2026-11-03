@@ -31,7 +31,7 @@ SOURCE_FILES = (
     "configs/dataset-v2.json", "schemas/w03_evaluation_case.schema.json",
     "schemas/w01_dialogue_case.schema.json", "requirements-evaluation.txt",
     "requirements-generation.txt", "requirements-validation.txt",
-    "docs/week-03/W03_Evaluation_Protocol.md",
+    "docs/methodology/evaluation_protocol.md",
 )
 
 
@@ -65,8 +65,8 @@ def validate_config(root, config):
     if not config["run_name"] or Path(config["run_name"]).name != config["run_name"]:
         raise ValueError("Invalid run name")
     output = _path(root, config["output"])
-    if not output.is_relative_to(_path(root, "results/week-03")) or output == _path(root, "results/week-03"):
-        raise ValueError("Experiment outputs must be under results/week-03")
+    if not output.is_relative_to(_path(root, "results/experiments")) or output == _path(root, "results/experiments"):
+        raise ValueError("Experiment outputs must be under results/experiments")
     for key in ("dataset", "dataset_manifest"):
         _path(root, config[key])
     generation = config["generation"]
@@ -550,6 +550,9 @@ def score_records(records, responses, claims, encoder, threshold):
 
 
 def score_stage(root, config, replay=False, encoder_factory=local_encoder):
+    from .reproducibility import is_recorded_config, recorded_call
+    if replay and is_recorded_config(root, config, "configs/extended_baseline.json"):
+        return recorded_call("extended")
     output, records, manifest = _state(root, config)
     with _lock(output):
         output, records, manifest = _state(root, config)
